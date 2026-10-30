@@ -31,8 +31,3 @@ Clone o repositório e abra `dmsportifolio/index.html` em um navegador.
 - [LinkedIn](https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/)
 - [GitHub](https://github.com/Guilhermedms7)
 - E-mail: [guilhermedamascenooliveira@gmail.com](mailto:guilhermedamascenooliveira@gmail.com)
-
-
-## Playground interativo
-
-O portfólio também inclui o **API Resilience Lab**, uma demonstração sem dependências que roda no navegador e permite explorar retry, Circuit Breaker e Feature Flags. Acesse a pasta [dmsportifolio/projects/api-resilience-lab](https://github.com/Guilhermedms7/Portifolio/tree/main/dmsportifolio/projects/api-resilience-lab) para ver o código e as instruções.
