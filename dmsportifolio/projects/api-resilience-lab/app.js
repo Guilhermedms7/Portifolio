@@ -99,10 +99,10 @@ function renderBreaker() {
     disabled: "DESATIVADO",
   };
   const descriptions = {
-    closed: "A integraÃ§Ã£o estÃ¡ recebendo eventos normalmente.",
-    open: `Novas tentativas pausadas por ${Math.max(1, Math.ceil((session.breaker.openUntil - Date.now()) / 1000))} s para proteger o serviÃ§o.`,
-    "half-open": "PerÃ­odo de espera concluÃ­do. O prÃ³ximo evento vai testar a integraÃ§Ã£o.",
-    disabled: "ProteÃ§Ã£o desativada; as falhas nÃ£o abrem o circuito.",
+    closed: "A integração está recebendo eventos normalmente.",
+    open: `Novas tentativas pausadas por ${Math.max(1, Math.ceil((session.breaker.openUntil - Date.now()) / 1000))} s para proteger o serviço.`,
+    "half-open": "Período de espera concluído. O próximo evento vai testar a integração.",
+    disabled: "Proteção desativada; as falhas não abrem o circuito.",
   };
 
   elements.breakerState.className = `breaker-state state-${state.replace("-", "-")}`;
@@ -142,15 +142,15 @@ function renderActivity() {
 
   elements.activityCount.textContent = `${session.events.length} ${session.events.length === 1 ? "evento" : "eventos"}`;
   elements.stripSummary.textContent = session.events.length === 0
-    ? "Aguardando execuÃ§Ã£o"
-    : `${counts.success ?? 0} entregues Â· ${counts.failed ?? 0} falhas Â· ${counts.blocked ?? 0} bloqueados`;
+    ? "Aguardando execução"
+    : `${counts.success ?? 0} entregues · ${counts.failed ?? 0} falhas · ${counts.blocked ?? 0} bloqueados`;
 
   elements.eventStrip.replaceChildren();
   session.events.slice(0, 18).reverse().forEach((event) => {
     const bar = document.createElement("span");
     bar.className = `event-bar ${event.status}`;
     bar.style.setProperty("--bar-height", `${event.plotHeight}px`);
-    bar.title = `${event.id} Â· ${statusLabel(event.status)} Â· ${event.attempts} tentativas`;
+    bar.title = `${event.id} · ${statusLabel(event.status)} · ${event.attempts} tentativas`;
     elements.eventStrip.append(bar);
   });
 
@@ -160,7 +160,7 @@ function renderActivity() {
     row.className = "empty-row";
     const cell = document.createElement("td");
     cell.colSpan = 5;
-    cell.textContent = "Ajuste o cenÃ¡rio e execute uma simulaÃ§Ã£o para ver os eventos.";
+    cell.textContent = "Ajuste o cenário e execute uma simulação para ver os eventos.";
     row.append(cell);
     elements.activityBody.append(row);
     return;
@@ -220,7 +220,7 @@ function createEvent(index) {
     status: "pending",
     attempts: 0,
     time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
-    detail: "Evento criado para a simulaÃ§Ã£o.",
+    detail: "Evento criado para a simulação.",
     plotHeight: 9 + ((index * 7 + Number(number)) % 18),
   };
 }
@@ -252,7 +252,7 @@ async function processEvent(event, settings) {
 
   if (!settings.featureEnabled) {
     event.status = "paused";
-    event.detail = "Evento ignorado: a integraÃ§Ã£o estÃ¡ desativada pela Feature Flag.";
+    event.detail = "Evento ignorado: a integração está desativada pela Feature Flag.";
     elements.activityLive.textContent = `${event.id} ignorado pela Feature Flag.`;
     render();
     return;
@@ -274,7 +274,7 @@ async function processEvent(event, settings) {
     if (circuitState === "open") {
       session.metrics.blocked += 1;
       event.status = "blocked";
-      event.detail = "O Circuit Breaker abriu apÃ³s uma falha; as tentativas restantes foram bloqueadas.";
+      event.detail = "O Circuit Breaker abriu após uma falha; as tentativas restantes foram bloqueadas.";
       elements.activityLive.textContent = `${event.id}: retries interrompidos pelo Circuit Breaker.`;
       break;
     }
@@ -293,7 +293,7 @@ async function processEvent(event, settings) {
       session.metrics.delivered += 1;
       recordSuccess(settings);
       event.status = "success";
-      event.detail = `Entregue na tentativa ${attempt}, apÃ³s ${event.attempts} ${event.attempts === 1 ? "chamada" : "chamadas"}.`;
+      event.detail = `Entregue na tentativa ${attempt}, após ${event.attempts} ${event.attempts === 1 ? "chamada" : "chamadas"}.`;
       elements.activityLive.textContent = `${event.id} entregue com sucesso na tentativa ${attempt}.`;
       render();
       return;
@@ -305,12 +305,12 @@ async function processEvent(event, settings) {
         session.metrics.failed += 1;
         event.status = "failed";
         event.detail = "Falha na chamada; o Circuit Breaker abriu e encerrou novas tentativas.";
-        elements.activityLive.textContent = `Circuit Breaker aberto apÃ³s falhas consecutivas. ${event.id} nÃ£o foi entregue.`;
+        elements.activityLive.textContent = `Circuit Breaker aberto após falhas consecutivas. ${event.id} não foi entregue.`;
       } else {
         session.metrics.failed += 1;
         event.status = "failed";
-        event.detail = `Falhou apÃ³s ${attempt} ${attempt === 1 ? "tentativa" : "tentativas"}.`;
-        elements.activityLive.textContent = `${event.id} falhou apÃ³s ${attempt} ${attempt === 1 ? "tentativa" : "tentativas"}.`;
+        event.detail = `Falhou após ${attempt} ${attempt === 1 ? "tentativa" : "tentativas"}.`;
+        elements.activityLive.textContent = `${event.id} falhou após ${attempt} ${attempt === 1 ? "tentativa" : "tentativas"}.`;
       }
       render();
       return;
@@ -318,7 +318,7 @@ async function processEvent(event, settings) {
 
     session.metrics.retries += 1;
     const delay = backoffDelay(settings.retryStrategy, attempt);
-    event.detail = `Falha na tentativa ${attempt}; prÃ³ximo retry em ${delay} ms.`;
+    event.detail = `Falha na tentativa ${attempt}; próximo retry em ${delay} ms.`;
     elements.activityLive.textContent = `${event.id}: retry ${attempt} agendado para ${delay} ms.`;
     render();
     await sleep(delay);
@@ -334,23 +334,23 @@ async function runSimulation() {
   const formControls = document.querySelectorAll(".control-panel input, .control-panel select");
   formControls.forEach((control) => { control.disabled = true; });
   elements.runButton.disabled = true;
-  elements.runButton.innerHTML = '<span class="button-spinner" aria-hidden="true"></span> Simulando eventosâ€¦';
+  elements.runButton.innerHTML = '<span class="button-spinner" aria-hidden="true"></span> Simulando eventos…';
 
   try {
     for (let index = 0; index < count; index += 1) {
       const event = createEvent(index);
       session.events.unshift(event);
-      elements.activityLive.textContent = `${event.id} entrou na fila de simulaÃ§Ã£o.`;
+      elements.activityLive.textContent = `${event.id} entrou na fila de simulação.`;
       render();
       await processEvent(event, settings);
       if (index < count - 1) await sleep(120);
     }
-    elements.activityLive.textContent = `SimulaÃ§Ã£o concluÃ­da: ${count} ${count === 1 ? "evento" : "eventos"} avaliados.`;
+    elements.activityLive.textContent = `Simulação concluída: ${count} ${count === 1 ? "evento" : "eventos"} avaliados.`;
   } finally {
     session.isRunning = false;
     formControls.forEach((control) => { control.disabled = false; });
     elements.runButton.disabled = false;
-    elements.runButton.innerHTML = '<span aria-hidden="true">â–¶</span> Executar simulaÃ§Ã£o';
+    elements.runButton.innerHTML = '<span aria-hidden="true">▶</span> Executar simulação';
     render();
   }
 }
@@ -361,7 +361,7 @@ function resetSession() {
   session.events = [];
   session.metrics = { events: 0, delivered: 0, failed: 0, retries: 0, blocked: 0 };
   session.breaker = { state: "closed", consecutiveFailures: 0, openUntil: 0 };
-  elements.activityLive.textContent = "SessÃ£o limpa. Pronto para simular.";
+  elements.activityLive.textContent = "Sessão limpa. Pronto para simular.";
   render();
 }
 
@@ -373,12 +373,11 @@ elements.breakerEnabled.addEventListener("change", () => {
 });
 elements.featureEnabled.addEventListener("change", () => {
   elements.activityLive.textContent = elements.featureEnabled.checked
-    ? "Feature Flag ativada. A integraÃ§Ã£o pode receber eventos."
-    : "Feature Flag desativada. Novos eventos serÃ£o ignorados.";
+    ? "Feature Flag ativada. A integração pode receber eventos."
+    : "Feature Flag desativada. Novos eventos serão ignorados.";
 });
 elements.runButton.addEventListener("click", runSimulation);
 elements.resetButton.addEventListener("click", resetSession);
 
 updateRangeDisplays();
 render();
-
