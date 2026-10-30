@@ -344,26 +344,11 @@ img {
   height: 0.5rem;
   flex: 0 0 auto;
   border-radius: 50%;
-  background: #70d7a0;
-  box-shadow: 0 0 12px rgba(112, 215, 160, 0.5);
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(130, 180, 255, 0.55);
 }
 
-.visual-monogram-small {
-  display: grid;
-  width: 2.15rem;
-  height: 2.15rem;
-  flex: 0 0 auto;
-  place-items: center;
-  border: 1px solid rgba(130, 180, 255, 0.3);
-  border-radius: 0.65rem;
-  background: rgba(130, 180, 255, 0.1);
-  color: var(--accent);
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-}
-
-.visual-monogram-wrap {
+.visual-fox-wrap {
   position: relative;
   display: grid;
   min-height: 10rem;
@@ -371,29 +356,23 @@ img {
   margin: 0.75rem 0 0.45rem;
 }
 
-.visual-monogram-glow {
+.visual-fox-glow {
   position: absolute;
-  width: 8.4rem;
+  width: 9rem;
   aspect-ratio: 1;
-  border: 1px solid rgba(130, 180, 255, 0.25);
+  border: 1px solid rgba(130, 180, 255, 0.22);
   border-radius: 50%;
   box-shadow: 0 0 0 13px rgba(130, 180, 255, 0.035), 0 0 55px rgba(77, 145, 247, 0.12);
 }
 
-.visual-monogram {
+.visual-fox {
   position: relative;
-  display: grid;
-  width: 6.8rem;
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(130, 180, 255, 0.5);
-  border-radius: 1.8rem;
-  background: linear-gradient(145deg, rgba(130, 180, 255, 0.22), rgba(77, 145, 247, 0.06));
-  color: var(--text);
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -0.09em;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 8.8rem;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 24px rgba(219, 105, 117, 0.2));
 }
 
 .visual-role {
