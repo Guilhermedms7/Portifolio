@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta
+      name="description"
+      content="Playground interativo para visualizar retry, Circuit Breaker e Feature Flags em integraÃ§Ãµes HTTP."
+    />
+    <title>API Resilience Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#inicio" aria-label="API Resilience Lab, inÃ­cio">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="7" cy="16" r="3" />
+              <circle cx="25" cy="8" r="3" />
+              <circle cx="25" cy="24" r="3" />
+              <path d="M10 15l12-6M10 17l12 6" />
+            </svg>
+          </span>
+          <span class="brand-name">API <strong>Resilience Lab</strong></span>
+        </a>
+
+        <div class="runtime-indicator">
+          <span class="runtime-dot" aria-hidden="true"></span>
+          <span>Executado no navegador</span>
+          <span class="runtime-divider" aria-hidden="true"></span>
+          <span>Sem dependÃªncias</span>
+        </div>
+      </header>
+
+      <main id="inicio">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> Playground de engenharia back-end</p>
+            <h1 id="page-title">Falhas previsÃ­veis.<br /><span>IntegraÃ§Ãµes resilientes.</span></h1>
+            <p class="hero-description">
+              Ajuste o cenÃ¡rio e veja como retry, Circuit Breaker e Feature Flags
+              mudam o comportamento de uma integraÃ§Ã£o HTTP.
+            </p>
+          </div>
+          <aside class="demo-note" aria-label="Sobre a simulaÃ§Ã£o">
+            <span class="demo-note-icon" aria-hidden="true">â†—</span>
+            <div>
+              <strong>Ambiente seguro de demonstraÃ§Ã£o</strong>
+              <p>Nenhuma chamada externa, credencial ou dado real Ã© utilizado.</p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="dashboard" aria-label="Playground de resiliÃªncia de APIs">
+          <aside class="control-panel panel" aria-labelledby="controls-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">CenÃ¡rio</p>
+                <h2 id="controls-title">ConfiguraÃ§Ã£o</h2>
+              </div>
+              <span class="config-icon" aria-hidden="true">âš™</span>
+            </div>
+
+            <div class="range-control">
+              <div class="control-label-line">
+                <label for="failure-rate">Probabilidade de falha</label>
+                <output id="failure-value" for="failure-rate">40%</output>
+              </div>
+              <input id="failure-rate" type="range" min="0" max="90" step="5" value="40" />
+              <div class="range-ends"><span>Sem falhas</span><span>90%</span></div>
+            </div>
+
+            <div class="range-control">
+              <div class="control-label-line">
+                <label for="latency">LatÃªncia base</label>
+                <output id="latency-value" for="latency">280 ms</output>
+              </div>
+              <input id="latency" type="range" min="80" max="900" step="40" value="280" />
+              <div class="range-ends"><span>80 ms</span><span>900 ms</span></div>
+            </div>
+
+            <div class="select-grid">
+              <div class="field-control">
+                <label for="retry-strategy">EstratÃ©gia de retry</label>
+                <select id="retry-strategy">
+                  <option value="exponential">Backoff exponencial</option>
+                  <option value="fixed">Intervalo fixo</option>
+                </select>
+              </div>
+              <div class="field-control">
+                <label for="max-retries">MÃ¡ximo de retries</label>
+                <select id="max-retries">
+                  <option value="0">Nenhum</option>
+                  <option value="1">1 retry</option>
+                  <option value="2">2 retries</option>
+                  <option value="3" selected>3 retries</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="toggle-list">
+              <label class="toggle-row" for="retry-enabled">
+                <span class="toggle-copy">
+                  <strong>Retry automÃ¡tico</strong>
+                  <small>Tenta novamente apÃ³s uma falha</small>
+                </span>
+                <input id="retry-enabled" type="checkbox" checked />
+                <span class="toggle-ui" aria-hidden="true"></span>
+              </label>
+              <label class="toggle-row" for="breaker-enabled">
+                <span class="toggle-copy">
+                  <strong>Circuit Breaker</strong>
+                  <small>Abre apÃ³s 3 falhas consecutivas</small>
+                </span>
+                <input id="breaker-enabled" type="checkbox" checked />
+                <span class="toggle-ui" aria-hidden="true"></span>
+              </label>
+              <label class="toggle-row" for="feature-enabled">
+                <span class="toggle-copy">
+                  <strong>Feature Flag</strong>
+                  <small>Controla a ativaÃ§Ã£o da integraÃ§Ã£o</small>
+                </span>
+                <input id="feature-enabled" type="checkbox" checked />
+                <span class="toggle-ui" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="batch-control">
+              <label for="batch-size">Eventos por simulaÃ§Ã£o</label>
+              <select id="batch-size">
+                <option value="1">1 evento</option>
+                <option value="3">3 eventos</option>
+                <option value="5" selected>5 eventos</option>
+                <option value="10">10 eventos</option>
+              </select>
+            </div>
+
+            <button class="button button-primary" id="run-button" type="button">
+              <span aria-hidden="true">â–¶</span> Executar simulaÃ§Ã£o
+            </button>
+            <button class="button button-quiet" id="reset-button" type="button">Limpar sessÃ£o</button>
+            <p class="privacy-note"><span aria-hidden="true">â—</span> SimulaÃ§Ã£o local Â· sem chamadas de rede</p>
+          </aside>
+
+          <div class="workspace">
+            <section class="metric-grid" aria-label="MÃ©tricas da sessÃ£o">
+              <article class="metric-card panel">
+                <div class="metric-top"><span>Eventos simulados</span><span class="metric-icon icon-blue" aria-hidden="true">â†—</span></div>
+                <strong id="metric-events">0</strong>
+                <small>nesta sessÃ£o</small>
+              </article>
+              <article class="metric-card panel">
+                <div class="metric-top"><span>Entrega com sucesso</span><span class="metric-icon icon-green" aria-hidden="true">âœ“</span></div>
+                <strong id="metric-success">0%</strong>
+                <small id="metric-delivered">0 entregues</small>
+              </article>
+              <article class="metric-card panel">
+                <div class="metric-top"><span>Retries executados</span><span class="metric-icon icon-amber" aria-hidden="true">âŸ³</span></div>
+                <strong id="metric-retries">0</strong>
+                <small>tentativas adicionais</small>
+              </article>
+              <article class="metric-card panel">
+                <div class="metric-top"><span>Bloqueados pelo breaker</span><span class="metric-icon icon-red" aria-hidden="true">â›¨</span></div>
+                <strong id="metric-blocked">0</strong>
+                <small id="metric-failed">0 falhas finais</small>
+              </article>
+            </section>
+
+            <section class="breaker-panel panel" aria-labelledby="breaker-title">
+              <div class="breaker-main">
+                <div class="breaker-symbol" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div>
+                  <p class="section-kicker">ProteÃ§Ã£o da integraÃ§Ã£o</p>
+                  <h2 id="breaker-title">Circuit Breaker</h2>
+                  <p class="breaker-description" id="breaker-description">Aguardando eventos para avaliar a saÃºde da integraÃ§Ã£o.</p>
+                </div>
+              </div>
+              <div class="breaker-state state-closed" id="breaker-state" role="status" aria-live="polite">
+                <span class="state-dot" aria-hidden="true"></span>
+                <span id="breaker-state-label">FECHADO</span>
+              </div>
+            </section>
+
+            <section class="activity-panel panel" aria-labelledby="activity-title">
+              <div class="activity-heading">
+                <div>
+                  <p class="section-kicker">Observabilidade</p>
+                  <h2 id="activity-title">Atividade da simulaÃ§Ã£o</h2>
+                </div>
+                <span class="activity-count" id="activity-count">0 eventos</span>
+              </div>
+
+              <div class="event-strip-wrap">
+                <div class="event-strip-labels"><span>Eventos recentes</span><span id="strip-summary">Aguardando execuÃ§Ã£o</span></div>
+                <div class="event-strip" id="event-strip" aria-label="Linha do tempo dos resultados"></div>
+              </div>
+
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr><th>Evento</th><th>Tipo</th><th>Resultado</th><th>Tentativas</th><th>HorÃ¡rio</th></tr>
+                  </thead>
+                  <tbody id="activity-body">
+                    <tr class="empty-row"><td colspan="5">Ajuste o cenÃ¡rio e execute uma simulaÃ§Ã£o para ver os eventos.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="activity-live" id="activity-live" aria-live="polite">Pronto para simular.</p>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>API Resilience Lab <span class="footer-separator">/</span> Projeto demonstrativo</span>
+        <span>ConstruÃ­do por <a href="https://github.com/Guilhermedms7" target="_blank" rel="noopener noreferrer">Guilherme Damasceno</a></span>
+      </footer>
+    </div>
+  </body>
+</html>
+
