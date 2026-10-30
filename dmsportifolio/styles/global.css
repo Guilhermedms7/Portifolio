@@ -625,9 +625,16 @@ img {
 }
 
 .contact-actions {
-  flex-wrap: wrap;
+  display: grid;
+  flex: 0 1 460px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: 0.7rem;
-  justify-content: flex-end;
+  min-width: 0;
+}
+
+.contact-actions .button {
+  width: 100%;
 }
 
 .site-footer {
@@ -762,11 +769,17 @@ img {
   }
 
   .contact-actions {
-    justify-content: flex-start;
+    flex: 1 1 auto;
+    width: 100%;
+    justify-content: stretch;
   }
 }
 
 @media (max-width: 520px) {
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+
   .projects-grid,
   .education-grid,
   .profile-facts,
