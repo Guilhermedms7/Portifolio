@@ -2,6 +2,8 @@
 
 Portfólio pessoal de Guilherme Damasceno, desenvolvedor full stack na Develcode. Apresento minha atuação em squads da RD Saúde e da Leroy Merlin, com foco em Java/Spring Boot, C#/.NET, integrações, agentes de IA e automação.
 
+[![Acessar o portfólio](https://img.shields.io/badge/PORTF%C3%93LIO-ACESSAR_SITE-07070D?style=for-the-badge&logo=cloudflarepages&logoColor=FCEE0A)](https://guilherme-damasceno.pages.dev)
+
 Sou formado em Análise e Desenvolvimento de Sistemas pela Universidade de Sorocaba (UNISO) e curso Engenharia de Software na Estácio. Também trabalho com JavaScript, Python, React.js e outras tecnologias descritas no portfólio.
 
 ## Stack do site
