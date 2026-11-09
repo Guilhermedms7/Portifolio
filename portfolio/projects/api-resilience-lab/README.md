@@ -12,7 +12,7 @@ O projeto não usa pacotes, servidor, banco de dados ou ferramentas de build.
 2. Ajuste os controles do cenário.
 3. Clique em **Executar simulação** e acompanhe os resultados no painel.
 
-Quando publicado no GitHub Pages, o playground também pode ser acessado por uma URL pública, direto no navegador.
+Quando publicado no Cloudflare Pages junto ao portfólio, o playground também pode ser acessado por uma URL pública, direto no navegador.
 
 ## O que dá para explorar
 
@@ -38,7 +38,7 @@ O projeto serve como demonstração didática dos padrões de resiliência e de 
 ## Estrutura
 
 ```text
-dmsportifolio/
+portfolio/
 └── projects/
     └── api-resilience-lab/
         ├── index.html   # interface do playground

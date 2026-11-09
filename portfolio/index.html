@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07070d" />
+    <meta
+      name="description"
+      content="Guilherme Damasceno, desenvolvedor full stack na Develcode. Back-end resiliente, integrações e agentes de IA para sistemas corporativos com Java, Spring Boot, C# e .NET."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Guilherme Damasceno | Desenvolvedor Full Stack" />
+    <meta
+      property="og:description"
+      content="Back-end resiliente, integrações e agentes de IA para sistemas corporativos."
+    />
+    <meta property="og:image" content="./images/og-image-placeholder.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Guilherme Damasceno | Desenvolvedor Full Stack" />
+    <meta
+      name="twitter:description"
+      content="Back-end resiliente, integrações e agentes de IA para sistemas corporativos."
+    />
+    <meta name="twitter:image" content="./images/og-image-placeholder.png" />
+    <title>Guilherme Damasceno | Desenvolvedor Full Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/global.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Guilherme Damasceno Oliveira",
+        "jobTitle": "Desenvolvedor Full Stack",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Develcode"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Universidade de Sorocaba (UNISO)"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Estácio"
+          }
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/",
+          "https://github.com/Guilhermedms7"
+        ],
+        "email": "guilhermedamascenooliveira@gmail.com"
+      }
+    </script>
+  </head>
+  <body>
+    <svg class="visual-filters" aria-hidden="true" focusable="false">
+      <filter id="grain-filter">
+        <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+        <feComponentTransfer>
+          <feFuncA type="table" tableValues="0 .14" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <nav class="site-nav" aria-label="Navegação principal">
+      <div class="container nav-inner">
+        <a class="brand" href="#inicio" aria-label="Guilherme Damasceno, início">
+          <span class="brand-mark" aria-hidden="true">G</span>
+          <span>Guilherme <b>Damasceno</b></span>
+        </a>
+        <ul class="nav-links" id="menu-principal">
+          <li><a href="#sobre">Dossiê</a></li>
+          <li><a href="#experiencia">Missões</a></li>
+          <li><a href="#competencias">Loadout</a></li>
+          <li><a href="#projetos">Contratos</a></li>
+          <li><a href="#formacao">Treinamento</a></li>
+          <li><a class="nav-cta" href="#contato">Contato <span aria-hidden="true">↗</span></a></li>
+        </ul>
+        <div class="nav-tools">
+          <button
+            class="audio-toggle mono"
+            id="audio-toggle"
+            type="button"
+            disabled
+            aria-pressed="false"
+            aria-label="Ativar música Lonerism, de Alejandro Magaña, em volume baixo"
+            aria-describedby="audio-status"
+            title="Lonerism — Alejandro Magaña · volume 20%"
+          >
+            <span class="audio-glyph" aria-hidden="true">♫</span>
+            <span class="audio-label">SOM OFF</span>
+          </button>
+          <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-principal"
+          >
+            <span>Menu</span>
+            <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <audio id="background-audio" loop preload="none"></audio>
+    <span id="audio-status" class="audio-status" role="status">LONERISM · ALEJANDRO MAGAÑA</span>
+
+    <main id="conteudo">
+      <header class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> Perfil ativo <span class="eyebrow-divider">/</span> Desenvolvedor Full Stack</p>
+            <p class="hero-index mono">SYS.ID // GD-01 · 23°30' S / 46°38' W</p>
+            <h1 class="glitch-title">Guilherme<br /><span>Damasceno</span></h1>
+            <p class="hero-description">
+              Back-end resiliente, integrações e agentes de IA para sistemas corporativos.
+            </p>
+            <p class="hero-context">
+              Atuo na Develcode em squads da RD Saúde e da Leroy Merlin, conectando sistemas,
+              modernizando aplicações e automatizando processos.
+            </p>
+            <div class="terminal-line mono" aria-label="Stack atual">
+              <span class="terminal-prefix" aria-hidden="true">root@stack:~$</span>
+              <span id="typed-stack">Java · Spring Boot · C# · .NET · n8n</span><span class="terminal-cursor" aria-hidden="true"></span>
+            </div>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#experiencia">Explorar missões <span aria-hidden="true">↘</span></a>
+              <a class="button button-secondary" href="https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a class="button button-secondary" href="./CV_Guilherme_Damasceno.pdf" download aria-label="Baixar currículo de Guilherme Damasceno em PDF">Currículo PDF <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+
+          <aside class="id-card hud-frame reveal" aria-label="Cartão de identificação profissional">
+            <div class="id-card-top mono"><span>IDENTITY RECORD</span><span>NO. 001</span></div>
+            <div class="id-card-portrait identity-graphic" aria-hidden="true">
+              <span class="identity-coordinate mono">PROFILE VISUAL // STANDBY</span>
+              <svg viewBox="0 0 240 180" fill="none">
+                <path d="M22 30h62v28h34V30h100M22 150h46v-30h50v30h100M84 58v32h36v30m34-90v30h35v30h33m-102 30v-32h34V90" />
+                <path d="M22 30v40h27m169 80v-36h-28M22 150v-20m196-100v22" />
+                <circle cx="84" cy="58" r="4" /><circle cx="118" cy="90" r="4" />
+                <circle cx="156" cy="30" r="4" /><circle cx="190" cy="90" r="4" />
+                <circle cx="118" cy="150" r="4" /><circle cx="218" cy="150" r="4" />
+                <path class="identity-glyph" d="M93 78l27-19 27 19v31l-27 19-27-19V78Zm27-19v69m-27-50h54m-54 31h54" />
+              </svg>
+              <span class="portrait-stamp mono">GD / DEV</span>
+              <span class="portrait-corner" aria-hidden="true"></span>
+            </div>
+            <div class="id-card-name">
+              <span class="micro-label mono">OPERADOR // FULL STACK</span>
+              <h2>Guilherme<br />Damasceno</h2>
+            </div>
+            <dl class="id-card-data">
+              <div><dt>VÍNCULO</dt><dd>Develcode</dd></div>
+              <div><dt>ATUAÇÃO</dt><dd>RD Saúde · Leroy Merlin</dd></div>
+              <div><dt>STACK</dt><dd>Java / Spring · C# / .NET</dd></div>
+            </dl>
+            <div class="id-card-foot mono"><span>ACCESS // AUTHORIZED</span><span aria-hidden="true">戦</span></div>
+            <svg class="id-circuit" viewBox="0 0 120 90" fill="none" aria-hidden="true">
+              <path d="M1 74h33V53h20V32h21V10h44M54 53h24V38h18M75 32h20V20h18" />
+              <circle cx="34" cy="74" r="2" /><circle cx="75" cy="32" r="2" /><circle cx="119" cy="10" r="2" />
+            </svg>
+          </aside>
+        </div>
+        <div class="hero-bottom container mono"><span>PORTFOLIO / 2026</span><span>SCROLL TO ACCESS <b aria-hidden="true">↓</b></span></div>
+      </header>
+
+      <section class="section section-about" id="sobre" aria-labelledby="sobre-title">
+        <div class="container about-layout">
+          <div class="section-heading">
+            <p class="section-code mono">SEC_01 // PERFIL</p>
+            <span class="section-number" aria-hidden="true">01</span>
+            <p class="eyebrow">Dossiê</p>
+            <h2 id="sobre-title">Eu conecto<br /><em>sistemas.</em></h2>
+            <p class="ornament mono" aria-hidden="true">個人記録 / OPEN FILE</p>
+          </div>
+          <div class="about-copy reveal">
+            <p class="lead-copy">
+              Desenvolvo sistemas corporativos, APIs e integrações. Na Develcode, atuo em squads
+              da RD Saúde e da Leroy Merlin com back-end, modernização e automação.
+            </p>
+            <p>
+              Trabalho principalmente com Java e Spring Boot, C# e .NET. Também crio fluxos com
+              n8n e uso Python e JavaScript para apoiar integrações e reduzir tarefas manuais.
+            </p>
+            <div class="profile-facts">
+              <div class="fact"><span class="fact-label mono">01 / EMPRESA</span><strong>Develcode</strong><span>Desenvolvedor Full Stack</span></div>
+              <div class="fact"><span class="fact-label mono">02 / FORMAÇÃO</span><strong>ADS · UNISO</strong><span>Engenharia de Software · Estácio</span></div>
+              <div class="fact"><span class="fact-label mono">03 / FOCO</span><strong>Back-end &amp; integração</strong><span>Resiliência · automação</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-missions" id="experiencia" aria-labelledby="experiencia-title">
+        <div class="container">
+          <div class="section-heading section-heading-row">
+            <div><p class="section-code mono">SEC_02 // EXPERIÊNCIA</p><p class="eyebrow">Log de missões</p><h2 id="experiencia-title">Trabalho em campo</h2></div>
+            <p class="section-aside mono">DEZ/2025 — ATUAL<br />SQUADS / DEVELCODE</p>
+          </div>
+          <div class="mission-log">
+            <article class="mission-card reveal">
+              <span class="mission-index mono">MISSION_01</span>
+              <div class="mission-main">
+                <div class="mission-title"><p class="project-category mono">RD SAÚDE · DEVELCODE</p><h3>Agentes de IA<br />resilientes</h3></div>
+                <div class="mission-details">
+                  <dl>
+                    <div><dt>CONTEXTO</dt><dd>Plataforma corporativa usa IA para gerar e validar histórias de usuário e calcular pontuação.</dd></div>
+                    <div>
+                      <dt>O QUE FIZ</dt>
+                      <dd>
+                        <ul class="mission-points">
+                          <li>Valido campos obrigatórios com Java 17 e Spring Boot: explico falhas, bloqueio cards e aplico feature flag com fail-closed.</li>
+                          <li>Integro Python (FastAPI, LangChain/LangGraph) ao gateway corporativo de LLM (AWS Bedrock), com correlation ID, timeouts configuráveis, erros HTTP controlados, Langfuse e mascaramento de dados.</li>
+                          <li>Reforço o agente com retries para throttling, schemas tolerantes e validação 1:1 dos itens.</li>
+                          <li>Amplio testes; corrijo vulnerabilidades de dependências (SCA/SAST) e mitigo XSS e Log Injection.</li>
+                          <li>Apoio CI/CD, releases e resolução de conflitos com Docker, Kubernetes, ArgoCD e Datadog APM.</li>
+                        </ul>
+                      </dd>
+                    </div>
+                    <div><dt>RESULTADO</dt><dd>Eliminei a perda de critérios de aceite na análise e reforcei validação e resiliência.<br /><a class="mission-project-link mono" href="./projects/api-resilience-lab/index.html">VER DEMONSTRAÇÃO DE RESILIÊNCIA <span aria-hidden="true">↗</span></a></dd></div>
+                  </dl>
+                  <p class="mission-stack-label mono">STACK</p>
+                  <ul class="chip-list mission-stack" aria-label="Tecnologias e práticas"><li>Java 17</li><li>Spring Boot</li><li>Python</li><li>FastAPI</li><li>LangChain</li><li>LangGraph</li><li>AWS Bedrock</li><li>Langfuse</li><li>Next.js</li><li>Jest</li><li>React Testing Library</li><li>SCA / SAST</li><li>Docker</li><li>Kubernetes</li><li>ArgoCD</li><li>Datadog APM</li><li>GitLab CI</li></ul>
+                </div>
+              </div>
+              <span class="mission-stamp mono" aria-hidden="true">RD / 01</span>
+            </article>
+            <article class="mission-card mission-card-cyan reveal">
+              <span class="mission-index mono">MISSION_02</span>
+              <div class="mission-main">
+                <div class="mission-title"><p class="project-category mono">LEROY MERLIN · DEVELCODE</p><h3>Modernização<br />de sistemas</h3></div>
+                <div class="mission-details">
+                  <dl>
+                    <div><dt>CONTEXTO</dt><dd>Manutenção e modernização de sistemas legados.</dd></div>
+                    <div><dt>O QUE FIZ</dt><dd>Refatoro sistemas legados com C# e .NET, aplico padrões de projeto, modelo a persistência com ActiveRecord/NHibernate e PostgreSQL e diagnostico problemas de integridade de dados e regras de negócio.</dd></div>
+                    <div><dt>RESULTADO</dt><dd>Refatorações direcionadas e problemas de dados e negócio investigados no contexto do sistema legado.</dd></div>
+                    <!-- TODO: métrica real -->
+                  </dl>
+                  <ul class="chip-list" aria-label="Tecnologias"><li>C#</li><li>.NET</li><li>ActiveRecord</li><li>NHibernate</li><li>PostgreSQL</li></ul>
+                </div>
+              </div>
+              <span class="mission-stamp mono" aria-hidden="true">LM / 02</span>
+            </article>
+            <article class="mission-card mission-card-magenta reveal">
+              <span class="mission-index mono">MISSION_03</span>
+              <div class="mission-main">
+                <div class="mission-title"><p class="project-category mono">TRANSVERSAL · AUTOMAÇÃO</p><h3>Menos rotina.<br />Mais fluxo.</h3></div>
+                <div class="mission-details">
+                  <dl>
+                    <div><dt>CONTEXTO</dt><dd>Tarefas manuais e fluxos entre serviços.</dd></div>
+                    <div><dt>O QUE FIZ</dt><dd>Crio automações e integrações com n8n, Python, JavaScript e recursos de IA.</dd></div>
+                    <div><dt>RESULTADO</dt><dd>Reduzo tarefas manuais e apoio a eficiência operacional.</dd></div>
+                    <!-- TODO: métrica real -->
+                  </dl>
+                  <ul class="chip-list" aria-label="Tecnologias"><li>n8n</li><li>Python</li><li>JavaScript</li><li>IA assistiva</li></ul>
+                </div>
+              </div>
+              <span class="mission-stamp mono" aria-hidden="true">AUTO / 03</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-loadout" id="competencias" aria-labelledby="competencias-title">
+        <div class="container">
+          <div class="section-heading section-heading-row">
+            <div><p class="section-code mono">SEC_03 // SISTEMAS</p><p class="eyebrow">Loadout</p><h2 id="competencias-title">Ferramentas<br />de trabalho</h2></div>
+            <p class="section-aside">Sem métricas inventadas.<br />Conhecimentos organizados por uso.</p>
+          </div>
+          <div class="loadout-grid">
+            <article class="loadout-slot loadout-primary reveal">
+              <span class="slot-label mono">PRIMARY / 01</span><span class="slot-glyph" aria-hidden="true">⌘</span>
+              <h3>Back-end</h3>
+              <ul class="chip-list"><li>Java</li><li>Spring Boot</li><li>C#</li><li>.NET</li><li>APIs REST</li><li>JavaScript</li><li>Python</li><li>PHP</li></ul>
+            </article>
+            <article class="loadout-slot loadout-primary loadout-csharp reveal">
+              <span class="slot-label mono">PRIMARY / 02</span><span class="slot-glyph" aria-hidden="true">⌬</span>
+              <h3>Arquitetura &amp; qualidade</h3>
+              <ul class="chip-list"><li>Circuit Breaker</li><li>Retry</li><li>Feature Flags</li><li>Validação de regras</li><li>Testes</li><li>Automação</li><li>APIs RESTful</li></ul>
+            </article>
+            <article class="loadout-slot loadout-primary reveal">
+              <span class="slot-label mono">SPECIAL / 03</span><span class="slot-glyph" aria-hidden="true">⌘</span>
+              <h3>IA &amp; agentes</h3>
+              <ul class="chip-list"><li>Python</li><li>FastAPI</li><li>LangChain</li><li>LangGraph</li><li>AWS Bedrock</li><li>Langfuse</li></ul>
+            </article>
+            <article class="loadout-slot reveal">
+              <span class="slot-label mono">SUPPORT / 04</span><span class="slot-glyph" aria-hidden="true">⌁</span>
+              <h3>Cloud &amp; observabilidade</h3>
+              <ul class="chip-list"><li>Docker</li><li>Kubernetes</li><li>ArgoCD</li><li>Datadog APM</li></ul>
+            </article>
+            <article class="loadout-slot reveal">
+              <span class="slot-label mono">SUPPORT / 05</span><span class="slot-glyph" aria-hidden="true">▱</span>
+              <h3>Front-end &amp; mobile</h3>
+              <ul class="chip-list"><li>HTML</li><li>CSS</li><li>React.js</li><li>Flutter</li><li>Figma</li><li>UX/UI</li></ul>
+            </article>
+            <article class="loadout-slot reveal">
+              <span class="slot-label mono">SUPPORT / 06</span><span class="slot-glyph" aria-hidden="true">◈</span>
+              <h3>Dados &amp; persistência</h3>
+              <ul class="chip-list"><li>MySQL</li><li>MongoDB</li><li>PostgreSQL</li><li>ActiveRecord</li><li>NHibernate</li><li>ORM</li></ul>
+            </article>
+            <article class="loadout-slot reveal">
+              <span class="slot-label mono">SUPPORT / 07</span><span class="slot-glyph" aria-hidden="true">⌁</span>
+              <h3>DevOps &amp; automação</h3>
+              <ul class="chip-list"><li>Git</li><li>GitHub</li><li>GitLab</li><li>SonarQube</li><li>n8n</li><li>IA assistiva</li></ul>
+            </article>
+            <article class="loadout-slot reveal">
+              <span class="slot-label mono">SUPPORT / 08</span><span class="slot-glyph" aria-hidden="true">⌖</span>
+              <h3>Base complementar</h3>
+              <ul class="chip-list"><li>Banco de dados relacionais</li><li>Engenharia de requisitos</li><li>Estruturas de dados</li><li>Raciocínio lógico</li><li>Segurança de sistemas</li><li>DevOps e Cloud</li><li>IoT</li></ul>
+            </article>
+          </div>
+          <div class="soft-skills mono"><p><b>TRAÇOS // </b>Colaboração · comunicação · organização · aprendizado rápido · resolução de problemas</p><p><b>IDIOMA // </b>Inglês intermediário</p></div>
+        </div>
+      </section>
+
+      <section class="section section-projects" id="projetos" aria-labelledby="projetos-title">
+        <div class="container">
+          <div class="section-heading section-heading-row">
+            <div><p class="section-code mono">SEC_04 // PROJETOS</p><p class="eyebrow">Contratos</p><h2 id="projetos-title">Trabalhos em destaque</h2></div>
+            <p class="section-aside">Pessoais · acadêmicos · demonstrações</p>
+          </div>
+          <article class="featured-project hud-frame reveal">
+            <div class="featured-copy">
+              <p class="project-category mono">CONTRATO EM DESTAQUE / PLAYGROUND</p>
+              <h3>API<br /><em>Resilience Lab</em></h3>
+              <p>Simulo falhas em integrações HTTP para explorar Retry, Circuit Breaker e Feature Flags. O painel roda localmente, sem chamadas externas ou dependências.</p>
+              <ul class="chip-list"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <a class="button button-primary" href="./projects/api-resilience-lab/index.html">Abrir demonstração <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="lab-preview" aria-label="Miniatura ilustrativa do painel do API Resilience Lab">
+              <div class="preview-top mono"><span>RESILIENCE_MONITOR</span><span class="preview-live"><i></i> SIMULATION</span></div>
+              <div class="preview-metrics"><span><small>EVENTS</small><b>SIM</b></span><span><small>RETRIES</small><b>AUTO</b></span><span><small>STATUS</small><b class="preview-ok">READY</b></span></div>
+              <svg viewBox="0 0 460 180" role="img" aria-label="Diagrama abstrato de circuit breaker e eventos">
+                <path class="preview-grid" d="M0 30H460M0 70H460M0 110H460M0 150H460M45 0V180M105 0V180M165 0V180M225 0V180M285 0V180M345 0V180M405 0V180" />
+                <path class="preview-line" d="M20 130h50l22-55 40 77 30-45h46l24-53 34 85 25-35h45l28-58 24 44h45" />
+                <circle class="preview-node" cx="70" cy="130" r="4" /><circle class="preview-node" cx="112" cy="75" r="4" /><circle class="preview-node" cx="248" cy="54" r="4" /><circle class="preview-node preview-node-hot" cx="368" cy="41" r="5" />
+              </svg>
+              <p class="preview-caption mono"><span>ILLUSTRATIVE PREVIEW</span><span>NO LIVE DATA</span></p>
+            </div>
+          </article>
+
+          <div class="project-filter-wrap">
+            <p class="mono filter-label" id="filter-label">FILTRAR POR TECNOLOGIA</p>
+            <div class="project-filters" role="group" aria-labelledby="filter-label">
+              <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">Todos</button>
+              <button type="button" class="filter-button" data-filter="javascript" aria-pressed="false">JavaScript</button>
+              <button type="button" class="filter-button" data-filter="react" aria-pressed="false">React</button>
+              <button type="button" class="filter-button" data-filter="python" aria-pressed="false">Python</button>
+              <button type="button" class="filter-button" data-filter="flutter" aria-pressed="false">Flutter</button>
+              <button type="button" class="filter-button" data-filter="php" aria-pressed="false">PHP</button>
+              <button type="button" class="filter-button" data-filter="typescript" aria-pressed="false">TypeScript</button>
+              <button type="button" class="filter-button" data-filter="css" aria-pressed="false">CSS</button>
+              <button type="button" class="filter-button" data-filter="figma" aria-pressed="false">Figma</button>
+            </div>
+            <p class="filter-status mono" id="filter-status" aria-live="polite">8 projetos exibidos</p>
+          </div>
+          <div class="projects-grid" id="project-grid">
+            <article class="project-card reveal" data-tech="typescript,css,javascript,html">
+              <p class="project-category mono">APRENDIZADO DE IDIOMAS · WEB APP</p><h3>English Reading App</h3>
+              <p>Pratico leitura em inglês com histórias, filtros por categoria e nível CEFR e exercícios de completar lacunas.</p>
+              <ul class="project-tags"><li>TypeScript</li><li>CSS</li><li>JavaScript</li><li>HTML</li></ul>
+              <div class="project-actions">
+                <a class="project-link" href="https://english-reading-app.pages.dev" target="_blank" rel="noopener noreferrer">Abrir site <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://github.com/Guilhermedms7/english-reading-app" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="project-card reveal" data-tech="react,fastapi,mongodb">
+              <p class="project-category mono">E-COMMERCE · FULL STACK</p><h3>DMSTECH 2.0</h3>
+              <p>Criei uma loja de tecnologia com catálogo, busca, ofertas e carrinho, conectada a uma API e banco de dados.</p>
+              <ul class="project-tags"><li>React</li><li>FastAPI</li><li>MongoDB</li></ul>
+              <a class="project-link" href="https://github.com/Guilhermedms7/DMSTECH2.0" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="project-card reveal" data-tech="react,node,express,mysql">
+              <p class="project-category mono">APLICAÇÃO FULL STACK</p><h3>DMSBooks</h3>
+              <p>Desenvolvi um sistema para gerenciar livros e usuários com cadastro, consulta, edição e remoção.</p>
+              <ul class="project-tags"><li>React</li><li>Node.js</li><li>Express</li><li>MySQL</li></ul>
+              <a class="project-link" href="https://github.com/Guilhermedms7/DMSBOOKS" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="project-card reveal" data-tech="flutter,dart">
+              <p class="project-category mono">APLICATIVO MOBILE</p><h3>DMS PiBurger</h3>
+              <p>Criei um aplicativo de delivery com cadastro, categorias de produtos, carrinho e modo escuro.</p>
+              <ul class="project-tags"><li>Flutter</li><li>Dart</li></ul>
+              <a class="project-link" href="https://github.com/Guilhermedms7/DMSPIBURGUER" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="project-card reveal" data-tech="python">
+              <p class="project-category mono">SISTEMA ACADÊMICO</p><h3>Sistema Bancário</h3>
+              <p>Implementei cadastro de clientes, agências e contas, consulta de saldo, extrato e movimentações.</p>
+              <ul class="project-tags"><li>Python</li><li>Regras de negócio</li></ul>
+              <a class="project-link" href="https://github.com/Guilhermedms7/Sistema_bancario" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="project-card reveal" data-tech="javascript">
+              <p class="project-category mono">JOGO WEB</p><h3>Termo</h3>
+              <p>Desenvolvi um jogo de palavras no navegador com os modos Termo, Dueto e Quarteto.</p>
+              <ul class="project-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+              <a class="project-link" href="https://github.com/Guilhermedms7/Termo" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="project-card reveal" data-tech="php,mysql">
+              <p class="project-category mono">PROJETO ACADÊMICO · E-COMMERCE</p><h3>DMSTECH</h3>
+              <p>Criei um projeto inspirado na Terabyte, com cadastro de produtos, carrinho e painel de estoque.</p>
+              <ul class="project-tags"><li>HTML</li><li>CSS</li><li>PHP</li><li>MySQL</li></ul>
+              <a class="project-link" href="https://github.com/Guilhermedms7/DMSTECH" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="project-card reveal" data-tech="figma,ux-ui">
+              <p class="project-category mono">PROJETO ACADÊMICO · UI/UX</p><h3>Aplicativo fitness</h3>
+              <p>Desenhei telas de login, cadastro, perfil e acompanhamento de treinos com foco em usabilidade e responsividade.</p>
+              <ul class="project-tags"><li>Figma</li><li>UX/UI</li></ul>
+              <span class="project-note mono">PROTÓTIPO · SEM LINK PÚBLICO</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-training" id="formacao" aria-labelledby="formacao-title">
+        <div class="container training-layout">
+          <div class="section-heading">
+            <p class="section-code mono">SEC_05 // FORMAÇÃO</p><p class="eyebrow">Treinamento</p><h2 id="formacao-title">Base em<br /><em>construção.</em></h2>
+          </div>
+          <div class="training-content">
+            <div class="education-timeline">
+              <article class="education-entry reveal"><span class="education-date mono">2023 — 2025</span><div><h3>Análise e Desenvolvimento de Sistemas</h3><p>Universidade de Sorocaba (UNISO) <span class="education-state">CONCLUÍDO</span></p></div></article>
+              <article class="education-entry reveal"><span class="education-date mono">2025 — ATUAL</span><div><h3>Engenharia de Software</h3><p>Estácio <span class="education-state education-current">CURSANDO</span></p></div></article>
+            </div>
+            <div class="courses-panel reveal">
+              <p class="mono">TREINAMENTO COMPLEMENTAR / 06 REGISTROS</p>
+              <ul>
+                <li>Bootcamp T-Academy — AMS &amp; SAP</li>
+                <li>Automação com n8n — Rocketseat</li>
+                <li>Lógica de Programação para Web — Ventures</li>
+                <li>Fundamentos de TI: Hardware e Software — Bradesco</li>
+                <li>Competência Transversal: Tecnologia da Informação e Comunicação — SENAI</li>
+                <li>Educação Financeira — Bradesco</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-contact" id="contato" aria-labelledby="contato-title">
+        <div class="container contact-layout">
+          <div class="contact-copy"><p class="section-code mono">SEC_06 // COMUNICAÇÃO</p><p class="eyebrow">Canal aberto</p><h2 id="contato-title">Vamos tirar<br />uma ideia do papel?</h2><p>Fale comigo sobre oportunidades, projetos ou desenvolvimento de software.</p><span class="contact-coordinate mono">CHANNEL STATUS // OPEN</span></div>
+          <div class="contact-panel hud-frame">
+            <div class="contact-entry"><span class="contact-kind mono">E-MAIL</span><a id="email-address" href="mailto:guilhermedamascenooliveira@gmail.com">guilhermedamascenooliveira@gmail.com</a><button type="button" class="copy-button mono" id="copy-email">COPIAR</button></div>
+            <p class="copy-feedback mono" id="copy-feedback" aria-live="polite"></p>
+            <div class="contact-entry"><span class="contact-kind mono">LINKEDIN</span><a href="https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/" target="_blank" rel="noopener noreferrer">guilherme-damasceno-oliveira <span aria-hidden="true">↗</span></a></div>
+            <div class="contact-entry"><span class="contact-kind mono">GITHUB</span><a href="https://github.com/Guilhermedms7" target="_blank" rel="noopener noreferrer">Guilhermedms7 <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">G</span><span>Guilherme <b>Damasceno</b></span></a>
+        <p class="mono">© <span id="current-year">2026</span> GUILHERME DAMASCENO OLIVEIRA</p>
+        <button type="button" class="glitch-toggle mono" id="glitch-toggle" aria-pressed="true">GLITCH: <span>ON</span></button>
+        <p class="audio-credit mono">TRILHA // <a href="https://mixkit.co/free-stock-music/synthwave/" target="_blank" rel="noopener noreferrer">“Lonerism” · Alejandro Magaña · Mixkit</a> · <a href="https://mixkit.co/license/#musicFree" target="_blank" rel="noopener noreferrer">LICENÇA</a></p>
+      </div>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      const menuButton = document.querySelector("#menu-toggle");
+      const menu = document.querySelector("#menu-principal");
+      const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const ambientAudio = document.querySelector("#background-audio");
+      const audioToggle = document.querySelector("#audio-toggle");
+      const audioLabel = audioToggle.querySelector(".audio-label");
+      const audioStatus = document.querySelector("#audio-status");
+      const audioPreferenceKey = "portfolio-audio-preference";
+      let savedAudioPreference = "off";
+
+      ambientAudio.src = "./assets/audio/mixkit-lonerism-159.mp3";
+      ambientAudio.volume = 0.2;
+      audioToggle.disabled = false;
+      try {
+        const preference = window.localStorage.getItem(audioPreferenceKey);
+        if (preference === "on" || preference === "off") savedAudioPreference = preference;
+      } catch (error) {
+        console.warn("Não foi possível ler a preferência de música.", error);
+      }
+      audioStatus.textContent = savedAudioPreference === "on"
+        ? "PREFERÊNCIA SALVA · CLIQUE PARA ATIVAR"
+        : "LONERISM · ALEJANDRO MAGAÑA";
+      audioToggle.setAttribute("aria-label", "Ativar música Lonerism, de Alejandro Magaña, em volume baixo");
+
+      function saveAudioPreference(preference) {
+        savedAudioPreference = preference;
+        try {
+          window.localStorage.setItem(audioPreferenceKey, preference);
+        } catch (error) {
+          console.warn("Não foi possível salvar a preferência de música.", error);
+        }
+      }
+
+      function updateAudioState(isPlaying, status) {
+        audioToggle.setAttribute("aria-pressed", String(isPlaying));
+        audioToggle.setAttribute(
+          "aria-label",
+          isPlaying
+            ? "Pausar música Lonerism"
+            : "Ativar música Lonerism, de Alejandro Magaña, em volume baixo"
+        );
+        audioLabel.textContent = isPlaying ? "SOM ON" : "SOM OFF";
+        audioStatus.textContent = status;
+      }
+
+      async function startAmbientAudio() {
+        try {
+          await ambientAudio.play();
+          updateAudioState(true, "LONERISM · TRILHA ATIVA · VOLUME 20%");
+        } catch (error) {
+          updateAudioState(false, "ÁUDIO INDISPONÍVEL");
+          console.warn("Não foi possível iniciar a música de fundo.", error);
+        }
+      }
+
+      audioToggle.addEventListener("click", async () => {
+        if (ambientAudio.paused) {
+          saveAudioPreference("on");
+          await startAmbientAudio();
+          return;
+        }
+
+        ambientAudio.pause();
+        saveAudioPreference("off");
+        updateAudioState(false, "TRILHA PAUSADA");
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState !== "hidden" || ambientAudio.paused) return;
+        ambientAudio.pause();
+        updateAudioState(false, "TRILHA PAUSADA AO TROCAR DE ABA");
+      });
+
+      document.querySelector("#current-year").textContent = String(new Date().getFullYear());
+
+      function closeMenu() {
+        menuButton.setAttribute("aria-expanded", "false");
+        menu.classList.remove("is-open");
+      }
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!isOpen));
+        menu.classList.toggle("is-open", !isOpen);
+      });
+
+      menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const observedSections = sectionLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            sectionLinks.forEach((link) => {
+              if (link.getAttribute("href") === `#${entry.target.id}`) {
+                link.setAttribute("aria-current", "location");
+              } else {
+                link.removeAttribute("aria-current");
+              }
+            });
+          });
+        }, { rootMargin: "-25% 0px -65% 0px" });
+        observedSections.forEach((section) => sectionObserver.observe(section));
+
+        if (!motionPreference.matches) {
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              entry.target.classList.add("glitch-in");
+              observer.unobserve(entry.target);
+            });
+          }, { threshold: 0.12 });
+          document.querySelectorAll(".reveal, .glitch-title").forEach((element) => revealObserver.observe(element));
+        } else {
+          document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+        }
+      } else {
+        document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+      }
+
+      const filters = [...document.querySelectorAll(".filter-button")];
+      const projectCards = [...document.querySelectorAll("#project-grid .project-card")];
+      const filterStatus = document.querySelector("#filter-status");
+      filters.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          let visibleCount = 0;
+          filters.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-pressed", String(active));
+          });
+          projectCards.forEach((card) => {
+            const visible = filter === "all" || card.dataset.tech.split(",").includes(filter);
+            card.hidden = !visible;
+            if (visible) visibleCount += 1;
+          });
+          filterStatus.textContent = `${visibleCount} ${visibleCount === 1 ? "projeto exibido" : "projetos exibidos"}`;
+        });
+      });
+
+      const glitchToggle = document.querySelector("#glitch-toggle");
+      let glitchEnabled = true;
+      try {
+        glitchEnabled = window.localStorage.getItem("portfolio-glitch-mode") !== "off";
+      } catch (error) {
+        console.warn("Não foi possível ler a preferência de efeitos.", error);
+      }
+
+      function renderGlitchPreference() {
+        root.classList.toggle("glitch-off", !glitchEnabled || motionPreference.matches);
+        glitchToggle.setAttribute("aria-pressed", String(glitchEnabled));
+        glitchToggle.querySelector("span").textContent = glitchEnabled ? "ON" : "OFF";
+      }
+
+      glitchToggle.addEventListener("click", () => {
+        glitchEnabled = !glitchEnabled;
+        renderGlitchPreference();
+        try {
+          window.localStorage.setItem("portfolio-glitch-mode", glitchEnabled ? "on" : "off");
+        } catch (error) {
+          console.warn("Não foi possível salvar a preferência de efeitos.", error);
+        }
+      });
+      motionPreference.addEventListener?.("change", renderGlitchPreference);
+      renderGlitchPreference();
+
+      document.querySelector("#copy-email").addEventListener("click", async () => {
+        const feedback = document.querySelector("#copy-feedback");
+        const email = document.querySelector("#email-address").textContent.trim();
+        try {
+          await navigator.clipboard.writeText(email);
+          feedback.textContent = "E-MAIL COPIADO";
+        } catch (error) {
+          feedback.textContent = `CÓPIA INDISPONÍVEL · ${email}`;
+          console.warn("Não foi possível copiar o e-mail para a área de transferência.", error);
+        }
+      });
+
+      function startBootSequence() {
+        if (motionPreference.matches) return;
+        try {
+          if (window.sessionStorage.getItem("portfolio-boot-seen") === "yes") return;
+          window.sessionStorage.setItem("portfolio-boot-seen", "yes");
+        } catch (error) {
+          console.warn("Não foi possível verificar a sequência de abertura.", error);
+          return;
+        }
+
+        const boot = document.createElement("div");
+        boot.className = "boot-screen";
+        boot.setAttribute("role", "dialog");
+        boot.setAttribute("aria-modal", "true");
+        boot.setAttribute("aria-labelledby", "boot-title");
+        boot.innerHTML = '<div class="boot-inner"><span class="mono">INITIALIZING PROFILE // GD-01</span><strong id="boot-title">IDENTITY<br />VERIFIED<span>.</span></strong><span class="boot-progress" aria-hidden="true"><i></i></span><p class="boot-prompt mono">ESCOLHA A TRILHA DE ENTRADA</p><div class="boot-actions"><button class="boot-action boot-action-primary mono" type="button">ENTRAR COM SOM</button><button class="boot-action mono" type="button">SEM SOM</button></div><button class="boot-skip mono" type="button">PULAR SEQUÊNCIA [ESC]</button></div>';
+        document.body.append(boot);
+
+        let timeoutId;
+        const finishBoot = () => {
+          window.clearTimeout(timeoutId);
+          boot.classList.add("is-finished");
+          window.removeEventListener("keydown", onBootKey);
+          if (boot.contains(document.activeElement)) audioToggle.focus();
+          window.setTimeout(() => boot.remove(), 220);
+        };
+        const onBootKey = (event) => {
+          if (event.key === "Escape") {
+            saveAudioPreference("off");
+            finishBoot();
+          }
+        };
+        const [soundButton, silentButton] = boot.querySelectorAll(".boot-action");
+        soundButton.addEventListener("click", () => {
+          saveAudioPreference("on");
+          finishBoot();
+          startAmbientAudio();
+        });
+        silentButton.addEventListener("click", () => {
+          saveAudioPreference("off");
+          finishBoot();
+        });
+        boot.querySelector(".boot-skip").addEventListener("click", () => {
+          saveAudioPreference("off");
+          finishBoot();
+        });
+        window.addEventListener("keydown", onBootKey);
+        soundButton.focus();
+        timeoutId = window.setTimeout(finishBoot, 1050);
+      }
+
+      startBootSequence();
+
+      if (!motionPreference.matches) {
+        const terminal = document.querySelector("#typed-stack");
+        const completeStack = terminal.textContent;
+        terminal.textContent = "";
+        let character = 0;
+        const typeNext = () => {
+          if (character >= completeStack.length) return;
+          terminal.textContent += completeStack[character];
+          character += 1;
+          window.setTimeout(typeNext, 24);
+        };
+        typeNext();
+      }
+    </script>
+  </body>
+</html>
