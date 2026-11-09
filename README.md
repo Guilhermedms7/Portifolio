@@ -25,22 +25,16 @@ portfolio/
 ├── styles/
 │   ├── global.css
 │   └── fontawesome/
-├── images/
+└── images/
 │   └── projects/
 │       ├── Projeto1.png
 │       ├── projeto2.png
 │       └── projeto3.png
-└── projects/
-    └── api-resilience-lab/
-        ├── index.html
-        ├── styles.css
-        ├── app.js
-        └── README.md
 ```
 
 ## Rodar localmente
 
-Abra `portfolio/index.html` diretamente em um navegador moderno. Não é necessário instalar dependências nem iniciar um servidor. O API Resilience Lab também pode ser aberto em `portfolio/projects/api-resilience-lab/index.html`.
+Abra `portfolio/index.html` diretamente em um navegador moderno. Não é necessário instalar dependências nem iniciar um servidor.
 
 ## Publicar no Cloudflare Pages
 
@@ -60,7 +54,6 @@ Interface autoral inspirada em painéis operacionais futuristas: fundo azul-noit
 - Música opcional no header para “Lonerism”, de Alejandro Magaña (A. M.), da [Mixkit](https://mixkit.co/free-stock-music/synthwave/): volume inicial em 20%, preferência salva localmente, pausa ao trocar de aba e sem autoplay. O boot oferece as opções “Entrar com som” e “Sem som”.
 - Filtros de projeto acessíveis, navegação responsiva com estado da seção ativa e botão para copiar e-mail.
 - Sequência de abertura curta na primeira visita da sessão e modo glitch ajustável.
-- O API Resilience Lab simula Retry, Circuit Breaker e Feature Flags localmente, sem chamadas externas.
 
 ## Conteúdo a completar
 
