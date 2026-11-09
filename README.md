@@ -18,6 +18,7 @@ Sou formado em Análise e Desenvolvimento de Sistemas pela Universidade de Soroc
 README.md
 portfolio/
 ├── index.html
+├── favicon.svg
 ├── CV_Guilherme_Damasceno.pdf
 ├── assets/
 │   └── audio/
