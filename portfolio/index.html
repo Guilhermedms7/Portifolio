@@ -3,26 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#07070d" />
+    <meta name="theme-color" content="#06060b" />
     <meta
       name="description"
       content="Guilherme Damasceno, desenvolvedor full stack na Develcode. Back-end resiliente, integrações e agentes de IA para sistemas corporativos com Java, Spring Boot, C# e .NET."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://guilherme-damasceno.pages.dev/" />
     <meta property="og:title" content="Guilherme Damasceno | Desenvolvedor Full Stack" />
     <meta
       property="og:description"
       content="Back-end resiliente, integrações e agentes de IA para sistemas corporativos."
     />
-    <meta property="og:image" content="./images/og-image-placeholder.png" />
+    <meta property="og:image" content="https://guilherme-damasceno.pages.dev/images/og-image.jpg" />
+    <meta
+      property="og:image:alt"
+      content="Painel cyberpunk de Guilherme Damasceno — Full Stack, Back-end e Agentes de IA"
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Guilherme Damasceno | Desenvolvedor Full Stack" />
     <meta
       name="twitter:description"
       content="Back-end resiliente, integrações e agentes de IA para sistemas corporativos."
     />
-    <meta name="twitter:image" content="./images/og-image-placeholder.png" />
+    <meta name="twitter:image" content="https://guilherme-damasceno.pages.dev/images/og-image.jpg" />
     <title>Guilherme Damasceno | Desenvolvedor Full Stack</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +43,7 @@
         "@type": "Person",
         "name": "Guilherme Damasceno Oliveira",
         "jobTitle": "Desenvolvedor Full Stack",
+        "url": "https://guilherme-damasceno.pages.dev/",
         "worksFor": {
           "@type": "Organization",
           "name": "Develcode"
@@ -71,6 +77,10 @@
       </filter>
     </svg>
 
+    <div class="scroll-laser" aria-hidden="true">
+      <div class="scroll-laser-bar" id="scroll-laser-bar"></div>
+    </div>
+
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <nav class="site-nav" aria-label="Navegação principal">
@@ -85,9 +95,22 @@
           <li><a href="#competencias">Loadout</a></li>
           <li><a href="#projetos">Contratos</a></li>
           <li><a href="#formacao">Treinamento</a></li>
-          <li><a class="nav-cta" href="#contato">Contato <span aria-hidden="true">↗</span></a></li>
+          <li>
+            <a class="nav-cta" href="#contato">Contato <span aria-hidden="true">↗</span></a>
+          </li>
         </ul>
         <div class="nav-tools">
+          <button
+            class="hud-tool-btn cmd-trigger mono"
+            type="button"
+            data-open-cmd
+            aria-label="Abrir terminal interativo de comandos (Ctrl+K)"
+            title="Terminal Netrunner (Ctrl+K ou /)"
+          >
+            <span aria-hidden="true">&gt;_</span>
+            <span>CMD</span>
+            <kbd aria-hidden="true">^K</kbd>
+          </button>
           <button
             class="audio-toggle mono"
             id="audio-toggle"
@@ -98,7 +121,7 @@
             aria-describedby="audio-status"
             title="Lonerism — Alejandro Magaña · volume 20%"
           >
-            <span class="audio-glyph" aria-hidden="true">♫</span>
+            <span class="audio-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
             <span class="audio-label">SOM OFF</span>
           </button>
           <button
@@ -119,11 +142,29 @@
 
     <main id="conteudo">
       <header class="hero" id="inicio">
+        <div class="hero-cyber-grid" aria-hidden="true"></div>
+
+        <div class="container hero-telemetry-bar mono" aria-hidden="true">
+          <div class="telemetry-group">
+            <span class="telemetry-pill"><i class="telemetry-dot"></i> SYS.STATUS // OPERATIONAL</span>
+            <span id="telemetry-sector">SECTOR // INICIO</span>
+          </div>
+          <div class="telemetry-group">
+            <span id="telemetry-scroll">DEPTH // 000%</span>
+            <span id="telemetry-clock">BRT // --:--:--</span>
+          </div>
+        </div>
+
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> Perfil ativo <span class="eyebrow-divider">/</span> Desenvolvedor Full Stack</p>
-            <p class="hero-index mono">SYS.ID // GD-01 · 23°30' S / 46°38' W</p>
-            <h1 class="glitch-title">Guilherme<br /><span>Damasceno</span></h1>
+            <p class="eyebrow">
+              <span class="status-light" aria-hidden="true"></span> Perfil ativo
+              <span class="eyebrow-divider">/</span> Desenvolvedor Full Stack
+            </p>
+            <p class="hero-index mono" data-scramble>SYS.ID // GD-01 · 23°30' S / 46°38' W</p>
+            <h1 class="glitch-title" data-glitch="Guilherme&#10;Damasceno">
+              Guilherme<br /><span>Damasceno</span>
+            </h1>
             <p class="hero-description">
               Back-end resiliente, integrações e agentes de IA para sistemas corporativos.
             </p>
@@ -131,55 +172,113 @@
               Atuo na Develcode em squads da RD Saúde e da Leroy Merlin, conectando sistemas,
               modernizando aplicações e automatizando processos.
             </p>
-            <div class="terminal-line mono" aria-label="Stack atual">
-              <span class="terminal-prefix" aria-hidden="true">root@stack:~$</span>
-              <span id="typed-stack">Java · Spring Boot · C# · .NET · n8n</span><span class="terminal-cursor" aria-hidden="true"></span>
+            <div class="terminal-box mono">
+              <div class="terminal-line" aria-label="Stack atual">
+                <span class="terminal-prefix" aria-hidden="true">root@stack:~$</span>
+                <span id="typed-stack">Java 17 · Spring Boot · C# · .NET · n8n</span
+                ><span class="terminal-cursor" aria-hidden="true"></span>
+              </div>
+              <button type="button" class="terminal-open-btn mono" data-open-cmd>
+                TERMINAL [&gt;_]
+              </button>
             </div>
             <div class="hero-actions">
-              <a class="button button-primary" href="#experiencia">Explorar missões <span aria-hidden="true">↘</span></a>
-              <a class="button button-secondary" href="https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-              <a class="button button-secondary" href="./CV_Guilherme_Damasceno.pdf" download aria-label="Baixar currículo de Guilherme Damasceno em PDF">Currículo PDF <span aria-hidden="true">↓</span></a>
+              <a class="button button-primary" href="#experiencia">
+                Explorar missões <span aria-hidden="true">↘</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="./CV_Guilherme_Damasceno.pdf"
+                download
+                aria-label="Baixar currículo de Guilherme Damasceno em PDF"
+              >
+                Currículo PDF <span aria-hidden="true">↓</span>
+              </a>
             </div>
           </div>
 
           <aside class="id-card hud-frame reveal" aria-label="Cartão de identificação profissional">
-            <div class="id-card-top mono"><span>IDENTITY RECORD</span><span>NO. 001</span></div>
+            <div class="id-card-glare" aria-hidden="true"></div>
+            <div class="id-card-top mono">
+              <span>IDENTITY RECORD // 001</span>
+              <span class="clearance-badge">LVL-04</span>
+            </div>
             <div class="id-card-portrait identity-graphic" aria-hidden="true">
-              <span class="identity-coordinate mono">PROFILE VISUAL // STANDBY</span>
+              <span class="portrait-scanline"></span>
+              <span class="identity-coordinate mono">NEURAL CORE // ACTIVE</span>
               <svg viewBox="0 0 240 180" fill="none">
-                <path d="M22 30h62v28h34V30h100M22 150h46v-30h50v30h100M84 58v32h36v30m34-90v30h35v30h33m-102 30v-32h34V90" />
+                <path
+                  d="M22 30h62v28h34V30h100M22 150h46v-30h50v30h100M84 58v32h36v30m34-90v30h35v30h33m-102 30v-32h34V90"
+                />
+                <path
+                  class="trace-flow"
+                  d="M22 30h62v28h34V30h100M22 150h46v-30h50v30h100"
+                />
                 <path d="M22 30v40h27m169 80v-36h-28M22 150v-20m196-100v22" />
-                <circle cx="84" cy="58" r="4" /><circle cx="118" cy="90" r="4" />
-                <circle cx="156" cy="30" r="4" /><circle cx="190" cy="90" r="4" />
-                <circle cx="118" cy="150" r="4" /><circle cx="218" cy="150" r="4" />
-                <path class="identity-glyph" d="M93 78l27-19 27 19v31l-27 19-27-19V78Zm27-19v69m-27-50h54m-54 31h54" />
+                <circle cx="84" cy="58" r="4" />
+                <circle cx="118" cy="90" r="4" />
+                <circle cx="156" cy="30" r="4" />
+                <circle cx="190" cy="90" r="4" />
+                <circle cx="118" cy="150" r="4" />
+                <circle cx="218" cy="150" r="4" />
+                <path
+                  class="identity-glyph"
+                  d="M93 78l27-19 27 19v31l-27 19-27-19V78Zm27-19v69m-27-50h54m-54 31h54"
+                />
               </svg>
+              <span class="portrait-telemetry mono">SOROCABA / SP · BR</span>
               <span class="portrait-stamp mono">GD / DEV</span>
-              <span class="portrait-corner" aria-hidden="true"></span>
+              <span class="portrait-corner"></span>
             </div>
             <div class="id-card-name">
               <span class="micro-label mono">OPERADOR // FULL STACK</span>
               <h2>Guilherme<br />Damasceno</h2>
             </div>
             <dl class="id-card-data">
-              <div><dt>VÍNCULO</dt><dd>Develcode</dd></div>
-              <div><dt>ATUAÇÃO</dt><dd>RD Saúde · Leroy Merlin</dd></div>
-              <div><dt>STACK</dt><dd>Java / Spring · C# / .NET</dd></div>
+              <div>
+                <dt>VÍNCULO</dt>
+                <dd>Develcode</dd>
+              </div>
+              <div>
+                <dt>ATUAÇÃO</dt>
+                <dd>RD Saúde · Leroy Merlin</dd>
+              </div>
+              <div>
+                <dt>STACK</dt>
+                <dd>Java / Spring · C# / .NET · IA</dd>
+              </div>
             </dl>
-            <div class="id-card-foot mono"><span>ACCESS // AUTHORIZED</span><span aria-hidden="true">戦</span></div>
+            <div class="id-card-foot mono">
+              <span class="auth-ok">ACCESS // AUTHORIZED</span>
+              <span aria-hidden="true">戦</span>
+            </div>
             <svg class="id-circuit" viewBox="0 0 120 90" fill="none" aria-hidden="true">
               <path d="M1 74h33V53h20V32h21V10h44M54 53h24V38h18M75 32h20V20h18" />
-              <circle cx="34" cy="74" r="2" /><circle cx="75" cy="32" r="2" /><circle cx="119" cy="10" r="2" />
+              <circle cx="34" cy="74" r="2" />
+              <circle cx="75" cy="32" r="2" />
+              <circle cx="119" cy="10" r="2" />
             </svg>
           </aside>
         </div>
-        <div class="hero-bottom container mono"><span>PORTFOLIO / 2026</span><span>SCROLL TO ACCESS <b aria-hidden="true">↓</b></span></div>
+
+        <div class="hero-bottom container mono">
+          <span>PORTFOLIO DOSSIER // 2026</span>
+          <span>PRESSIONE <b>CTRL+K</b> OU ROLE PARA EXPLORAR <b aria-hidden="true">↓</b></span>
+        </div>
       </header>
 
       <section class="section section-about" id="sobre" aria-labelledby="sobre-title">
         <div class="container about-layout">
           <div class="section-heading">
-            <p class="section-code mono">SEC_01 // PERFIL</p>
+            <p class="section-code mono" data-scramble>SEC_01 // PERFIL</p>
             <span class="section-number" aria-hidden="true">01</span>
             <p class="eyebrow">Dossiê</p>
             <h2 id="sobre-title">Eu conecto<br /><em>sistemas.</em></h2>
@@ -192,12 +291,25 @@
             </p>
             <p>
               Trabalho principalmente com Java e Spring Boot, C# e .NET. Também crio fluxos com
-              n8n e uso Python e JavaScript para apoiar integrações e reduzir tarefas manuais.
+              n8n e uso Python e JavaScript para apoiar integrações, orquestrar agentes de IA e
+              reduzir tarefas manuais.
             </p>
             <div class="profile-facts">
-              <div class="fact"><span class="fact-label mono">01 / EMPRESA</span><strong>Develcode</strong><span>Desenvolvedor Full Stack</span></div>
-              <div class="fact"><span class="fact-label mono">02 / FORMAÇÃO</span><strong>ADS · UNISO</strong><span>Engenharia de Software · Estácio</span></div>
-              <div class="fact"><span class="fact-label mono">03 / FOCO</span><strong>Back-end &amp; integração</strong><span>Resiliência · automação</span></div>
+              <div class="fact">
+                <span class="fact-label mono">01 / EMPRESA</span>
+                <strong>Develcode</strong>
+                <span>Desenvolvedor Full Stack</span>
+              </div>
+              <div class="fact">
+                <span class="fact-label mono">02 / FORMAÇÃO</span>
+                <strong>ADS · UNISO</strong>
+                <span>Engenharia de Software · Estácio</span>
+              </div>
+              <div class="fact">
+                <span class="fact-label mono">03 / FOCO</span>
+                <strong>Back-end &amp; IA</strong>
+                <span>Resiliência · integração · automação</span>
+              </div>
             </div>
           </div>
         </div>
@@ -206,68 +318,210 @@
       <section class="section section-missions" id="experiencia" aria-labelledby="experiencia-title">
         <div class="container">
           <div class="section-heading section-heading-row">
-            <div><p class="section-code mono">SEC_02 // EXPERIÊNCIA</p><p class="eyebrow">Log de missões</p><h2 id="experiencia-title">Trabalho em campo</h2></div>
+            <div>
+              <p class="section-code mono" data-scramble>SEC_02 // EXPERIÊNCIA</p>
+              <p class="eyebrow">Log de missões</p>
+              <h2 id="experiencia-title">Trabalho em campo</h2>
+            </div>
             <p class="section-aside mono">DEZ/2025 — ATUAL<br />SQUADS / DEVELCODE</p>
           </div>
+
           <div class="mission-log">
-            <article class="mission-card reveal">
-              <span class="mission-index mono">MISSION_01</span>
+            <article class="mission-card spotlight-card reveal">
+              <div class="mission-header-bar">
+                <span class="mission-index mono" data-scramble>MISSION_01 // ENTERPRISE AI</span>
+                <span class="mission-stamp mono" aria-hidden="true">RD / 01</span>
+              </div>
               <div class="mission-main">
-                <div class="mission-title"><p class="project-category mono">RD SAÚDE · DEVELCODE</p><h3>Agentes de IA<br />resilientes</h3></div>
+                <div class="mission-title">
+                  <p class="project-category mono">RD SAÚDE · DEVELCODE</p>
+                  <h3>Agentes de IA<br />resilientes</h3>
+                  <div class="mission-badges" aria-label="Destaques técnicos">
+                    <span class="mission-badge">FAIL-CLOSED</span>
+                    <span class="mission-badge">1:1 SCHEMA</span>
+                    <span class="mission-badge">CORRELATION ID</span>
+                    <span class="mission-badge">SCA / SAST</span>
+                  </div>
+                </div>
                 <div class="mission-details">
                   <dl>
-                    <div><dt>CONTEXTO</dt><dd>Plataforma corporativa usa IA para gerar e validar histórias de usuário e calcular pontuação.</dd></div>
+                    <div>
+                      <dt>CONTEXTO</dt>
+                      <dd>
+                        Plataforma corporativa usa IA para gerar e validar histórias de usuário e
+                        calcular pontuação.
+                      </dd>
+                    </div>
                     <div>
                       <dt>O QUE FIZ</dt>
                       <dd>
-                        <ul class="mission-points">
-                          <li>Valido campos obrigatórios com Java 17 e Spring Boot: explico falhas, bloqueio cards e aplico feature flag com fail-closed.</li>
-                          <li>Integro Python (FastAPI, LangChain/LangGraph) ao gateway corporativo de LLM (AWS Bedrock), com correlation ID, timeouts configuráveis, erros HTTP controlados, Langfuse e mascaramento de dados.</li>
-                          <li>Reforço o agente com retries para throttling, schemas tolerantes e validação 1:1 dos itens.</li>
-                          <li>Amplio testes; corrijo vulnerabilidades de dependências (SCA/SAST) e mitigo XSS e Log Injection.</li>
-                          <li>Apoio CI/CD, releases e resolução de conflitos com Docker, Kubernetes, ArgoCD e Datadog APM.</li>
+                        <ul class="mission-points" id="mission-01-points">
+                          <li data-stage="api">
+                            Valido campos obrigatórios com Java 17 e Spring Boot: explico falhas,
+                            bloqueio cards e aplico feature flag com fail-closed.
+                          </li>
+                          <li data-stage="agent,llm">
+                            Integro Python (FastAPI, LangChain/LangGraph) ao gateway corporativo de
+                            LLM (AWS Bedrock), com correlation ID, timeouts configuráveis, erros
+                            HTTP controlados, Langfuse e mascaramento de dados.
+                          </li>
+                          <li data-stage="agent,llm">
+                            Reforço o agente com retries para throttling, schemas tolerantes e
+                            validação 1:1 dos itens.
+                          </li>
+                          <li data-stage="api,sec">
+                            Amplio testes; corrijo vulnerabilidades de dependências (SCA/SAST) e
+                            mitigo XSS e Log Injection.
+                          </li>
+                          <li data-stage="sec">
+                            Apoio CI/CD, releases e resolução de conflitos com Docker, Kubernetes,
+                            ArgoCD e Datadog APM.
+                          </li>
                         </ul>
                       </dd>
                     </div>
-                    <div><dt>RESULTADO</dt><dd>Eliminei a perda de critérios de aceite na análise e reforcei validação e resiliência.</dd></div>
+                    <div>
+                      <dt>RESULTADO</dt>
+                      <dd>
+                        Eliminei a perda de critérios de aceite na análise e reforcei validação e
+                        resiliência.
+                      </dd>
+                    </div>
                   </dl>
-                  <p class="mission-stack-label mono">STACK</p>
-                  <ul class="chip-list mission-stack" aria-label="Tecnologias e práticas"><li>Java 17</li><li>Spring Boot</li><li>Python</li><li>FastAPI</li><li>LangChain</li><li>LangGraph</li><li>AWS Bedrock</li><li>Langfuse</li><li>Next.js</li><li>Jest</li><li>React Testing Library</li><li>SCA / SAST</li><li>Docker</li><li>Kubernetes</li><li>ArgoCD</li><li>Datadog APM</li><li>GitLab CI</li></ul>
+
+                  <div class="arch-blueprint" aria-label="Arquitetura interativa da missão">
+                    <div class="arch-blueprint-head mono">
+                      <span>PIPELINE OPERACIONAL // PASSE O MOUSE OU CLIQUE PARA INSPECIONAR</span>
+                      <span>4 ESTÁGIOS</span>
+                    </div>
+                    <div class="arch-nodes">
+                      <button type="button" class="arch-node" data-stage="api" aria-pressed="false">
+                        <span class="arch-node-step">01 // GUARDRAILS</span>
+                        <strong>Core API</strong>
+                        <span>Java 17 · Spring Boot · Fail-Closed</span>
+                      </button>
+                      <button type="button" class="arch-node" data-stage="agent" aria-pressed="false">
+                        <span class="arch-node-step">02 // ORCHESTRATOR</span>
+                        <strong>Agente IA</strong>
+                        <span>FastAPI · LangGraph · Validação 1:1</span>
+                      </button>
+                      <button type="button" class="arch-node" data-stage="llm" aria-pressed="false">
+                        <span class="arch-node-step">03 // GATEWAY</span>
+                        <strong>LLM &amp; Trace</strong>
+                        <span>AWS Bedrock · Retries · Langfuse</span>
+                      </button>
+                      <button type="button" class="arch-node" data-stage="sec" aria-pressed="false">
+                        <span class="arch-node-step">04 // DEVSECOPS</span>
+                        <strong>Cloud &amp; Sec</strong>
+                        <span>K8s · ArgoCD · Datadog · SCA/SAST</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <p class="mission-stack-label mono">STACK (CLIQUE PARA RASTREAR NO DOSSIÊ)</p>
+                  <ul class="chip-list mission-stack" aria-label="Tecnologias e práticas">
+                    <li data-skill="java">Java 17</li>
+                    <li data-skill="spring">Spring Boot</li>
+                    <li data-skill="python">Python</li>
+                    <li data-skill="fastapi">FastAPI</li>
+                    <li data-skill="langchain">LangChain</li>
+                    <li data-skill="langgraph">LangGraph</li>
+                    <li data-skill="bedrock">AWS Bedrock</li>
+                    <li data-skill="langfuse">Langfuse</li>
+                    <li data-skill="react">Next.js</li>
+                    <li data-skill="testes">Jest</li>
+                    <li data-skill="testes">React Testing Library</li>
+                    <li data-skill="seguranca">SCA / SAST</li>
+                    <li data-skill="docker">Docker</li>
+                    <li data-skill="kubernetes">Kubernetes</li>
+                    <li data-skill="argocd">ArgoCD</li>
+                    <li data-skill="datadog">Datadog APM</li>
+                    <li data-skill="git">GitLab CI</li>
+                  </ul>
                 </div>
               </div>
-              <span class="mission-stamp mono" aria-hidden="true">RD / 01</span>
             </article>
-            <article class="mission-card mission-card-cyan reveal">
-              <span class="mission-index mono">MISSION_02</span>
+
+            <article class="mission-card mission-card-cyan spotlight-card reveal">
+              <div class="mission-header-bar">
+                <span class="mission-index mono" data-scramble>MISSION_02 // LEGACY CORE</span>
+                <span class="mission-stamp mono" aria-hidden="true">LM / 02</span>
+              </div>
               <div class="mission-main">
-                <div class="mission-title"><p class="project-category mono">LEROY MERLIN · DEVELCODE</p><h3>Modernização<br />de sistemas</h3></div>
+                <div class="mission-title">
+                  <p class="project-category mono">LEROY MERLIN · DEVELCODE</p>
+                  <h3>Modernização<br />de sistemas</h3>
+                </div>
                 <div class="mission-details">
                   <dl>
-                    <div><dt>CONTEXTO</dt><dd>Manutenção e modernização de sistemas legados.</dd></div>
-                    <div><dt>O QUE FIZ</dt><dd>Refatoro sistemas legados com C# e .NET, aplico padrões de projeto, modelo a persistência com ActiveRecord/NHibernate e PostgreSQL e diagnostico problemas de integridade de dados e regras de negócio.</dd></div>
-                    <div><dt>RESULTADO</dt><dd>Refatorações direcionadas e problemas de dados e negócio investigados no contexto do sistema legado.</dd></div>
+                    <div>
+                      <dt>CONTEXTO</dt>
+                      <dd>Manutenção e modernização de sistemas legados.</dd>
+                    </div>
+                    <div>
+                      <dt>O QUE FIZ</dt>
+                      <dd>
+                        Refatoro sistemas legados com C# e .NET, aplico padrões de projeto, modelo
+                        a persistência com ActiveRecord/NHibernate e PostgreSQL e diagnostico
+                        problemas de integridade de dados e regras de negócio.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>RESULTADO</dt>
+                      <dd>
+                        Refatorações direcionadas e problemas de dados e negócio investigados no
+                        contexto do sistema legado.
+                      </dd>
+                    </div>
                     <!-- TODO: métrica real -->
                   </dl>
-                  <ul class="chip-list" aria-label="Tecnologias"><li>C#</li><li>.NET</li><li>ActiveRecord</li><li>NHibernate</li><li>PostgreSQL</li></ul>
+                  <ul class="chip-list" aria-label="Tecnologias">
+                    <li data-skill="csharp">C#</li>
+                    <li data-skill="dotnet">.NET</li>
+                    <li data-skill="activerecord">ActiveRecord</li>
+                    <li data-skill="nhibernate">NHibernate</li>
+                    <li data-skill="postgresql">PostgreSQL</li>
+                  </ul>
                 </div>
               </div>
-              <span class="mission-stamp mono" aria-hidden="true">LM / 02</span>
             </article>
-            <article class="mission-card mission-card-magenta reveal">
-              <span class="mission-index mono">MISSION_03</span>
+
+            <article class="mission-card mission-card-magenta spotlight-card reveal">
+              <div class="mission-header-bar">
+                <span class="mission-index mono" data-scramble>MISSION_03 // WORKFLOW OPS</span>
+                <span class="mission-stamp mono" aria-hidden="true">AUTO / 03</span>
+              </div>
               <div class="mission-main">
-                <div class="mission-title"><p class="project-category mono">TRANSVERSAL · AUTOMAÇÃO</p><h3>Menos rotina.<br />Mais fluxo.</h3></div>
+                <div class="mission-title">
+                  <p class="project-category mono">TRANSVERSAL · AUTOMAÇÃO</p>
+                  <h3>Menos rotina.<br />Mais fluxo.</h3>
+                </div>
                 <div class="mission-details">
                   <dl>
-                    <div><dt>CONTEXTO</dt><dd>Tarefas manuais e fluxos entre serviços.</dd></div>
-                    <div><dt>O QUE FIZ</dt><dd>Crio automações e integrações com n8n, Python, JavaScript e recursos de IA.</dd></div>
-                    <div><dt>RESULTADO</dt><dd>Reduzo tarefas manuais e apoio a eficiência operacional.</dd></div>
+                    <div>
+                      <dt>CONTEXTO</dt>
+                      <dd>Tarefas manuais e fluxos entre serviços.</dd>
+                    </div>
+                    <div>
+                      <dt>O QUE FIZ</dt>
+                      <dd>
+                        Crio automações e integrações com n8n, Python, JavaScript e recursos de IA.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>RESULTADO</dt>
+                      <dd>Reduzo tarefas manuais e apoio a eficiência operacional.</dd>
+                    </div>
                     <!-- TODO: métrica real -->
                   </dl>
-                  <ul class="chip-list" aria-label="Tecnologias"><li>n8n</li><li>Python</li><li>JavaScript</li><li>IA assistiva</li></ul>
+                  <ul class="chip-list" aria-label="Tecnologias">
+                    <li data-skill="n8n">n8n</li>
+                    <li data-skill="python">Python</li>
+                    <li data-skill="javascript">JavaScript</li>
+                    <li data-skill="ia">IA assistiva</li>
+                  </ul>
                 </div>
               </div>
-              <span class="mission-stamp mono" aria-hidden="true">AUTO / 03</span>
             </article>
           </div>
         </div>
@@ -276,126 +530,413 @@
       <section class="section section-loadout" id="competencias" aria-labelledby="competencias-title">
         <div class="container">
           <div class="section-heading section-heading-row">
-            <div><p class="section-code mono">SEC_03 // SISTEMAS</p><p class="eyebrow">Loadout</p><h2 id="competencias-title">Ferramentas<br />de trabalho</h2></div>
-            <p class="section-aside">Sem métricas inventadas.<br />Conhecimentos organizados por uso.</p>
+            <div>
+              <p class="section-code mono" data-scramble>SEC_03 // SISTEMAS</p>
+              <p class="eyebrow">Loadout</p>
+              <h2 id="competencias-title">Ferramentas<br />de trabalho</h2>
+            </div>
+            <p class="section-aside">
+              Sem métricas inventadas.<br />Clique em uma tecnologia para rastrear seu uso.
+            </p>
           </div>
+
+          <div class="skill-trace-bar mono" id="skill-trace-bar" hidden>
+            <span id="skill-trace-text">RASTREAMENTO ATIVO</span>
+            <button type="button" class="skill-trace-clear" id="skill-trace-clear">
+              LIMPAR [×]
+            </button>
+          </div>
+
           <div class="loadout-grid">
-            <article class="loadout-slot loadout-primary reveal">
-              <span class="slot-label mono">PRIMARY / 01</span><span class="slot-glyph" aria-hidden="true">⌘</span>
+            <article class="loadout-slot loadout-primary spotlight-card reveal">
+              <span class="slot-label mono">PRIMARY / 01</span>
+              <span class="slot-glyph" aria-hidden="true">⌘</span>
               <h3>Back-end</h3>
-              <ul class="chip-list"><li>Java</li><li>Spring Boot</li><li>C#</li><li>.NET</li><li>APIs REST</li><li>JavaScript</li><li>Python</li><li>PHP</li></ul>
+              <ul class="chip-list">
+                <li data-skill="java">Java</li>
+                <li data-skill="spring">Spring Boot</li>
+                <li data-skill="csharp">C#</li>
+                <li data-skill="dotnet">.NET</li>
+                <li data-skill="rest">APIs REST</li>
+                <li data-skill="javascript">JavaScript</li>
+                <li data-skill="python">Python</li>
+                <li data-skill="php">PHP</li>
+              </ul>
             </article>
-            <article class="loadout-slot loadout-primary loadout-csharp reveal">
-              <span class="slot-label mono">PRIMARY / 02</span><span class="slot-glyph" aria-hidden="true">⌬</span>
+
+            <article class="loadout-slot loadout-primary loadout-csharp spotlight-card reveal">
+              <span class="slot-label mono">PRIMARY / 02</span>
+              <span class="slot-glyph" aria-hidden="true">⌬</span>
               <h3>Arquitetura &amp; qualidade</h3>
-              <ul class="chip-list"><li>Circuit Breaker</li><li>Retry</li><li>Feature Flags</li><li>Validação de regras</li><li>Testes</li><li>Automação</li><li>APIs RESTful</li></ul>
+              <ul class="chip-list">
+                <li data-skill="resiliencia">Circuit Breaker</li>
+                <li data-skill="resiliencia">Retry</li>
+                <li data-skill="resiliencia">Feature Flags</li>
+                <li data-skill="regras">Validação de regras</li>
+                <li data-skill="testes">Testes</li>
+                <li data-skill="n8n">Automação</li>
+                <li data-skill="rest">APIs RESTful</li>
+              </ul>
             </article>
-            <article class="loadout-slot loadout-primary reveal">
-              <span class="slot-label mono">SPECIAL / 03</span><span class="slot-glyph" aria-hidden="true">⌘</span>
+
+            <article class="loadout-slot loadout-primary spotlight-card reveal">
+              <span class="slot-label mono">SPECIAL / 03</span>
+              <span class="slot-glyph" aria-hidden="true">◈</span>
               <h3>IA &amp; agentes</h3>
-              <ul class="chip-list"><li>Python</li><li>FastAPI</li><li>LangChain</li><li>LangGraph</li><li>AWS Bedrock</li><li>Langfuse</li></ul>
+              <ul class="chip-list">
+                <li data-skill="python">Python</li>
+                <li data-skill="fastapi">FastAPI</li>
+                <li data-skill="langchain">LangChain</li>
+                <li data-skill="langgraph">LangGraph</li>
+                <li data-skill="bedrock">AWS Bedrock</li>
+                <li data-skill="langfuse">Langfuse</li>
+              </ul>
             </article>
-            <article class="loadout-slot reveal">
-              <span class="slot-label mono">SUPPORT / 04</span><span class="slot-glyph" aria-hidden="true">⌁</span>
+
+            <article class="loadout-slot spotlight-card reveal">
+              <span class="slot-label mono">SUPPORT / 04</span>
+              <span class="slot-glyph" aria-hidden="true">⌁</span>
               <h3>Cloud &amp; observabilidade</h3>
-              <ul class="chip-list"><li>Docker</li><li>Kubernetes</li><li>ArgoCD</li><li>Datadog APM</li></ul>
+              <ul class="chip-list">
+                <li data-skill="docker">Docker</li>
+                <li data-skill="kubernetes">Kubernetes</li>
+                <li data-skill="argocd">ArgoCD</li>
+                <li data-skill="datadog">Datadog APM</li>
+              </ul>
             </article>
-            <article class="loadout-slot reveal">
-              <span class="slot-label mono">SUPPORT / 05</span><span class="slot-glyph" aria-hidden="true">▱</span>
+
+            <article class="loadout-slot spotlight-card reveal">
+              <span class="slot-label mono">SUPPORT / 05</span>
+              <span class="slot-glyph" aria-hidden="true">▱</span>
               <h3>Front-end &amp; mobile</h3>
-              <ul class="chip-list"><li>HTML</li><li>CSS</li><li>React.js</li><li>Flutter</li><li>Figma</li><li>UX/UI</li></ul>
+              <ul class="chip-list">
+                <li data-skill="html">HTML</li>
+                <li data-skill="css">CSS</li>
+                <li data-skill="react">React.js</li>
+                <li data-skill="flutter">Flutter</li>
+                <li data-skill="figma">Figma</li>
+                <li data-skill="figma">UX/UI</li>
+              </ul>
             </article>
-            <article class="loadout-slot reveal">
-              <span class="slot-label mono">SUPPORT / 06</span><span class="slot-glyph" aria-hidden="true">◈</span>
+
+            <article class="loadout-slot spotlight-card reveal">
+              <span class="slot-label mono">SUPPORT / 06</span>
+              <span class="slot-glyph" aria-hidden="true">⛁</span>
               <h3>Dados &amp; persistência</h3>
-              <ul class="chip-list"><li>MySQL</li><li>MongoDB</li><li>PostgreSQL</li><li>ActiveRecord</li><li>NHibernate</li><li>ORM</li></ul>
+              <ul class="chip-list">
+                <li data-skill="mysql">MySQL</li>
+                <li data-skill="mongodb">MongoDB</li>
+                <li data-skill="postgresql">PostgreSQL</li>
+                <li data-skill="activerecord">ActiveRecord</li>
+                <li data-skill="nhibernate">NHibernate</li>
+                <li data-skill="nhibernate">ORM</li>
+              </ul>
             </article>
-            <article class="loadout-slot reveal">
-              <span class="slot-label mono">SUPPORT / 07</span><span class="slot-glyph" aria-hidden="true">⌁</span>
+
+            <article class="loadout-slot spotlight-card reveal">
+              <span class="slot-label mono">SUPPORT / 07</span>
+              <span class="slot-glyph" aria-hidden="true">⚙</span>
               <h3>DevOps &amp; automação</h3>
-              <ul class="chip-list"><li>Git</li><li>GitHub</li><li>GitLab</li><li>SonarQube</li><li>n8n</li><li>IA assistiva</li></ul>
+              <ul class="chip-list">
+                <li data-skill="git">Git</li>
+                <li data-skill="git">GitHub</li>
+                <li data-skill="git">GitLab</li>
+                <li data-skill="seguranca">SonarQube</li>
+                <li data-skill="n8n">n8n</li>
+                <li data-skill="ia">IA assistiva</li>
+              </ul>
             </article>
-            <article class="loadout-slot reveal">
-              <span class="slot-label mono">SUPPORT / 08</span><span class="slot-glyph" aria-hidden="true">⌖</span>
+
+            <article class="loadout-slot spotlight-card reveal">
+              <span class="slot-label mono">SUPPORT / 08</span>
+              <span class="slot-glyph" aria-hidden="true">⌖</span>
               <h3>Base complementar</h3>
-              <ul class="chip-list"><li>Banco de dados relacionais</li><li>Engenharia de requisitos</li><li>Estruturas de dados</li><li>Raciocínio lógico</li><li>Segurança de sistemas</li><li>DevOps e Cloud</li><li>IoT</li></ul>
+              <ul class="chip-list">
+                <li data-skill="postgresql">Banco de dados relacionais</li>
+                <li data-skill="regras">Engenharia de requisitos</li>
+                <li>Estruturas de dados</li>
+                <li>Raciocínio lógico</li>
+                <li data-skill="seguranca">Segurança de sistemas</li>
+                <li data-skill="docker">DevOps e Cloud</li>
+                <li>IoT</li>
+              </ul>
             </article>
           </div>
-          <div class="soft-skills mono"><p><b>TRAÇOS // </b>Colaboração · comunicação · organização · aprendizado rápido · resolução de problemas</p><p><b>IDIOMA // </b>Inglês intermediário</p></div>
+
+          <div class="soft-skills mono">
+            <p>
+              <b>TRAÇOS // </b>Colaboração · comunicação · organização · aprendizado rápido ·
+              resolução de problemas
+            </p>
+            <p><b>IDIOMA // </b>Inglês intermediário</p>
+          </div>
         </div>
       </section>
 
       <section class="section section-projects" id="projetos" aria-labelledby="projetos-title">
         <div class="container">
           <div class="section-heading section-heading-row">
-            <div><p class="section-code mono">SEC_04 // PROJETOS</p><p class="eyebrow">Contratos</p><h2 id="projetos-title">Trabalhos em destaque</h2></div>
+            <div>
+              <p class="section-code mono" data-scramble>SEC_04 // PROJETOS</p>
+              <p class="eyebrow">Contratos</p>
+              <h2 id="projetos-title">Trabalhos em destaque</h2>
+            </div>
             <p class="section-aside">Pessoais · acadêmicos · demonstrações</p>
           </div>
+
           <div class="project-filter-wrap">
             <p class="mono filter-label" id="filter-label">FILTRAR POR TECNOLOGIA</p>
             <div class="project-filters" role="group" aria-labelledby="filter-label">
-              <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">Todos</button>
-              <button type="button" class="filter-button" data-filter="javascript" aria-pressed="false">JavaScript</button>
-              <button type="button" class="filter-button" data-filter="react" aria-pressed="false">React</button>
-              <button type="button" class="filter-button" data-filter="python" aria-pressed="false">Python</button>
-              <button type="button" class="filter-button" data-filter="flutter" aria-pressed="false">Flutter</button>
-              <button type="button" class="filter-button" data-filter="php" aria-pressed="false">PHP</button>
-              <button type="button" class="filter-button" data-filter="typescript" aria-pressed="false">TypeScript</button>
-              <button type="button" class="filter-button" data-filter="css" aria-pressed="false">CSS</button>
-              <button type="button" class="filter-button" data-filter="figma" aria-pressed="false">Figma</button>
+              <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">
+                Todos <span class="filter-count">[08]</span>
+              </button>
+              <button type="button" class="filter-button" data-filter="javascript" aria-pressed="false">
+                JavaScript <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="react" aria-pressed="false">
+                React <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="python" aria-pressed="false">
+                Python <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="flutter" aria-pressed="false">
+                Flutter <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="php" aria-pressed="false">
+                PHP <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="typescript" aria-pressed="false">
+                TypeScript <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="css" aria-pressed="false">
+                CSS <span class="filter-count"></span>
+              </button>
+              <button type="button" class="filter-button" data-filter="figma" aria-pressed="false">
+                Figma <span class="filter-count"></span>
+              </button>
             </div>
-            <p class="filter-status mono" id="filter-status" aria-live="polite">8 projetos exibidos</p>
+            <p class="filter-status mono" id="filter-status" aria-live="polite">
+              8 contratos exibidos
+            </p>
           </div>
+
           <div class="projects-grid" id="project-grid">
-            <article class="project-card reveal" data-tech="typescript,css,javascript,html">
-              <p class="project-category mono">APRENDIZADO DE IDIOMAS · WEB APP</p><h3>English Reading App</h3>
-              <p>Pratico leitura em inglês com histórias, filtros por categoria e nível CEFR e exercícios de completar lacunas.</p>
-              <ul class="project-tags"><li>TypeScript</li><li>CSS</li><li>JavaScript</li><li>HTML</li></ul>
+            <article
+              class="project-card spotlight-card reveal"
+              data-tech="typescript,css,javascript,html"
+            >
+              <div class="project-card-top">
+                <span class="contract-id">CTR_01</span>
+                <span class="contract-status contract-status-live">ONLINE // LIVE</span>
+              </div>
+              <p class="project-category mono">APRENDIZADO DE IDIOMAS · WEB APP</p>
+              <h3>English Reading App</h3>
+              <p>
+                Pratico leitura em inglês com histórias, filtros por categoria e nível CEFR e
+                exercícios de completar lacunas.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="typescript">TypeScript</li>
+                <li data-skill="css">CSS</li>
+                <li data-skill="javascript">JavaScript</li>
+                <li data-skill="html">HTML</li>
+              </ul>
               <div class="project-actions">
-                <a class="project-link" href="https://english-reading-app.pages.dev" target="_blank" rel="noopener noreferrer">Abrir site <span aria-hidden="true">↗</span></a>
-                <a class="project-link" href="https://github.com/Guilhermedms7/english-reading-app" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+                <a
+                  class="project-link"
+                  href="https://english-reading-app.pages.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Abrir site <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  class="project-link"
+                  href="https://github.com/Guilhermedms7/english-reading-app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver repositório <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </article>
-            <article class="project-card reveal" data-tech="react,fastapi,mongodb">
-              <p class="project-category mono">E-COMMERCE · FULL STACK</p><h3>DMSTECH 2.0</h3>
-              <p>Criei uma loja de tecnologia com catálogo, busca, ofertas e carrinho, conectada a uma API e banco de dados.</p>
-              <ul class="project-tags"><li>React</li><li>FastAPI</li><li>MongoDB</li></ul>
-              <a class="project-link" href="https://github.com/Guilhermedms7/DMSTECH2.0" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+
+            <article
+              class="project-card spotlight-card reveal"
+              data-tech="react,fastapi,python,mongodb"
+            >
+              <div class="project-card-top">
+                <span class="contract-id">CTR_02</span>
+                <span class="contract-status">REPO // PUBLIC</span>
+              </div>
+              <p class="project-category mono">E-COMMERCE · FULL STACK</p>
+              <h3>DMSTECH 2.0</h3>
+              <p>
+                Criei uma loja de tecnologia com catálogo, busca, ofertas e carrinho, conectada a
+                uma API e banco de dados.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="react">React</li>
+                <li data-skill="fastapi,python">FastAPI</li>
+                <li data-skill="mongodb">MongoDB</li>
+              </ul>
+              <a
+                class="project-link"
+                href="https://github.com/Guilhermedms7/DMSTECH2.0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver repositório <span aria-hidden="true">↗</span>
+              </a>
             </article>
-            <article class="project-card reveal" data-tech="react,node,express,mysql">
-              <p class="project-category mono">APLICAÇÃO FULL STACK</p><h3>DMSBooks</h3>
-              <p>Desenvolvi um sistema para gerenciar livros e usuários com cadastro, consulta, edição e remoção.</p>
-              <ul class="project-tags"><li>React</li><li>Node.js</li><li>Express</li><li>MySQL</li></ul>
-              <a class="project-link" href="https://github.com/Guilhermedms7/DMSBOOKS" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+
+            <article
+              class="project-card spotlight-card reveal"
+              data-tech="react,javascript,node,express,mysql"
+            >
+              <div class="project-card-top">
+                <span class="contract-id">CTR_03</span>
+                <span class="contract-status">REPO // PUBLIC</span>
+              </div>
+              <p class="project-category mono">APLICAÇÃO FULL STACK</p>
+              <h3>DMSBooks</h3>
+              <p>
+                Desenvolvi um sistema para gerenciar livros e usuários com cadastro, consulta,
+                edição e remoção.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="react">React</li>
+                <li data-skill="javascript">Node.js</li>
+                <li>Express</li>
+                <li data-skill="mysql">MySQL</li>
+              </ul>
+              <a
+                class="project-link"
+                href="https://github.com/Guilhermedms7/DMSBOOKS"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver repositório <span aria-hidden="true">↗</span>
+              </a>
             </article>
-            <article class="project-card reveal" data-tech="flutter,dart">
-              <p class="project-category mono">APLICATIVO MOBILE</p><h3>DMS PiBurger</h3>
-              <p>Criei um aplicativo de delivery com cadastro, categorias de produtos, carrinho e modo escuro.</p>
-              <ul class="project-tags"><li>Flutter</li><li>Dart</li></ul>
-              <a class="project-link" href="https://github.com/Guilhermedms7/DMSPIBURGUER" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+
+            <article class="project-card spotlight-card reveal" data-tech="flutter,dart">
+              <div class="project-card-top">
+                <span class="contract-id">CTR_04</span>
+                <span class="contract-status">REPO // PUBLIC</span>
+              </div>
+              <p class="project-category mono">APLICATIVO MOBILE</p>
+              <h3>DMS PiBurger</h3>
+              <p>
+                Criei um aplicativo de delivery com cadastro, categorias de produtos, carrinho e
+                modo escuro.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="flutter">Flutter</li>
+                <li>Dart</li>
+              </ul>
+              <a
+                class="project-link"
+                href="https://github.com/Guilhermedms7/DMSPIBURGUER"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver repositório <span aria-hidden="true">↗</span>
+              </a>
             </article>
-            <article class="project-card reveal" data-tech="python">
-              <p class="project-category mono">SISTEMA ACADÊMICO</p><h3>Sistema Bancário</h3>
-              <p>Implementei cadastro de clientes, agências e contas, consulta de saldo, extrato e movimentações.</p>
-              <ul class="project-tags"><li>Python</li><li>Regras de negócio</li></ul>
-              <a class="project-link" href="https://github.com/Guilhermedms7/Sistema_bancario" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+
+            <article class="project-card spotlight-card reveal" data-tech="python">
+              <div class="project-card-top">
+                <span class="contract-id">CTR_05</span>
+                <span class="contract-status">REPO // PUBLIC</span>
+              </div>
+              <p class="project-category mono">SISTEMA ACADÊMICO</p>
+              <h3>Sistema Bancário</h3>
+              <p>
+                Implementei cadastro de clientes, agências e contas, consulta de saldo, extrato e
+                movimentações.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="python">Python</li>
+                <li data-skill="regras">Regras de negócio</li>
+              </ul>
+              <a
+                class="project-link"
+                href="https://github.com/Guilhermedms7/Sistema_bancario"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver repositório <span aria-hidden="true">↗</span>
+              </a>
             </article>
-            <article class="project-card reveal" data-tech="javascript">
-              <p class="project-category mono">JOGO WEB</p><h3>Termo</h3>
-              <p>Desenvolvi um jogo de palavras no navegador com os modos Termo, Dueto e Quarteto.</p>
-              <ul class="project-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-              <a class="project-link" href="https://github.com/Guilhermedms7/Termo" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+
+            <article class="project-card spotlight-card reveal" data-tech="javascript,css,html">
+              <div class="project-card-top">
+                <span class="contract-id">CTR_06</span>
+                <span class="contract-status">REPO // PUBLIC</span>
+              </div>
+              <p class="project-category mono">JOGO WEB</p>
+              <h3>Termo</h3>
+              <p>
+                Desenvolvi um jogo de palavras no navegador com os modos Termo, Dueto e Quarteto.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="html">HTML</li>
+                <li data-skill="css">CSS</li>
+                <li data-skill="javascript">JavaScript</li>
+              </ul>
+              <a
+                class="project-link"
+                href="https://github.com/Guilhermedms7/Termo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver repositório <span aria-hidden="true">↗</span>
+              </a>
             </article>
-            <article class="project-card reveal" data-tech="php,mysql">
-              <p class="project-category mono">PROJETO ACADÊMICO · E-COMMERCE</p><h3>DMSTECH</h3>
-              <p>Criei um projeto inspirado na Terabyte, com cadastro de produtos, carrinho e painel de estoque.</p>
-              <ul class="project-tags"><li>HTML</li><li>CSS</li><li>PHP</li><li>MySQL</li></ul>
-              <a class="project-link" href="https://github.com/Guilhermedms7/DMSTECH" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
+
+            <article class="project-card spotlight-card reveal" data-tech="php,mysql,css,html">
+              <div class="project-card-top">
+                <span class="contract-id">CTR_07</span>
+                <span class="contract-status">REPO // PUBLIC</span>
+              </div>
+              <p class="project-category mono">PROJETO ACADÊMICO · E-COMMERCE</p>
+              <h3>DMSTECH</h3>
+              <p>
+                Criei um projeto inspirado na Terabyte, com cadastro de produtos, carrinho e painel
+                de estoque.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="html">HTML</li>
+                <li data-skill="css">CSS</li>
+                <li data-skill="php">PHP</li>
+                <li data-skill="mysql">MySQL</li>
+              </ul>
+              <a
+                class="project-link"
+                href="https://github.com/Guilhermedms7/DMSTECH"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver repositório <span aria-hidden="true">↗</span>
+              </a>
             </article>
-            <article class="project-card reveal" data-tech="figma,ux-ui">
-              <p class="project-category mono">PROJETO ACADÊMICO · UI/UX</p><h3>Aplicativo fitness</h3>
-              <p>Desenhei telas de login, cadastro, perfil e acompanhamento de treinos com foco em usabilidade e responsividade.</p>
-              <ul class="project-tags"><li>Figma</li><li>UX/UI</li></ul>
+
+            <article class="project-card spotlight-card reveal" data-tech="figma,ux-ui">
+              <div class="project-card-top">
+                <span class="contract-id">CTR_08</span>
+                <span class="contract-status">SPEC // UI-UX</span>
+              </div>
+              <p class="project-category mono">PROJETO ACADÊMICO · UI/UX</p>
+              <h3>Aplicativo fitness</h3>
+              <p>
+                Desenhei telas de login, cadastro, perfil e acompanhamento de treinos com foco em
+                usabilidade e responsividade.
+              </p>
+              <ul class="project-tags">
+                <li data-skill="figma">Figma</li>
+                <li data-skill="figma">UX/UI</li>
+              </ul>
               <span class="project-note mono">PROTÓTIPO · SEM LINK PÚBLICO</span>
             </article>
           </div>
@@ -405,12 +946,32 @@
       <section class="section section-training" id="formacao" aria-labelledby="formacao-title">
         <div class="container training-layout">
           <div class="section-heading">
-            <p class="section-code mono">SEC_05 // FORMAÇÃO</p><p class="eyebrow">Treinamento</p><h2 id="formacao-title">Base em<br /><em>construção.</em></h2>
+            <p class="section-code mono" data-scramble>SEC_05 // FORMAÇÃO</p>
+            <p class="eyebrow">Treinamento</p>
+            <h2 id="formacao-title">Base em<br /><em>construção.</em></h2>
           </div>
           <div class="training-content">
             <div class="education-timeline">
-              <article class="education-entry reveal"><span class="education-date mono">2023 — 2025</span><div><h3>Análise e Desenvolvimento de Sistemas</h3><p>Universidade de Sorocaba (UNISO) <span class="education-state">CONCLUÍDO</span></p></div></article>
-              <article class="education-entry reveal"><span class="education-date mono">2025 — ATUAL</span><div><h3>Engenharia de Software</h3><p>Estácio <span class="education-state education-current">CURSANDO</span></p></div></article>
+              <article class="education-entry reveal">
+                <span class="education-date mono">2023 — 2025</span>
+                <div>
+                  <h3>Análise e Desenvolvimento de Sistemas</h3>
+                  <p>
+                    Universidade de Sorocaba (UNISO)
+                    <span class="education-state">CONCLUÍDO</span>
+                  </p>
+                </div>
+              </article>
+              <article class="education-entry reveal">
+                <span class="education-date mono">2025 — ATUAL</span>
+                <div>
+                  <h3>Engenharia de Software</h3>
+                  <p>
+                    Estácio
+                    <span class="education-state education-current">CURSANDO</span>
+                  </p>
+                </div>
+              </article>
             </div>
             <div class="courses-panel reveal">
               <p class="mono">TREINAMENTO COMPLEMENTAR / 06 REGISTROS</p>
@@ -429,12 +990,42 @@
 
       <section class="section section-contact" id="contato" aria-labelledby="contato-title">
         <div class="container contact-layout">
-          <div class="contact-copy"><p class="section-code mono">SEC_06 // COMUNICAÇÃO</p><p class="eyebrow">Canal aberto</p><h2 id="contato-title">Vamos tirar<br />uma ideia do papel?</h2><p>Fale comigo sobre oportunidades, projetos ou desenvolvimento de software.</p><span class="contact-coordinate mono">CHANNEL STATUS // OPEN</span></div>
+          <div class="contact-copy">
+            <p class="section-code mono" data-scramble>SEC_06 // COMUNICAÇÃO</p>
+            <p class="eyebrow">Canal aberto</p>
+            <h2 id="contato-title">Vamos tirar<br />uma ideia do papel?</h2>
+            <p>Fale comigo sobre oportunidades, projetos ou desenvolvimento de software.</p>
+            <span class="contact-coordinate mono">CHANNEL STATUS // OPEN</span>
+          </div>
           <div class="contact-panel hud-frame">
-            <div class="contact-entry"><span class="contact-kind mono">E-MAIL</span><a id="email-address" href="mailto:guilhermedamascenooliveira@gmail.com">guilhermedamascenooliveira@gmail.com</a><button type="button" class="copy-button mono" id="copy-email">COPIAR</button></div>
+            <div class="contact-entry">
+              <span class="contact-kind mono">E-MAIL</span>
+              <a id="email-address" href="mailto:guilhermedamascenooliveira@gmail.com">
+                guilhermedamascenooliveira@gmail.com
+              </a>
+              <button type="button" class="copy-button mono" id="copy-email">COPIAR</button>
+            </div>
             <p class="copy-feedback mono" id="copy-feedback" aria-live="polite"></p>
-            <div class="contact-entry"><span class="contact-kind mono">LINKEDIN</span><a href="https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/" target="_blank" rel="noopener noreferrer">guilherme-damasceno-oliveira <span aria-hidden="true">↗</span></a></div>
-            <div class="contact-entry"><span class="contact-kind mono">GITHUB</span><a href="https://github.com/Guilhermedms7" target="_blank" rel="noopener noreferrer">Guilhermedms7 <span aria-hidden="true">↗</span></a></div>
+            <div class="contact-entry">
+              <span class="contact-kind mono">LINKEDIN</span>
+              <a
+                href="https://www.linkedin.com/in/guilherme-damasceno-oliveira-a308b226a/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                guilherme-damasceno-oliveira <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="contact-entry">
+              <span class="contact-kind mono">GITHUB</span>
+              <a
+                href="https://github.com/Guilhermedms7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Guilhermedms7 <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -442,268 +1033,90 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">G</span><span>Guilherme <b>Damasceno</b></span></a>
+        <a class="brand" href="#inicio">
+          <span class="brand-mark" aria-hidden="true">G</span>
+          <span>Guilherme <b>Damasceno</b></span>
+        </a>
         <p class="mono">© <span id="current-year">2026</span> GUILHERME DAMASCENO OLIVEIRA</p>
-        <button type="button" class="glitch-toggle mono" id="glitch-toggle" aria-pressed="true">GLITCH: <span>ON</span></button>
-        <p class="audio-credit mono">TRILHA // <a href="https://mixkit.co/free-stock-music/synthwave/" target="_blank" rel="noopener noreferrer">“Lonerism” · Alejandro Magaña · Mixkit</a> · <a href="https://mixkit.co/license/#musicFree" target="_blank" rel="noopener noreferrer">LICENÇA</a></p>
+        <div class="footer-controls">
+          <button type="button" class="theme-toggle mono" id="theme-toggle" title="Alternar paleta do HUD">
+            HUD: <span>CYBER // YELLOW</span>
+          </button>
+          <button type="button" class="glitch-toggle mono" id="glitch-toggle" aria-pressed="true">
+            GLITCH: <span>ON</span>
+          </button>
+        </div>
+        <p class="audio-credit mono">
+          TRILHA //
+          <a
+            href="https://mixkit.co/free-stock-music/synthwave/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            “Lonerism” · Alejandro Magaña · Mixkit
+          </a>
+          ·
+          <a
+            href="https://mixkit.co/license/#musicFree"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LICENÇA
+          </a>
+        </p>
       </div>
     </footer>
 
-    <script>
-      const root = document.documentElement;
-      const menuButton = document.querySelector("#menu-toggle");
-      const menu = document.querySelector("#menu-principal");
-      const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-      const ambientAudio = document.querySelector("#background-audio");
-      const audioToggle = document.querySelector("#audio-toggle");
-      const audioLabel = audioToggle.querySelector(".audio-label");
-      const audioStatus = document.querySelector("#audio-status");
-      const audioPreferenceKey = "portfolio-audio-preference";
-      let savedAudioPreference = "off";
+    <!-- Netrunner Interactive Command Terminal -->
+    <div
+      class="cmd-backdrop"
+      id="cmd-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cmd-dialog-title"
+      hidden
+    >
+      <div class="cmd-window hud-frame">
+        <div class="cmd-header mono">
+          <span class="cmd-title" id="cmd-dialog-title">
+            <span aria-hidden="true">&gt;_</span> GD-01 // NETRUNNER TERMINAL
+          </span>
+          <button type="button" class="cmd-close mono" id="cmd-close">FECHAR [ESC]</button>
+        </div>
+        <div class="cmd-chips" aria-label="Comandos rápidos">
+          <button type="button" class="cmd-chip" data-cmd="help">help</button>
+          <button type="button" class="cmd-chip" data-cmd="whoami">whoami</button>
+          <button type="button" class="cmd-chip" data-cmd="missions">missions</button>
+          <button type="button" class="cmd-chip" data-cmd="stack">stack</button>
+          <button type="button" class="cmd-chip" data-cmd="projects python">projects python</button>
+          <button type="button" class="cmd-chip" data-cmd="theme">theme</button>
+          <button type="button" class="cmd-chip" data-cmd="audio">audio</button>
+          <button type="button" class="cmd-chip" data-cmd="email">email</button>
+          <button type="button" class="cmd-chip" data-cmd="cv">cv</button>
+        </div>
+        <div class="cmd-output" id="cmd-output" aria-live="polite">
+          <p class="cmd-line cmd-line-accent">
+            SISTEMA CONECTADO // DOSSIÊ GUILHERME DAMASCENO (GD-01)
+          </p>
+          <p class="cmd-line cmd-line-sys">
+            Digite "help" ou clique nos atalhos acima para inspecionar missões, stack, contratos ou
+            alternar o HUD.
+          </p>
+        </div>
+        <form class="cmd-form mono" id="cmd-form" autocomplete="off">
+          <label class="cmd-prompt-label" for="cmd-input">gd@netrunner:~$</label>
+          <input
+            class="cmd-input"
+            id="cmd-input"
+            type="text"
+            placeholder="Digite um comando (ex: help, missions, theme netrunner)..."
+            spellcheck="false"
+          />
+          <button type="submit" class="cmd-submit">EXEC</button>
+        </form>
+      </div>
+    </div>
 
-      ambientAudio.src = "./assets/audio/mixkit-lonerism-159.mp3";
-      ambientAudio.volume = 0.2;
-      audioToggle.disabled = false;
-      try {
-        const preference = window.localStorage.getItem(audioPreferenceKey);
-        if (preference === "on" || preference === "off") savedAudioPreference = preference;
-      } catch (error) {
-        console.warn("Não foi possível ler a preferência de música.", error);
-      }
-      audioStatus.textContent = savedAudioPreference === "on"
-        ? "PREFERÊNCIA SALVA · CLIQUE PARA ATIVAR"
-        : "LONERISM · ALEJANDRO MAGAÑA";
-      audioToggle.setAttribute("aria-label", "Ativar música Lonerism, de Alejandro Magaña, em volume baixo");
-
-      function saveAudioPreference(preference) {
-        savedAudioPreference = preference;
-        try {
-          window.localStorage.setItem(audioPreferenceKey, preference);
-        } catch (error) {
-          console.warn("Não foi possível salvar a preferência de música.", error);
-        }
-      }
-
-      function updateAudioState(isPlaying, status) {
-        audioToggle.setAttribute("aria-pressed", String(isPlaying));
-        audioToggle.setAttribute(
-          "aria-label",
-          isPlaying
-            ? "Pausar música Lonerism"
-            : "Ativar música Lonerism, de Alejandro Magaña, em volume baixo"
-        );
-        audioLabel.textContent = isPlaying ? "SOM ON" : "SOM OFF";
-        audioStatus.textContent = status;
-      }
-
-      async function startAmbientAudio() {
-        try {
-          await ambientAudio.play();
-          updateAudioState(true, "LONERISM · TRILHA ATIVA · VOLUME 20%");
-        } catch (error) {
-          updateAudioState(false, "ÁUDIO INDISPONÍVEL");
-          console.warn("Não foi possível iniciar a música de fundo.", error);
-        }
-      }
-
-      audioToggle.addEventListener("click", async () => {
-        if (ambientAudio.paused) {
-          saveAudioPreference("on");
-          await startAmbientAudio();
-          return;
-        }
-
-        ambientAudio.pause();
-        saveAudioPreference("off");
-        updateAudioState(false, "TRILHA PAUSADA");
-      });
-
-      document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState !== "hidden" || ambientAudio.paused) return;
-        ambientAudio.pause();
-        updateAudioState(false, "TRILHA PAUSADA AO TROCAR DE ABA");
-      });
-
-      document.querySelector("#current-year").textContent = String(new Date().getFullYear());
-
-      function closeMenu() {
-        menuButton.setAttribute("aria-expanded", "false");
-        menu.classList.remove("is-open");
-      }
-
-      menuButton.addEventListener("click", () => {
-        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-        menuButton.setAttribute("aria-expanded", String(!isOpen));
-        menu.classList.toggle("is-open", !isOpen);
-      });
-
-      menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenu();
-      });
-
-      const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-      const observedSections = sectionLinks
-        .map((link) => document.querySelector(link.getAttribute("href")))
-        .filter(Boolean);
-
-      if ("IntersectionObserver" in window) {
-        const sectionObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            sectionLinks.forEach((link) => {
-              if (link.getAttribute("href") === `#${entry.target.id}`) {
-                link.setAttribute("aria-current", "location");
-              } else {
-                link.removeAttribute("aria-current");
-              }
-            });
-          });
-        }, { rootMargin: "-25% 0px -65% 0px" });
-        observedSections.forEach((section) => sectionObserver.observe(section));
-
-        if (!motionPreference.matches) {
-          const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add("is-visible");
-              entry.target.classList.add("glitch-in");
-              observer.unobserve(entry.target);
-            });
-          }, { threshold: 0.12 });
-          document.querySelectorAll(".reveal, .glitch-title").forEach((element) => revealObserver.observe(element));
-        } else {
-          document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
-        }
-      } else {
-        document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
-      }
-
-      const filters = [...document.querySelectorAll(".filter-button")];
-      const projectCards = [...document.querySelectorAll("#project-grid .project-card")];
-      const filterStatus = document.querySelector("#filter-status");
-      filters.forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.dataset.filter;
-          let visibleCount = 0;
-          filters.forEach((item) => {
-            const active = item === button;
-            item.classList.toggle("is-active", active);
-            item.setAttribute("aria-pressed", String(active));
-          });
-          projectCards.forEach((card) => {
-            const visible = filter === "all" || card.dataset.tech.split(",").includes(filter);
-            card.hidden = !visible;
-            if (visible) visibleCount += 1;
-          });
-          filterStatus.textContent = `${visibleCount} ${visibleCount === 1 ? "projeto exibido" : "projetos exibidos"}`;
-        });
-      });
-
-      const glitchToggle = document.querySelector("#glitch-toggle");
-      let glitchEnabled = true;
-      try {
-        glitchEnabled = window.localStorage.getItem("portfolio-glitch-mode") !== "off";
-      } catch (error) {
-        console.warn("Não foi possível ler a preferência de efeitos.", error);
-      }
-
-      function renderGlitchPreference() {
-        root.classList.toggle("glitch-off", !glitchEnabled || motionPreference.matches);
-        glitchToggle.setAttribute("aria-pressed", String(glitchEnabled));
-        glitchToggle.querySelector("span").textContent = glitchEnabled ? "ON" : "OFF";
-      }
-
-      glitchToggle.addEventListener("click", () => {
-        glitchEnabled = !glitchEnabled;
-        renderGlitchPreference();
-        try {
-          window.localStorage.setItem("portfolio-glitch-mode", glitchEnabled ? "on" : "off");
-        } catch (error) {
-          console.warn("Não foi possível salvar a preferência de efeitos.", error);
-        }
-      });
-      motionPreference.addEventListener?.("change", renderGlitchPreference);
-      renderGlitchPreference();
-
-      document.querySelector("#copy-email").addEventListener("click", async () => {
-        const feedback = document.querySelector("#copy-feedback");
-        const email = document.querySelector("#email-address").textContent.trim();
-        try {
-          await navigator.clipboard.writeText(email);
-          feedback.textContent = "E-MAIL COPIADO";
-        } catch (error) {
-          feedback.textContent = `CÓPIA INDISPONÍVEL · ${email}`;
-          console.warn("Não foi possível copiar o e-mail para a área de transferência.", error);
-        }
-      });
-
-      function startBootSequence() {
-        if (motionPreference.matches) return;
-        try {
-          if (window.sessionStorage.getItem("portfolio-boot-seen") === "yes") return;
-          window.sessionStorage.setItem("portfolio-boot-seen", "yes");
-        } catch (error) {
-          console.warn("Não foi possível verificar a sequência de abertura.", error);
-          return;
-        }
-
-        const boot = document.createElement("div");
-        boot.className = "boot-screen";
-        boot.setAttribute("role", "dialog");
-        boot.setAttribute("aria-modal", "true");
-        boot.setAttribute("aria-labelledby", "boot-title");
-        boot.innerHTML = '<div class="boot-inner"><span class="mono">INITIALIZING PROFILE // GD-01</span><strong id="boot-title">IDENTITY<br />VERIFIED<span>.</span></strong><span class="boot-progress" aria-hidden="true"><i></i></span><p class="boot-prompt mono">ESCOLHA A TRILHA DE ENTRADA</p><div class="boot-actions"><button class="boot-action boot-action-primary mono" type="button">ENTRAR COM SOM</button><button class="boot-action mono" type="button">SEM SOM</button></div><button class="boot-skip mono" type="button">PULAR SEQUÊNCIA [ESC]</button></div>';
-        document.body.append(boot);
-
-        let timeoutId;
-        const finishBoot = () => {
-          window.clearTimeout(timeoutId);
-          boot.classList.add("is-finished");
-          window.removeEventListener("keydown", onBootKey);
-          if (boot.contains(document.activeElement)) audioToggle.focus();
-          window.setTimeout(() => boot.remove(), 220);
-        };
-        const onBootKey = (event) => {
-          if (event.key === "Escape") {
-            saveAudioPreference("off");
-            finishBoot();
-          }
-        };
-        const [soundButton, silentButton] = boot.querySelectorAll(".boot-action");
-        soundButton.addEventListener("click", () => {
-          saveAudioPreference("on");
-          finishBoot();
-          startAmbientAudio();
-        });
-        silentButton.addEventListener("click", () => {
-          saveAudioPreference("off");
-          finishBoot();
-        });
-        boot.querySelector(".boot-skip").addEventListener("click", () => {
-          saveAudioPreference("off");
-          finishBoot();
-        });
-        window.addEventListener("keydown", onBootKey);
-        soundButton.focus();
-        timeoutId = window.setTimeout(finishBoot, 1050);
-      }
-
-      startBootSequence();
-
-      if (!motionPreference.matches) {
-        const terminal = document.querySelector("#typed-stack");
-        const completeStack = terminal.textContent;
-        terminal.textContent = "";
-        let character = 0;
-        const typeNext = () => {
-          if (character >= completeStack.length) return;
-          terminal.textContent += completeStack[character];
-          character += 1;
-          window.setTimeout(typeNext, 24);
-        };
-        typeNext();
-      }
-    </script>
+    <script src="./scripts/main.js" defer></script>
   </body>
 </html>
