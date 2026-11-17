@@ -8,8 +8,10 @@
       name="description"
       content="Guilherme Damasceno, desenvolvedor full stack na Develcode. Back-end resiliente, integrações e agentes de IA para sistemas corporativos com Java, Spring Boot, C# e .NET."
     />
+    <link rel="canonical" href="https://guilherme-damasceno.pages.dev/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:url" content="https://guilherme-damasceno.pages.dev/" />
     <meta property="og:title" content="Guilherme Damasceno | Desenvolvedor Full Stack" />
     <meta
@@ -81,7 +83,7 @@
       <div class="scroll-laser-bar" id="scroll-laser-bar"></div>
     </div>
 
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link" href="#conteudo" data-i18n="skip">Pular para o conteúdo</a>
 
     <nav class="site-nav" aria-label="Navegação principal">
       <div class="container nav-inner">
@@ -90,16 +92,28 @@
           <span>Guilherme <b>Damasceno</b></span>
         </a>
         <ul class="nav-links" id="menu-principal">
-          <li><a href="#sobre">Dossiê</a></li>
-          <li><a href="#experiencia">Missões</a></li>
-          <li><a href="#competencias">Loadout</a></li>
-          <li><a href="#projetos">Contratos</a></li>
-          <li><a href="#formacao">Treinamento</a></li>
+          <li><a href="#sobre" data-i18n="nav.about">Dossiê</a></li>
+          <li><a href="#experiencia" data-i18n="nav.missions">Missões</a></li>
+          <li><a href="#competencias" data-i18n="nav.loadout">Loadout</a></li>
+          <li><a href="#projetos" data-i18n="nav.projects">Contratos</a></li>
+          <li><a href="#formacao" data-i18n="nav.training">Treinamento</a></li>
           <li>
-            <a class="nav-cta" href="#contato">Contato <span aria-hidden="true">↗</span></a>
+            <a class="nav-cta" href="#contato" data-i18n-html="nav.contact">
+              Contato <span aria-hidden="true">↗</span>
+            </a>
           </li>
         </ul>
         <div class="nav-tools">
+          <button
+            class="hud-tool-btn lang-toggle mono"
+            id="lang-toggle"
+            type="button"
+            data-lang="pt"
+            aria-label="Alternar idioma (PT / EN)"
+            title="Alternar idioma / Switch language (PT / EN)"
+          >
+            <span id="lang-label">PT</span>
+          </button>
           <button
             class="hud-tool-btn cmd-trigger mono"
             type="button"
@@ -157,7 +171,7 @@
 
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">
+            <p class="eyebrow" data-i18n-html="hero.eyebrow">
               <span class="status-light" aria-hidden="true"></span> Perfil ativo
               <span class="eyebrow-divider">/</span> Desenvolvedor Full Stack
             </p>
@@ -165,10 +179,10 @@
             <h1 class="glitch-title" data-glitch="Guilherme&#10;Damasceno">
               Guilherme<br /><span>Damasceno</span>
             </h1>
-            <p class="hero-description">
+            <p class="hero-description" data-i18n="hero.desc">
               Back-end resiliente, integrações e agentes de IA para sistemas corporativos.
             </p>
-            <p class="hero-context">
+            <p class="hero-context" data-i18n="hero.context">
               Atuo na Develcode em squads da RD Saúde e da Leroy Merlin, conectando sistemas,
               modernizando aplicações e automatizando processos.
             </p>
@@ -183,7 +197,7 @@
               </button>
             </div>
             <div class="hero-actions">
-              <a class="button button-primary" href="#experiencia">
+              <a class="button button-primary" href="#experiencia" data-i18n-html="hero.ctaPrimary">
                 Explorar missões <span aria-hidden="true">↘</span>
               </a>
               <a
@@ -199,6 +213,7 @@
                 href="./CV_Guilherme_Damasceno.pdf"
                 download
                 aria-label="Baixar currículo de Guilherme Damasceno em PDF"
+                data-i18n-html="hero.ctaCv"
               >
                 Currículo PDF <span aria-hidden="true">↓</span>
               </a>
@@ -239,21 +254,21 @@
               <span class="portrait-corner"></span>
             </div>
             <div class="id-card-name">
-              <span class="micro-label mono">OPERADOR // FULL STACK</span>
+              <span class="micro-label mono" data-i18n="card.role">OPERADOR // FULL STACK</span>
               <h2>Guilherme<br />Damasceno</h2>
             </div>
             <dl class="id-card-data">
               <div>
-                <dt>VÍNCULO</dt>
+                <dt data-i18n="card.companyLabel">VÍNCULO</dt>
                 <dd>Develcode</dd>
               </div>
               <div>
-                <dt>ATUAÇÃO</dt>
+                <dt data-i18n="card.squadsLabel">ATUAÇÃO</dt>
                 <dd>RD Saúde · Leroy Merlin</dd>
               </div>
               <div>
                 <dt>STACK</dt>
-                <dd>Java / Spring · C# / .NET · IA</dd>
+                <dd data-i18n="card.stackValue">Java / Spring · C# / .NET · IA</dd>
               </div>
             </dl>
             <div class="id-card-foot mono">
@@ -271,44 +286,46 @@
 
         <div class="hero-bottom container mono">
           <span>PORTFOLIO DOSSIER // 2026</span>
-          <span>PRESSIONE <b>CTRL+K</b> OU ROLE PARA EXPLORAR <b aria-hidden="true">↓</b></span>
+          <span data-i18n-html="hero.bottomHint">
+            PRESSIONE <b>CTRL+K</b> OU ROLE PARA EXPLORAR <b aria-hidden="true">↓</b>
+          </span>
         </div>
       </header>
 
       <section class="section section-about" id="sobre" aria-labelledby="sobre-title">
         <div class="container about-layout">
           <div class="section-heading">
-            <p class="section-code mono" data-scramble>SEC_01 // PERFIL</p>
+            <p class="section-code mono" data-scramble data-i18n="about.code">SEC_01 // PERFIL</p>
             <span class="section-number" aria-hidden="true">01</span>
-            <p class="eyebrow">Dossiê</p>
-            <h2 id="sobre-title">Eu conecto<br /><em>sistemas.</em></h2>
+            <p class="eyebrow" data-i18n="about.eyebrow">Dossiê</p>
+            <h2 id="sobre-title" data-i18n-html="about.title">Eu conecto<br /><em>sistemas.</em></h2>
             <p class="ornament mono" aria-hidden="true">個人記録 / OPEN FILE</p>
           </div>
           <div class="about-copy reveal">
-            <p class="lead-copy">
+            <p class="lead-copy" data-i18n="about.lead">
               Desenvolvo sistemas corporativos, APIs e integrações. Na Develcode, atuo em squads
               da RD Saúde e da Leroy Merlin com back-end, modernização e automação.
             </p>
-            <p>
+            <p data-i18n="about.body">
               Trabalho principalmente com Java e Spring Boot, C# e .NET. Também crio fluxos com
               n8n e uso Python e JavaScript para apoiar integrações, orquestrar agentes de IA e
               reduzir tarefas manuais.
             </p>
             <div class="profile-facts">
               <div class="fact">
-                <span class="fact-label mono">01 / EMPRESA</span>
+                <span class="fact-label mono" data-i18n="about.f1Label">01 / EMPRESA</span>
                 <strong>Develcode</strong>
-                <span>Desenvolvedor Full Stack</span>
+                <span data-i18n="about.f1Sub">Desenvolvedor Full Stack</span>
               </div>
               <div class="fact">
-                <span class="fact-label mono">02 / FORMAÇÃO</span>
+                <span class="fact-label mono" data-i18n="about.f2Label">02 / FORMAÇÃO</span>
                 <strong>ADS · UNISO</strong>
-                <span>Engenharia de Software · Estácio</span>
+                <span data-i18n="about.f2Sub">Engenharia de Software · Estácio</span>
               </div>
               <div class="fact">
-                <span class="fact-label mono">03 / FOCO</span>
-                <strong>Back-end &amp; IA</strong>
-                <span>Resiliência · integração · automação</span>
+                <span class="fact-label mono" data-i18n="about.f3Label">03 / FOCO</span>
+                <strong data-i18n="about.f3Title">Back-end &amp; IA</strong>
+                <span data-i18n="about.f3Sub">Resiliência · integração · automação</span>
               </div>
             </div>
           </div>
@@ -319,11 +336,15 @@
         <div class="container">
           <div class="section-heading section-heading-row">
             <div>
-              <p class="section-code mono" data-scramble>SEC_02 // EXPERIÊNCIA</p>
-              <p class="eyebrow">Log de missões</p>
-              <h2 id="experiencia-title">Trabalho em campo</h2>
+              <p class="section-code mono" data-scramble data-i18n="missions.code">
+                SEC_02 // EXPERIÊNCIA
+              </p>
+              <p class="eyebrow" data-i18n="missions.eyebrow">Log de missões</p>
+              <h2 id="experiencia-title" data-i18n="missions.title">Trabalho em campo</h2>
             </div>
-            <p class="section-aside mono">DEZ/2025 — ATUAL<br />SQUADS / DEVELCODE</p>
+            <p class="section-aside mono" data-i18n-html="missions.aside">
+              DEZ/2025 — ATUAL<br />SQUADS / DEVELCODE
+            </p>
           </div>
 
           <div class="mission-log">
@@ -335,7 +356,7 @@
               <div class="mission-main">
                 <div class="mission-title">
                   <p class="project-category mono">RD SAÚDE · DEVELCODE</p>
-                  <h3>Agentes de IA<br />resilientes</h3>
+                  <h3 data-i18n-html="m1.title">Agentes de IA<br />resilientes</h3>
                   <div class="mission-badges" aria-label="Destaques técnicos">
                     <span class="mission-badge">FAIL-CLOSED</span>
                     <span class="mission-badge">1:1 SCHEMA</span>
@@ -346,34 +367,34 @@
                 <div class="mission-details">
                   <dl>
                     <div>
-                      <dt>CONTEXTO</dt>
-                      <dd>
+                      <dt data-i18n="missions.dtContext">CONTEXTO</dt>
+                      <dd data-i18n="m1.context">
                         Plataforma corporativa usa IA para gerar e validar histórias de usuário e
                         calcular pontuação.
                       </dd>
                     </div>
                     <div>
-                      <dt>O QUE FIZ</dt>
+                      <dt data-i18n="missions.dtActions">O QUE FIZ</dt>
                       <dd>
                         <ul class="mission-points" id="mission-01-points">
-                          <li data-stage="api">
+                          <li data-stage="api" data-i18n="m1.p1">
                             Valido campos obrigatórios com Java 17 e Spring Boot: explico falhas,
                             bloqueio cards e aplico feature flag com fail-closed.
                           </li>
-                          <li data-stage="agent,llm">
+                          <li data-stage="agent,llm" data-i18n="m1.p2">
                             Integro Python (FastAPI, LangChain/LangGraph) ao gateway corporativo de
                             LLM (AWS Bedrock), com correlation ID, timeouts configuráveis, erros
                             HTTP controlados, Langfuse e mascaramento de dados.
                           </li>
-                          <li data-stage="agent,llm">
+                          <li data-stage="agent,llm" data-i18n="m1.p3">
                             Reforço o agente com retries para throttling, schemas tolerantes e
                             validação 1:1 dos itens.
                           </li>
-                          <li data-stage="api,sec">
+                          <li data-stage="api,sec" data-i18n="m1.p4">
                             Amplio testes; corrijo vulnerabilidades de dependências (SCA/SAST) e
                             mitigo XSS e Log Injection.
                           </li>
-                          <li data-stage="sec">
+                          <li data-stage="sec" data-i18n="m1.p5">
                             Apoio CI/CD, releases e resolução de conflitos com Docker, Kubernetes,
                             ArgoCD e Datadog APM.
                           </li>
@@ -381,8 +402,8 @@
                       </dd>
                     </div>
                     <div>
-                      <dt>RESULTADO</dt>
-                      <dd>
+                      <dt data-i18n="missions.dtResult">RESULTADO</dt>
+                      <dd data-i18n="m1.result">
                         Eliminei a perda de critérios de aceite na análise e reforcei validação e
                         resiliência.
                       </dd>
@@ -391,8 +412,10 @@
 
                   <div class="arch-blueprint" aria-label="Arquitetura interativa da missão">
                     <div class="arch-blueprint-head mono">
-                      <span>PIPELINE OPERACIONAL // PASSE O MOUSE OU CLIQUE PARA INSPECIONAR</span>
-                      <span>4 ESTÁGIOS</span>
+                      <span data-i18n="m1.archHint">
+                        PIPELINE OPERACIONAL // PASSE O MOUSE OU CLIQUE PARA INSPECIONAR
+                      </span>
+                      <span data-i18n="m1.archCount">4 ESTÁGIOS</span>
                     </div>
                     <div class="arch-nodes">
                       <button type="button" class="arch-node" data-stage="api" aria-pressed="false">
@@ -402,8 +425,8 @@
                       </button>
                       <button type="button" class="arch-node" data-stage="agent" aria-pressed="false">
                         <span class="arch-node-step">02 // ORCHESTRATOR</span>
-                        <strong>Agente IA</strong>
-                        <span>FastAPI · LangGraph · Validação 1:1</span>
+                        <strong data-i18n="m1.node2Title">Agente IA</strong>
+                        <span data-i18n="m1.node2Sub">FastAPI · LangGraph · Validação 1:1</span>
                       </button>
                       <button type="button" class="arch-node" data-stage="llm" aria-pressed="false">
                         <span class="arch-node-step">03 // GATEWAY</span>
@@ -418,7 +441,9 @@
                     </div>
                   </div>
 
-                  <p class="mission-stack-label mono">STACK (CLIQUE PARA RASTREAR NO DOSSIÊ)</p>
+                  <p class="mission-stack-label mono" data-i18n="missions.stackHint">
+                    STACK (CLIQUE PARA RASTREAR NO DOSSIÊ)
+                  </p>
                   <ul class="chip-list mission-stack" aria-label="Tecnologias e práticas">
                     <li data-skill="java">Java 17</li>
                     <li data-skill="spring">Spring Boot</li>
@@ -450,25 +475,27 @@
               <div class="mission-main">
                 <div class="mission-title">
                   <p class="project-category mono">LEROY MERLIN · DEVELCODE</p>
-                  <h3>Modernização<br />de sistemas</h3>
+                  <h3 data-i18n-html="m2.title">Modernização<br />de sistemas</h3>
                 </div>
                 <div class="mission-details">
                   <dl>
                     <div>
-                      <dt>CONTEXTO</dt>
-                      <dd>Manutenção e modernização de sistemas legados.</dd>
+                      <dt data-i18n="missions.dtContext">CONTEXTO</dt>
+                      <dd data-i18n="m2.context">
+                        Manutenção e modernização de sistemas legados.
+                      </dd>
                     </div>
                     <div>
-                      <dt>O QUE FIZ</dt>
-                      <dd>
+                      <dt data-i18n="missions.dtActions">O QUE FIZ</dt>
+                      <dd data-i18n="m2.actions">
                         Refatoro sistemas legados com C# e .NET, aplico padrões de projeto, modelo
                         a persistência com ActiveRecord/NHibernate e PostgreSQL e diagnostico
                         problemas de integridade de dados e regras de negócio.
                       </dd>
                     </div>
                     <div>
-                      <dt>RESULTADO</dt>
-                      <dd>
+                      <dt data-i18n="missions.dtResult">RESULTADO</dt>
+                      <dd data-i18n="m2.result">
                         Refatorações direcionadas e problemas de dados e negócio investigados no
                         contexto do sistema legado.
                       </dd>
@@ -493,24 +520,26 @@
               </div>
               <div class="mission-main">
                 <div class="mission-title">
-                  <p class="project-category mono">TRANSVERSAL · AUTOMAÇÃO</p>
-                  <h3>Menos rotina.<br />Mais fluxo.</h3>
+                  <p class="project-category mono" data-i18n="m3.cat">TRANSVERSAL · AUTOMAÇÃO</p>
+                  <h3 data-i18n-html="m3.title">Menos rotina.<br />Mais fluxo.</h3>
                 </div>
                 <div class="mission-details">
                   <dl>
                     <div>
-                      <dt>CONTEXTO</dt>
-                      <dd>Tarefas manuais e fluxos entre serviços.</dd>
+                      <dt data-i18n="missions.dtContext">CONTEXTO</dt>
+                      <dd data-i18n="m3.context">Tarefas manuais e fluxos entre serviços.</dd>
                     </div>
                     <div>
-                      <dt>O QUE FIZ</dt>
-                      <dd>
+                      <dt data-i18n="missions.dtActions">O QUE FIZ</dt>
+                      <dd data-i18n="m3.actions">
                         Crio automações e integrações com n8n, Python, JavaScript e recursos de IA.
                       </dd>
                     </div>
                     <div>
-                      <dt>RESULTADO</dt>
-                      <dd>Reduzo tarefas manuais e apoio a eficiência operacional.</dd>
+                      <dt data-i18n="missions.dtResult">RESULTADO</dt>
+                      <dd data-i18n="m3.result">
+                        Reduzo tarefas manuais e apoio a eficiência operacional.
+                      </dd>
                     </div>
                     <!-- TODO: métrica real -->
                   </dl>
@@ -518,7 +547,7 @@
                     <li data-skill="n8n">n8n</li>
                     <li data-skill="python">Python</li>
                     <li data-skill="javascript">JavaScript</li>
-                    <li data-skill="ia">IA assistiva</li>
+                    <li data-skill="ia" data-i18n="chip.assistiveAi">IA assistiva</li>
                   </ul>
                 </div>
               </div>
@@ -531,18 +560,27 @@
         <div class="container">
           <div class="section-heading section-heading-row">
             <div>
-              <p class="section-code mono" data-scramble>SEC_03 // SISTEMAS</p>
+              <p class="section-code mono" data-scramble data-i18n="loadout.code">
+                SEC_03 // SISTEMAS
+              </p>
               <p class="eyebrow">Loadout</p>
-              <h2 id="competencias-title">Ferramentas<br />de trabalho</h2>
+              <h2 id="competencias-title" data-i18n-html="loadout.title">
+                Ferramentas<br />de trabalho
+              </h2>
             </div>
-            <p class="section-aside">
+            <p class="section-aside" data-i18n-html="loadout.aside">
               Sem métricas inventadas.<br />Clique em uma tecnologia para rastrear seu uso.
             </p>
           </div>
 
           <div class="skill-trace-bar mono" id="skill-trace-bar" hidden>
             <span id="skill-trace-text">RASTREAMENTO ATIVO</span>
-            <button type="button" class="skill-trace-clear" id="skill-trace-clear">
+            <button
+              type="button"
+              class="skill-trace-clear"
+              id="skill-trace-clear"
+              data-i18n="loadout.clearTrace"
+            >
               LIMPAR [×]
             </button>
           </div>
@@ -567,14 +605,14 @@
             <article class="loadout-slot loadout-primary loadout-csharp spotlight-card reveal">
               <span class="slot-label mono">PRIMARY / 02</span>
               <span class="slot-glyph" aria-hidden="true">⌬</span>
-              <h3>Arquitetura &amp; qualidade</h3>
+              <h3 data-i18n="loadout.s2">Arquitetura &amp; qualidade</h3>
               <ul class="chip-list">
                 <li data-skill="resiliencia">Circuit Breaker</li>
                 <li data-skill="resiliencia">Retry</li>
                 <li data-skill="resiliencia">Feature Flags</li>
-                <li data-skill="regras">Validação de regras</li>
-                <li data-skill="testes">Testes</li>
-                <li data-skill="n8n">Automação</li>
+                <li data-skill="regras" data-i18n="chip.ruleVal">Validação de regras</li>
+                <li data-skill="testes" data-i18n="chip.tests">Testes</li>
+                <li data-skill="n8n" data-i18n="chip.automation">Automação</li>
                 <li data-skill="rest">APIs RESTful</li>
               </ul>
             </article>
@@ -582,7 +620,7 @@
             <article class="loadout-slot loadout-primary spotlight-card reveal">
               <span class="slot-label mono">SPECIAL / 03</span>
               <span class="slot-glyph" aria-hidden="true">◈</span>
-              <h3>IA &amp; agentes</h3>
+              <h3 data-i18n="loadout.s3">IA &amp; agentes</h3>
               <ul class="chip-list">
                 <li data-skill="python">Python</li>
                 <li data-skill="fastapi">FastAPI</li>
@@ -596,7 +634,7 @@
             <article class="loadout-slot spotlight-card reveal">
               <span class="slot-label mono">SUPPORT / 04</span>
               <span class="slot-glyph" aria-hidden="true">⌁</span>
-              <h3>Cloud &amp; observabilidade</h3>
+              <h3 data-i18n="loadout.s4">Cloud &amp; observabilidade</h3>
               <ul class="chip-list">
                 <li data-skill="docker">Docker</li>
                 <li data-skill="kubernetes">Kubernetes</li>
@@ -622,7 +660,7 @@
             <article class="loadout-slot spotlight-card reveal">
               <span class="slot-label mono">SUPPORT / 06</span>
               <span class="slot-glyph" aria-hidden="true">⛁</span>
-              <h3>Dados &amp; persistência</h3>
+              <h3 data-i18n="loadout.s6">Dados &amp; persistência</h3>
               <ul class="chip-list">
                 <li data-skill="mysql">MySQL</li>
                 <li data-skill="mongodb">MongoDB</li>
@@ -636,39 +674,39 @@
             <article class="loadout-slot spotlight-card reveal">
               <span class="slot-label mono">SUPPORT / 07</span>
               <span class="slot-glyph" aria-hidden="true">⚙</span>
-              <h3>DevOps &amp; automação</h3>
+              <h3 data-i18n="loadout.s7">DevOps &amp; automação</h3>
               <ul class="chip-list">
                 <li data-skill="git">Git</li>
                 <li data-skill="git">GitHub</li>
                 <li data-skill="git">GitLab</li>
                 <li data-skill="seguranca">SonarQube</li>
                 <li data-skill="n8n">n8n</li>
-                <li data-skill="ia">IA assistiva</li>
+                <li data-skill="ia" data-i18n="chip.assistiveAi">IA assistiva</li>
               </ul>
             </article>
 
             <article class="loadout-slot spotlight-card reveal">
               <span class="slot-label mono">SUPPORT / 08</span>
               <span class="slot-glyph" aria-hidden="true">⌖</span>
-              <h3>Base complementar</h3>
+              <h3 data-i18n="loadout.s8">Base complementar</h3>
               <ul class="chip-list">
-                <li data-skill="postgresql">Banco de dados relacionais</li>
-                <li data-skill="regras">Engenharia de requisitos</li>
-                <li>Estruturas de dados</li>
-                <li>Raciocínio lógico</li>
-                <li data-skill="seguranca">Segurança de sistemas</li>
-                <li data-skill="docker">DevOps e Cloud</li>
+                <li data-skill="postgresql" data-i18n="chip.relDb">Banco de dados relacionais</li>
+                <li data-skill="regras" data-i18n="chip.reqEng">Engenharia de requisitos</li>
+                <li data-i18n="chip.ds">Estruturas de dados</li>
+                <li data-i18n="chip.logic">Raciocínio lógico</li>
+                <li data-skill="seguranca" data-i18n="chip.sysSec">Segurança de sistemas</li>
+                <li data-skill="docker">DevOps &amp; Cloud</li>
                 <li>IoT</li>
               </ul>
             </article>
           </div>
 
           <div class="soft-skills mono">
-            <p>
+            <p data-i18n-html="loadout.traits">
               <b>TRAÇOS // </b>Colaboração · comunicação · organização · aprendizado rápido ·
               resolução de problemas
             </p>
-            <p><b>IDIOMA // </b>Inglês intermediário</p>
+            <p data-i18n-html="loadout.lang"><b>IDIOMA // </b>Inglês intermediário</p>
           </div>
         </div>
       </section>
@@ -677,20 +715,37 @@
         <div class="container">
           <div class="section-heading section-heading-row">
             <div>
-              <p class="section-code mono" data-scramble>SEC_04 // PROJETOS</p>
-              <p class="eyebrow">Contratos</p>
-              <h2 id="projetos-title">Trabalhos em destaque</h2>
+              <p class="section-code mono" data-scramble data-i18n="projects.code">
+                SEC_04 // PROJETOS
+              </p>
+              <p class="eyebrow" data-i18n="projects.eyebrow">Contratos</p>
+              <h2 id="projetos-title" data-i18n="projects.title">Trabalhos em destaque</h2>
             </div>
-            <p class="section-aside">Pessoais · acadêmicos · demonstrações</p>
+            <p class="section-aside" data-i18n="projects.aside">
+              Pessoais · acadêmicos · demonstrações
+            </p>
           </div>
 
           <div class="project-filter-wrap">
-            <p class="mono filter-label" id="filter-label">FILTRAR POR TECNOLOGIA</p>
+            <p class="mono filter-label" id="filter-label" data-i18n="projects.filterLabel">
+              FILTRAR POR TECNOLOGIA
+            </p>
             <div class="project-filters" role="group" aria-labelledby="filter-label">
-              <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">
-                Todos <span class="filter-count">[08]</span>
+              <button
+                type="button"
+                class="filter-button is-active"
+                data-filter="all"
+                aria-pressed="true"
+              >
+                <span data-i18n="projects.filterAll">Todos</span>
+                <span class="filter-count">[08]</span>
               </button>
-              <button type="button" class="filter-button" data-filter="javascript" aria-pressed="false">
+              <button
+                type="button"
+                class="filter-button"
+                data-filter="javascript"
+                aria-pressed="false"
+              >
                 JavaScript <span class="filter-count"></span>
               </button>
               <button type="button" class="filter-button" data-filter="react" aria-pressed="false">
@@ -699,13 +754,23 @@
               <button type="button" class="filter-button" data-filter="python" aria-pressed="false">
                 Python <span class="filter-count"></span>
               </button>
-              <button type="button" class="filter-button" data-filter="flutter" aria-pressed="false">
+              <button
+                type="button"
+                class="filter-button"
+                data-filter="flutter"
+                aria-pressed="false"
+              >
                 Flutter <span class="filter-count"></span>
               </button>
               <button type="button" class="filter-button" data-filter="php" aria-pressed="false">
                 PHP <span class="filter-count"></span>
               </button>
-              <button type="button" class="filter-button" data-filter="typescript" aria-pressed="false">
+              <button
+                type="button"
+                class="filter-button"
+                data-filter="typescript"
+                aria-pressed="false"
+              >
                 TypeScript <span class="filter-count"></span>
               </button>
               <button type="button" class="filter-button" data-filter="css" aria-pressed="false">
@@ -729,9 +794,11 @@
                 <span class="contract-id">CTR_01</span>
                 <span class="contract-status contract-status-live">ONLINE // LIVE</span>
               </div>
-              <p class="project-category mono">APRENDIZADO DE IDIOMAS · WEB APP</p>
+              <p class="project-category mono" data-i18n="p1.cat">
+                APRENDIZADO DE IDIOMAS · WEB APP
+              </p>
               <h3>English Reading App</h3>
-              <p>
+              <p data-i18n="p1.desc">
                 Pratico leitura em inglês com histórias, filtros por categoria e nível CEFR e
                 exercícios de completar lacunas.
               </p>
@@ -747,6 +814,7 @@
                   href="https://english-reading-app.pages.dev"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-i18n-html="projects.openSite"
                 >
                   Abrir site <span aria-hidden="true">↗</span>
                 </a>
@@ -755,6 +823,7 @@
                   href="https://github.com/Guilhermedms7/english-reading-app"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-i18n-html="projects.viewRepo"
                 >
                   Ver repositório <span aria-hidden="true">↗</span>
                 </a>
@@ -771,7 +840,7 @@
               </div>
               <p class="project-category mono">E-COMMERCE · FULL STACK</p>
               <h3>DMSTECH 2.0</h3>
-              <p>
+              <p data-i18n="p2.desc">
                 Criei uma loja de tecnologia com catálogo, busca, ofertas e carrinho, conectada a
                 uma API e banco de dados.
               </p>
@@ -785,6 +854,7 @@
                 href="https://github.com/Guilhermedms7/DMSTECH2.0"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-i18n-html="projects.viewRepo"
               >
                 Ver repositório <span aria-hidden="true">↗</span>
               </a>
@@ -798,9 +868,9 @@
                 <span class="contract-id">CTR_03</span>
                 <span class="contract-status">REPO // PUBLIC</span>
               </div>
-              <p class="project-category mono">APLICAÇÃO FULL STACK</p>
+              <p class="project-category mono" data-i18n="p3.cat">APLICAÇÃO FULL STACK</p>
               <h3>DMSBooks</h3>
-              <p>
+              <p data-i18n="p3.desc">
                 Desenvolvi um sistema para gerenciar livros e usuários com cadastro, consulta,
                 edição e remoção.
               </p>
@@ -815,6 +885,7 @@
                 href="https://github.com/Guilhermedms7/DMSBOOKS"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-i18n-html="projects.viewRepo"
               >
                 Ver repositório <span aria-hidden="true">↗</span>
               </a>
@@ -825,9 +896,9 @@
                 <span class="contract-id">CTR_04</span>
                 <span class="contract-status">REPO // PUBLIC</span>
               </div>
-              <p class="project-category mono">APLICATIVO MOBILE</p>
+              <p class="project-category mono" data-i18n="p4.cat">APLICATIVO MOBILE</p>
               <h3>DMS PiBurger</h3>
-              <p>
+              <p data-i18n="p4.desc">
                 Criei um aplicativo de delivery com cadastro, categorias de produtos, carrinho e
                 modo escuro.
               </p>
@@ -840,6 +911,7 @@
                 href="https://github.com/Guilhermedms7/DMSPIBURGUER"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-i18n-html="projects.viewRepo"
               >
                 Ver repositório <span aria-hidden="true">↗</span>
               </a>
@@ -850,21 +922,22 @@
                 <span class="contract-id">CTR_05</span>
                 <span class="contract-status">REPO // PUBLIC</span>
               </div>
-              <p class="project-category mono">SISTEMA ACADÊMICO</p>
-              <h3>Sistema Bancário</h3>
-              <p>
+              <p class="project-category mono" data-i18n="p5.cat">SISTEMA ACADÊMICO</p>
+              <h3 data-i18n="p5.title">Sistema Bancário</h3>
+              <p data-i18n="p5.desc">
                 Implementei cadastro de clientes, agências e contas, consulta de saldo, extrato e
                 movimentações.
               </p>
               <ul class="project-tags">
                 <li data-skill="python">Python</li>
-                <li data-skill="regras">Regras de negócio</li>
+                <li data-skill="regras" data-i18n="chip.bizRules">Regras de negócio</li>
               </ul>
               <a
                 class="project-link"
                 href="https://github.com/Guilhermedms7/Sistema_bancario"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-i18n-html="projects.viewRepo"
               >
                 Ver repositório <span aria-hidden="true">↗</span>
               </a>
@@ -875,9 +948,9 @@
                 <span class="contract-id">CTR_06</span>
                 <span class="contract-status">REPO // PUBLIC</span>
               </div>
-              <p class="project-category mono">JOGO WEB</p>
+              <p class="project-category mono" data-i18n="p6.cat">JOGO WEB</p>
               <h3>Termo</h3>
-              <p>
+              <p data-i18n="p6.desc">
                 Desenvolvi um jogo de palavras no navegador com os modos Termo, Dueto e Quarteto.
               </p>
               <ul class="project-tags">
@@ -890,6 +963,7 @@
                 href="https://github.com/Guilhermedms7/Termo"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-i18n-html="projects.viewRepo"
               >
                 Ver repositório <span aria-hidden="true">↗</span>
               </a>
@@ -900,9 +974,11 @@
                 <span class="contract-id">CTR_07</span>
                 <span class="contract-status">REPO // PUBLIC</span>
               </div>
-              <p class="project-category mono">PROJETO ACADÊMICO · E-COMMERCE</p>
+              <p class="project-category mono" data-i18n="p7.cat">
+                PROJETO ACADÊMICO · E-COMMERCE
+              </p>
               <h3>DMSTECH</h3>
-              <p>
+              <p data-i18n="p7.desc">
                 Criei um projeto inspirado na Terabyte, com cadastro de produtos, carrinho e painel
                 de estoque.
               </p>
@@ -917,6 +993,7 @@
                 href="https://github.com/Guilhermedms7/DMSTECH"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-i18n-html="projects.viewRepo"
               >
                 Ver repositório <span aria-hidden="true">↗</span>
               </a>
@@ -927,9 +1004,9 @@
                 <span class="contract-id">CTR_08</span>
                 <span class="contract-status">SPEC // UI-UX</span>
               </div>
-              <p class="project-category mono">PROJETO ACADÊMICO · UI/UX</p>
-              <h3>Aplicativo fitness</h3>
-              <p>
+              <p class="project-category mono" data-i18n="p8.cat">PROJETO ACADÊMICO · UI/UX</p>
+              <h3 data-i18n="p8.title">Aplicativo fitness</h3>
+              <p data-i18n="p8.desc">
                 Desenhei telas de login, cadastro, perfil e acompanhamento de treinos com foco em
                 usabilidade e responsividade.
               </p>
@@ -937,7 +1014,9 @@
                 <li data-skill="figma">Figma</li>
                 <li data-skill="figma">UX/UI</li>
               </ul>
-              <span class="project-note mono">PROTÓTIPO · SEM LINK PÚBLICO</span>
+              <span class="project-note mono" data-i18n="p8.note">
+                PROTÓTIPO · SEM LINK PÚBLICO
+              </span>
             </article>
           </div>
         </div>
@@ -946,35 +1025,43 @@
       <section class="section section-training" id="formacao" aria-labelledby="formacao-title">
         <div class="container training-layout">
           <div class="section-heading">
-            <p class="section-code mono" data-scramble>SEC_05 // FORMAÇÃO</p>
-            <p class="eyebrow">Treinamento</p>
-            <h2 id="formacao-title">Base em<br /><em>construção.</em></h2>
+            <p class="section-code mono" data-scramble data-i18n="training.code">
+              SEC_05 // FORMAÇÃO
+            </p>
+            <p class="eyebrow" data-i18n="training.eyebrow">Treinamento</p>
+            <h2 id="formacao-title" data-i18n-html="training.title">
+              Base em<br /><em>construção.</em>
+            </h2>
           </div>
           <div class="training-content">
             <div class="education-timeline">
               <article class="education-entry reveal">
                 <span class="education-date mono">2023 — 2025</span>
                 <div>
-                  <h3>Análise e Desenvolvimento de Sistemas</h3>
+                  <h3 data-i18n="training.deg1">Análise e Desenvolvimento de Sistemas</h3>
                   <p>
-                    Universidade de Sorocaba (UNISO)
-                    <span class="education-state">CONCLUÍDO</span>
+                    <span>Universidade de Sorocaba (UNISO)</span>
+                    <span class="education-state" data-i18n="training.done">CONCLUÍDO</span>
                   </p>
                 </div>
               </article>
               <article class="education-entry reveal">
-                <span class="education-date mono">2025 — ATUAL</span>
+                <span class="education-date mono" data-i18n="training.date2">2025 — ATUAL</span>
                 <div>
-                  <h3>Engenharia de Software</h3>
+                  <h3 data-i18n="training.deg2">Engenharia de Software</h3>
                   <p>
-                    Estácio
-                    <span class="education-state education-current">CURSANDO</span>
+                    <span>Estácio</span>
+                    <span class="education-state education-current" data-i18n="training.current">
+                      CURSANDO
+                    </span>
                   </p>
                 </div>
               </article>
             </div>
             <div class="courses-panel reveal">
-              <p class="mono">TREINAMENTO COMPLEMENTAR / 06 REGISTROS</p>
+              <p class="mono" data-i18n="training.coursesHeader">
+                TREINAMENTO COMPLEMENTAR / 06 REGISTROS
+              </p>
               <ul>
                 <li>Bootcamp T-Academy — AMS &amp; SAP</li>
                 <li>Automação com n8n — Rocketseat</li>
@@ -991,10 +1078,16 @@
       <section class="section section-contact" id="contato" aria-labelledby="contato-title">
         <div class="container contact-layout">
           <div class="contact-copy">
-            <p class="section-code mono" data-scramble>SEC_06 // COMUNICAÇÃO</p>
-            <p class="eyebrow">Canal aberto</p>
-            <h2 id="contato-title">Vamos tirar<br />uma ideia do papel?</h2>
-            <p>Fale comigo sobre oportunidades, projetos ou desenvolvimento de software.</p>
+            <p class="section-code mono" data-scramble data-i18n="contact.code">
+              SEC_06 // COMUNICAÇÃO
+            </p>
+            <p class="eyebrow" data-i18n="contact.eyebrow">Canal aberto</p>
+            <h2 id="contato-title" data-i18n-html="contact.title">
+              Vamos tirar<br />uma ideia do papel?
+            </h2>
+            <p data-i18n="contact.body">
+              Fale comigo sobre oportunidades, projetos ou desenvolvimento de software.
+            </p>
             <span class="contact-coordinate mono">CHANNEL STATUS // OPEN</span>
           </div>
           <div class="contact-panel hud-frame">
@@ -1003,7 +1096,14 @@
               <a id="email-address" href="mailto:guilhermedamascenooliveira@gmail.com">
                 guilhermedamascenooliveira@gmail.com
               </a>
-              <button type="button" class="copy-button mono" id="copy-email">COPIAR</button>
+              <button
+                type="button"
+                class="copy-button mono"
+                id="copy-email"
+                data-i18n="contact.copy"
+              >
+                COPIAR
+              </button>
             </div>
             <p class="copy-feedback mono" id="copy-feedback" aria-live="polite"></p>
             <div class="contact-entry">
@@ -1039,7 +1139,12 @@
         </a>
         <p class="mono">© <span id="current-year">2026</span> GUILHERME DAMASCENO OLIVEIRA</p>
         <div class="footer-controls">
-          <button type="button" class="theme-toggle mono" id="theme-toggle" title="Alternar paleta do HUD">
+          <button
+            type="button"
+            class="theme-toggle mono"
+            id="theme-toggle"
+            title="Alternar paleta do HUD"
+          >
             HUD: <span>CYBER // YELLOW</span>
           </button>
           <button type="button" class="glitch-toggle mono" id="glitch-toggle" aria-pressed="true">
@@ -1047,7 +1152,7 @@
           </button>
         </div>
         <p class="audio-credit mono">
-          TRILHA //
+          <span data-i18n="footer.track">TRILHA //</span>
           <a
             href="https://mixkit.co/free-stock-music/synthwave/"
             target="_blank"
@@ -1060,6 +1165,7 @@
             href="https://mixkit.co/license/#musicFree"
             target="_blank"
             rel="noopener noreferrer"
+            data-i18n="footer.license"
           >
             LICENÇA
           </a>
@@ -1081,7 +1187,9 @@
           <span class="cmd-title" id="cmd-dialog-title">
             <span aria-hidden="true">&gt;_</span> GD-01 // NETRUNNER TERMINAL
           </span>
-          <button type="button" class="cmd-close mono" id="cmd-close">FECHAR [ESC]</button>
+          <button type="button" class="cmd-close mono" id="cmd-close" data-i18n="cmd.close">
+            FECHAR [ESC]
+          </button>
         </div>
         <div class="cmd-chips" aria-label="Comandos rápidos">
           <button type="button" class="cmd-chip" data-cmd="help">help</button>
@@ -1089,16 +1197,17 @@
           <button type="button" class="cmd-chip" data-cmd="missions">missions</button>
           <button type="button" class="cmd-chip" data-cmd="stack">stack</button>
           <button type="button" class="cmd-chip" data-cmd="projects python">projects python</button>
+          <button type="button" class="cmd-chip" data-cmd="lang">lang</button>
           <button type="button" class="cmd-chip" data-cmd="theme">theme</button>
           <button type="button" class="cmd-chip" data-cmd="audio">audio</button>
           <button type="button" class="cmd-chip" data-cmd="email">email</button>
           <button type="button" class="cmd-chip" data-cmd="cv">cv</button>
         </div>
         <div class="cmd-output" id="cmd-output" aria-live="polite">
-          <p class="cmd-line cmd-line-accent">
+          <p class="cmd-line cmd-line-accent" data-i18n="cmd.welcome1">
             SISTEMA CONECTADO // DOSSIÊ GUILHERME DAMASCENO (GD-01)
           </p>
-          <p class="cmd-line cmd-line-sys">
+          <p class="cmd-line cmd-line-sys" data-i18n="cmd.welcome2">
             Digite "help" ou clique nos atalhos acima para inspecionar missões, stack, contratos ou
             alternar o HUD.
           </p>
@@ -1109,7 +1218,7 @@
             class="cmd-input"
             id="cmd-input"
             type="text"
-            placeholder="Digite um comando (ex: help, missions, theme netrunner)..."
+            placeholder="Digite um comando (ex: help, missions, lang en, theme netrunner)..."
             spellcheck="false"
           />
           <button type="submit" class="cmd-submit">EXEC</button>

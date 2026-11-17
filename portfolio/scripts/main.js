@@ -1,6 +1,6 @@
 /* ==========================================================================
-   GUILHERME DAMASCENO // CYBERPUNK TACTICAL HUD ENGINE (v2.0)
-   Pure Vanilla JS · Zero Dependencies · Accessible & Motion-Aware
+   GUILHERME DAMASCENO // CYBERPUNK TACTICAL HUD ENGINE (v2.1)
+   Pure Vanilla JS · Bilingual (PT-BR / EN) · Accessible & Motion-Aware
    ========================================================================== */
 
 (() => {
@@ -10,12 +10,13 @@
   const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   /* ------------------------------------------------------------------------
-     1. Preferences & State
+     1. Preferences, State & Bilingual Dictionary
      ------------------------------------------------------------------------ */
   const STORAGE_KEYS = {
     audio: "portfolio-audio-preference",
     glitch: "portfolio-glitch-mode",
     theme: "portfolio-hud-theme",
+    lang: "portfolio-hud-lang",
     boot: "portfolio-boot-seen",
   };
 
@@ -25,9 +26,342 @@
     { id: "arasaka", label: "ARASAKA // CRIMSON" },
   ];
 
+  const I18N = {
+    pt: {
+      pageTitle: "Guilherme Damasceno | Desenvolvedor Full Stack",
+      skip: "Pular para o conteúdo",
+      "nav.about": "Dossiê",
+      "nav.missions": "Missões",
+      "nav.loadout": "Loadout",
+      "nav.projects": "Contratos",
+      "nav.training": "Treinamento",
+      "nav.contact": 'Contato <span aria-hidden="true">↗</span>',
+      "hero.eyebrow":
+        '<span class="status-light" aria-hidden="true"></span> Perfil ativo <span class="eyebrow-divider">/</span> Desenvolvedor Full Stack',
+      "hero.desc": "Back-end resiliente, integrações e agentes de IA para sistemas corporativos.",
+      "hero.context":
+        "Atuo na Develcode em squads da RD Saúde e da Leroy Merlin, conectando sistemas, modernizando aplicações e automatizando processos.",
+      "hero.ctaPrimary": 'Explorar missões <span aria-hidden="true">↘</span>',
+      "hero.ctaCv": 'Currículo PDF <span aria-hidden="true">↓</span>',
+      "hero.bottomHint":
+        'PRESSIONE <b>CTRL+K</b> OU ROLE PARA EXPLORAR <b aria-hidden="true">↓</b>',
+      "card.role": "OPERADOR // FULL STACK",
+      "card.companyLabel": "VÍNCULO",
+      "card.squadsLabel": "ATUAÇÃO",
+      "card.stackValue": "Java / Spring · C# / .NET · IA",
+      "about.code": "SEC_01 // PERFIL",
+      "about.eyebrow": "Dossiê",
+      "about.title": "Eu conecto<br /><em>sistemas.</em>",
+      "about.lead":
+        "Desenvolvo sistemas corporativos, APIs e integrações. Na Develcode, atuo em squads da RD Saúde e da Leroy Merlin com back-end, modernização e automação.",
+      "about.body":
+        "Trabalho principalmente com Java e Spring Boot, C# e .NET. Também crio fluxos com n8n e uso Python e JavaScript para apoiar integrações, orquestrar agentes de IA e reduzir tarefas manuais.",
+      "about.f1Label": "01 / EMPRESA",
+      "about.f1Sub": "Desenvolvedor Full Stack",
+      "about.f2Label": "02 / FORMAÇÃO",
+      "about.f2Sub": "Engenharia de Software · Estácio",
+      "about.f3Label": "03 / FOCO",
+      "about.f3Title": "Back-end & IA",
+      "about.f3Sub": "Resiliência · integração · automação",
+      "missions.code": "SEC_02 // EXPERIÊNCIA",
+      "missions.eyebrow": "Log de missões",
+      "missions.title": "Trabalho em campo",
+      "missions.aside": "DEZ/2025 — ATUAL<br />SQUADS / DEVELCODE",
+      "missions.dtContext": "CONTEXTO",
+      "missions.dtActions": "O QUE FIZ",
+      "missions.dtResult": "RESULTADO",
+      "missions.stackHint": "STACK (CLIQUE PARA RASTREAR NO DOSSIÊ)",
+      "m1.title": "Agentes de IA<br />resilientes",
+      "m1.context":
+        "Plataforma corporativa usa IA para gerar e validar histórias de usuário e calcular pontuação.",
+      "m1.p1":
+        "Valido campos obrigatórios com Java 17 e Spring Boot: explico falhas, bloqueio cards e aplico feature flag com fail-closed.",
+      "m1.p2":
+        "Integro Python (FastAPI, LangChain/LangGraph) ao gateway corporativo de LLM (AWS Bedrock), com correlation ID, timeouts configuráveis, erros HTTP controlados, Langfuse e mascaramento de dados.",
+      "m1.p3":
+        "Reforço o agente com retries para throttling, schemas tolerantes e validação 1:1 dos itens.",
+      "m1.p4":
+        "Amplio testes; corrijo vulnerabilidades de dependências (SCA/SAST) e mitigo XSS e Log Injection.",
+      "m1.p5":
+        "Apoio CI/CD, releases e resolução de conflitos com Docker, Kubernetes, ArgoCD e Datadog APM.",
+      "m1.result":
+        "Eliminei a perda de critérios de aceite na análise e reforcei validação e resiliência.",
+      "m1.archHint": "PIPELINE OPERACIONAL // PASSE O MOUSE OU CLIQUE PARA INSPECIONAR",
+      "m1.archCount": "4 ESTÁGIOS",
+      "m1.node2Title": "Agente IA",
+      "m1.node2Sub": "FastAPI · LangGraph · Validação 1:1",
+      "m2.title": "Modernização<br />de sistemas",
+      "m2.context": "Manutenção e modernização de sistemas legados.",
+      "m2.actions":
+        "Refatoro sistemas legados com C# e .NET, aplico padrões de projeto, modelo a persistência com ActiveRecord/NHibernate e PostgreSQL e diagnostico problemas de integridade de dados e regras de negócio.",
+      "m2.result":
+        "Refatorações direcionadas e problemas de dados e negócio investigados no contexto do sistema legado.",
+      "m3.cat": "TRANSVERSAL · AUTOMAÇÃO",
+      "m3.title": "Menos rotina.<br />Mais fluxo.",
+      "m3.context": "Tarefas manuais e fluxos entre serviços.",
+      "m3.actions":
+        "Crio automações e integrações com n8n, Python, JavaScript e recursos de IA.",
+      "m3.result": "Reduzo tarefas manuais e apoio a eficiência operacional.",
+      "loadout.code": "SEC_03 // SISTEMAS",
+      "loadout.title": "Ferramentas<br />de trabalho",
+      "loadout.aside":
+        "Sem métricas inventadas.<br />Clique em uma tecnologia para rastrear seu uso.",
+      "loadout.clearTrace": "LIMPAR [×]",
+      "loadout.s2": "Arquitetura & qualidade",
+      "loadout.s3": "IA & agentes",
+      "loadout.s4": "Cloud & observabilidade",
+      "loadout.s6": "Dados & persistência",
+      "loadout.s7": "DevOps & automação",
+      "loadout.s8": "Base complementar",
+      "loadout.traits":
+        "<b>TRAÇOS // </b>Colaboração · comunicação · organização · aprendizado rápido · resolução de problemas",
+      "loadout.lang": "<b>IDIOMA // </b>Inglês intermediário",
+      "chip.assistiveAi": "IA assistiva",
+      "chip.ruleVal": "Validação de regras",
+      "chip.tests": "Testes",
+      "chip.automation": "Automação",
+      "chip.relDb": "Banco de dados relacionais",
+      "chip.reqEng": "Engenharia de requisitos",
+      "chip.ds": "Estruturas de dados",
+      "chip.logic": "Raciocínio lógico",
+      "chip.sysSec": "Segurança de sistemas",
+      "chip.bizRules": "Regras de negócio",
+      "projects.code": "SEC_04 // PROJETOS",
+      "projects.eyebrow": "Contratos",
+      "projects.title": "Trabalhos em destaque",
+      "projects.aside": "Pessoais · acadêmicos · demonstrações",
+      "projects.filterLabel": "FILTRAR POR TECNOLOGIA",
+      "projects.filterAll": "Todos",
+      "projects.openSite": 'Abrir site <span aria-hidden="true">↗</span>',
+      "projects.viewRepo": 'Ver repositório <span aria-hidden="true">↗</span>',
+      "p1.cat": "APRENDIZADO DE IDIOMAS · WEB APP",
+      "p1.desc":
+        "Pratico leitura em inglês com histórias, filtros por categoria e nível CEFR e exercícios de completar lacunas.",
+      "p2.desc":
+        "Criei uma loja de tecnologia com catálogo, busca, ofertas e carrinho, conectada a uma API e banco de dados.",
+      "p3.cat": "APLICAÇÃO FULL STACK",
+      "p3.desc":
+        "Desenvolvi um sistema para gerenciar livros e usuários com cadastro, consulta, edição e remoção.",
+      "p4.cat": "APLICATIVO MOBILE",
+      "p4.desc":
+        "Criei um aplicativo de delivery com cadastro, categorias de produtos, carrinho e modo escuro.",
+      "p5.cat": "SISTEMA ACADÊMICO",
+      "p5.title": "Sistema Bancário",
+      "p5.desc":
+        "Implementei cadastro de clientes, agências e contas, consulta de saldo, extrato e movimentações.",
+      "p6.cat": "JOGO WEB",
+      "p6.desc":
+        "Desenvolvi um jogo de palavras no navegador com os modos Termo, Dueto e Quarteto.",
+      "p7.cat": "PROJETO ACADÊMICO · E-COMMERCE",
+      "p7.desc":
+        "Criei um projeto inspirado na Terabyte, com cadastro de produtos, carrinho e painel de estoque.",
+      "p8.cat": "PROJETO ACADÊMICO · UI/UX",
+      "p8.title": "Aplicativo fitness",
+      "p8.desc":
+        "Desenhei telas de login, cadastro, perfil e acompanhamento de treinos com foco em usabilidade e responsividade.",
+      "p8.note": "PROTÓTIPO · SEM LINK PÚBLICO",
+      "training.code": "SEC_05 // FORMAÇÃO",
+      "training.eyebrow": "Treinamento",
+      "training.title": "Base em<br /><em>construção.</em>",
+      "training.deg1": "Análise e Desenvolvimento de Sistemas",
+      "training.done": "CONCLUÍDO",
+      "training.date2": "2025 — ATUAL",
+      "training.deg2": "Engenharia de Software",
+      "training.current": "CURSANDO",
+      "training.coursesHeader": "TREINAMENTO COMPLEMENTAR / 06 REGISTROS",
+      "contact.code": "SEC_06 // COMUNICAÇÃO",
+      "contact.eyebrow": "Canal aberto",
+      "contact.title": "Vamos tirar<br />uma ideia do papel?",
+      "contact.body":
+        "Fale comigo sobre oportunidades, projetos ou desenvolvimento de software.",
+      "contact.copy": "COPIAR",
+      "footer.track": "TRILHA //",
+      "footer.license": "LICENÇA",
+      "cmd.close": "FECHAR [ESC]",
+      "cmd.welcome1": "SISTEMA CONECTADO // DOSSIÊ GUILHERME DAMASCENO (GD-01)",
+      "cmd.welcome2":
+        'Digite "help" ou clique nos atalhos acima para inspecionar missões, stack, contratos ou alternar o HUD.',
+      cmdPlaceholder: "Digite um comando (ex: help, missions, lang en, theme netrunner)...",
+      audioOn: "SOM ON",
+      audioOff: "SOM OFF",
+      contractOne: "contrato exibido",
+      contractMany: "contratos exibidos",
+      copiedOk: "✓ CANAL COPIADO PARA A ÁREA DE TRANSFERÊNCIA",
+      copiedFallback: "CÓPIA MANUAL ·",
+      tracePrefix: "RASTREAMENTO DE TECNOLOGIA //",
+      traceSuffix: "OCORRÊNCIAS NO DOSSIÊ",
+    },
+
+    en: {
+      pageTitle: "Guilherme Damasceno | Full Stack Developer",
+      skip: "Skip to content",
+      "nav.about": "Dossier",
+      "nav.missions": "Missions",
+      "nav.loadout": "Loadout",
+      "nav.projects": "Contracts",
+      "nav.training": "Training",
+      "nav.contact": 'Contact <span aria-hidden="true">↗</span>',
+      "hero.eyebrow":
+        '<span class="status-light" aria-hidden="true"></span> Active profile <span class="eyebrow-divider">/</span> Full Stack Developer',
+      "hero.desc": "Resilient back-end, integrations, and AI agents for enterprise systems.",
+      "hero.context":
+        "Working at Develcode on RD Saúde and Leroy Merlin squads — connecting systems, modernizing legacy applications, and automating workflows.",
+      "hero.ctaPrimary": 'Explore missions <span aria-hidden="true">↘</span>',
+      "hero.ctaCv": 'Resume PDF <span aria-hidden="true">↓</span>',
+      "hero.bottomHint":
+        'PRESS <b>CTRL+K</b> OR SCROLL TO EXPLORE <b aria-hidden="true">↓</b>',
+      "card.role": "OPERATOR // FULL STACK",
+      "card.companyLabel": "COMPANY",
+      "card.squadsLabel": "SQUADS",
+      "card.stackValue": "Java / Spring · C# / .NET · AI",
+      "about.code": "SEC_01 // PROFILE",
+      "about.eyebrow": "Dossier",
+      "about.title": "I connect<br /><em>systems.</em>",
+      "about.lead":
+        "I build enterprise systems, APIs, and integrations. At Develcode, I work in RD Saúde and Leroy Merlin squads focused on back-end engineering, modernization, and automation.",
+      "about.body":
+        "My core stack centers on Java & Spring Boot, C# & .NET. I also design n8n workflows and use Python and JavaScript to power integrations, orchestrate AI agents, and eliminate manual toil.",
+      "about.f1Label": "01 / COMPANY",
+      "about.f1Sub": "Full Stack Developer",
+      "about.f2Label": "02 / EDUCATION",
+      "about.f2Sub": "Software Engineering · Estácio",
+      "about.f3Label": "03 / FOCUS",
+      "about.f3Title": "Back-end & AI",
+      "about.f3Sub": "Resilience · integration · automation",
+      "missions.code": "SEC_02 // EXPERIENCE",
+      "missions.eyebrow": "Mission log",
+      "missions.title": "Field operations",
+      "missions.aside": "DEC/2025 — PRESENT<br />SQUADS / DEVELCODE",
+      "missions.dtContext": "CONTEXT",
+      "missions.dtActions": "DELIVERED",
+      "missions.dtResult": "OUTCOME",
+      "missions.stackHint": "STACK (CLICK ANY CHIP TO TRACE ACROSS DOSSIER)",
+      "m1.title": "Resilient<br />AI agents",
+      "m1.context":
+        "Enterprise platform leveraging AI to generate and validate user stories and calculate story scoring.",
+      "m1.p1":
+        "Enforce mandatory field validation in Java 17 & Spring Boot: surface clear failure reasons, block invalid cards, and apply fail-closed feature flags.",
+      "m1.p2":
+        "Integrate Python (FastAPI, LangChain/LangGraph) with the corporate LLM gateway (AWS Bedrock), including correlation IDs, configurable timeouts, controlled HTTP errors, Langfuse tracing, and data masking.",
+      "m1.p3":
+        "Harden the AI agent with throttling retries, fault-tolerant schemas, and strict 1:1 item validation.",
+      "m1.p4":
+        "Expand automated test coverage; remediate dependency vulnerabilities (SCA/SAST) and mitigate XSS and Log Injection.",
+      "m1.p5":
+        "Support CI/CD pipelines, releases, and conflict resolution using Docker, Kubernetes, ArgoCD, and Datadog APM.",
+      "m1.result":
+        "Eliminated acceptance criteria loss during story analysis while strengthening validation and runtime resilience.",
+      "m1.archHint": "OPERATIONAL PIPELINE // HOVER OR CLICK TO INSPECT",
+      "m1.archCount": "4 STAGES",
+      "m1.node2Title": "AI Agent",
+      "m1.node2Sub": "FastAPI · LangGraph · 1:1 Validation",
+      "m2.title": "Legacy system<br />modernization",
+      "m2.context": "Maintenance and modernization of mission-critical legacy systems.",
+      "m2.actions":
+        "Refactor legacy applications using C# and .NET, apply design patterns, model persistence with ActiveRecord/NHibernate and PostgreSQL, and diagnose data integrity and business rule issues.",
+      "m2.result":
+        "Targeted refactorings delivered alongside root-cause investigation of complex data and domain rule issues.",
+      "m3.cat": "CROSS-SQUAD · AUTOMATION",
+      "m3.title": "Less routine.<br />More flow.",
+      "m3.context": "Repetitive manual tasks and cross-service workflows.",
+      "m3.actions":
+        "Build workflow automations and service integrations with n8n, Python, JavaScript, and assistive AI.",
+      "m3.result": "Reduced manual operational toil and improved workflow efficiency.",
+      "loadout.code": "SEC_03 // SYSTEMS",
+      "loadout.title": "Operational<br />loadout",
+      "loadout.aside":
+        "No invented percentages.<br />Click any technology chip to trace its usage.",
+      "loadout.clearTrace": "CLEAR [×]",
+      "loadout.s2": "Architecture & quality",
+      "loadout.s3": "AI & agents",
+      "loadout.s4": "Cloud & observability",
+      "loadout.s6": "Data & persistence",
+      "loadout.s7": "DevOps & automation",
+      "loadout.s8": "Core foundations",
+      "loadout.traits":
+        "<b>TRAITS // </b>Collaboration · communication · organization · fast learning · problem solving",
+      "loadout.lang": "<b>LANGUAGE // </b>Portuguese (Native) · English (Intermediate)",
+      "chip.assistiveAi": "Assistive AI",
+      "chip.ruleVal": "Rule validation",
+      "chip.tests": "Automated tests",
+      "chip.automation": "Automation",
+      "chip.relDb": "Relational databases",
+      "chip.reqEng": "Requirements engineering",
+      "chip.ds": "Data structures",
+      "chip.logic": "Logical reasoning",
+      "chip.sysSec": "Systems security",
+      "chip.bizRules": "Business rules",
+      "projects.code": "SEC_04 // PROJECTS",
+      "projects.eyebrow": "Contracts",
+      "projects.title": "Featured work",
+      "projects.aside": "Personal · academic · live demos",
+      "projects.filterLabel": "FILTER BY TECHNOLOGY",
+      "projects.filterAll": "All",
+      "projects.openSite": 'Live demo <span aria-hidden="true">↗</span>',
+      "projects.viewRepo": 'Repository <span aria-hidden="true">↗</span>',
+      "p1.cat": "LANGUAGE LEARNING · WEB APP",
+      "p1.desc":
+        "Interactive English reading platform featuring graded stories, category & CEFR level filters, and gap-fill exercises.",
+      "p2.desc":
+        "Full-stack tech e-commerce store with catalog search, deals, and shopping cart backed by FastAPI and MongoDB.",
+      "p3.cat": "FULL STACK APPLICATION",
+      "p3.desc":
+        "Book and user management system supporting full CRUD workflows with React, Node.js, Express, and MySQL.",
+      "p4.cat": "MOBILE APPLICATION",
+      "p4.desc":
+        "Cross-platform food delivery mobile app featuring user auth, product categories, cart, and dark mode.",
+      "p5.cat": "ACADEMIC SYSTEM",
+      "p5.title": "Banking System",
+      "p5.desc":
+        "Core banking simulation implementing customer, branch, and account registration, balance inquiries, and statements.",
+      "p6.cat": "BROWSER GAME",
+      "p6.desc":
+        "Browser-based daily word puzzle game featuring single (Termo), double (Dueto), and quad (Quarteto) modes.",
+      "p7.cat": "ACADEMIC PROJECT · E-COMMERCE",
+      "p7.desc":
+        "Hardware e-commerce platform inspired by Terabyte, complete with product catalog, cart, and inventory dashboard.",
+      "p8.cat": "ACADEMIC PROJECT · UI/UX",
+      "p8.title": "Fitness App UI",
+      "p8.desc":
+        "Designed login, onboarding, user profile, and workout tracking screens focused on usability and responsive layout.",
+      "p8.note": "PROTOTYPE · NO PUBLIC LINK",
+      "training.code": "SEC_05 // EDUCATION",
+      "training.eyebrow": "Training",
+      "training.title": "Foundation in<br /><em>progress.</em>",
+      "training.deg1": "Systems Analysis and Development",
+      "training.done": "COMPLETED",
+      "training.date2": "2025 — PRESENT",
+      "training.deg2": "Software Engineering",
+      "training.current": "IN PROGRESS",
+      "training.coursesHeader": "ADDITIONAL TRAINING / 06 RECORDS",
+      "contact.code": "SEC_06 // COMMS",
+      "contact.eyebrow": "Open channel",
+      "contact.title": "Ready to ship<br />an idea?",
+      "contact.body":
+        "Reach out regarding engineering roles, technical partnerships, or software projects.",
+      "contact.copy": "COPY",
+      "footer.track": "SOUNDTRACK //",
+      "footer.license": "LICENSE",
+      "cmd.close": "CLOSE [ESC]",
+      "cmd.welcome1": "SYSTEM CONNECTED // GUILHERME DAMASCENO DOSSIER (GD-01)",
+      "cmd.welcome2":
+        'Type "help" or click a quick chip above to inspect missions, stack, contracts, language, or HUD modes.',
+      cmdPlaceholder: "Type a command (e.g., help, missions, lang pt, theme netrunner)...",
+      audioOn: "SOUND ON",
+      audioOff: "SOUND OFF",
+      contractOne: "contract displayed",
+      contractMany: "contracts displayed",
+      copiedOk: "✓ EMAIL COPIED TO CLIPBOARD",
+      copiedFallback: "MANUAL COPY ·",
+      tracePrefix: "TECH TRACE //",
+      traceSuffix: "MATCHES IN DOSSIER",
+    },
+  };
+
   let savedAudioPreference = "off";
   let glitchEnabled = true;
   let currentThemeIndex = 0;
+  let currentLang = "pt";
   let audioCtx = null;
 
   const safeGetStorage = (storage, key) => {
@@ -58,6 +392,13 @@
   if (foundThemeIdx >= 0) {
     currentThemeIndex = foundThemeIdx;
   }
+
+  const storedLang = safeGetStorage(window.localStorage, STORAGE_KEYS.lang);
+  if (storedLang === "pt" || storedLang === "en") {
+    currentLang = storedLang;
+  }
+
+  const t = (key) => I18N[currentLang]?.[key] ?? I18N.pt[key] ?? key;
 
   /* ------------------------------------------------------------------------
      2. Subtle Web Audio UI Synthesizer (Active only when SOM ON)
@@ -108,8 +449,8 @@
         ? "Pausar música Lonerism"
         : "Ativar música Lonerism, de Alejandro Magaña, em volume baixo"
     );
-    if (audioLabel) audioLabel.textContent = isPlaying ? "SOM ON" : "SOM OFF";
-    if (audioStatus) audioStatus.textContent = status;
+    if (audioLabel) audioLabel.textContent = isPlaying ? t("audioOn") : t("audioOff");
+    if (status && audioStatus) audioStatus.textContent = status;
   }
 
   async function startAmbientAudio() {
@@ -412,12 +753,20 @@
      9. Dynamic Cycling Terminal Stack in Hero
      ------------------------------------------------------------------------ */
   const terminalTyped = document.querySelector("#typed-stack");
-  const STACK_ROTATION = [
-    "Java 17 · Spring Boot · C# · .NET · n8n",
-    "Python · FastAPI · LangGraph · AWS Bedrock",
-    "Docker · Kubernetes · ArgoCD · Datadog APM",
-    "PostgreSQL · NHibernate · APIs Resilientes",
-  ];
+  const STACK_ROTATION = {
+    pt: [
+      "Java 17 · Spring Boot · C# · .NET · n8n",
+      "Python · FastAPI · LangGraph · AWS Bedrock",
+      "Docker · Kubernetes · ArgoCD · Datadog APM",
+      "PostgreSQL · NHibernate · APIs Resilientes",
+    ],
+    en: [
+      "Java 17 · Spring Boot · C# · .NET · n8n",
+      "Python · FastAPI · LangGraph · AWS Bedrock",
+      "Docker · Kubernetes · ArgoCD · Datadog APM",
+      "PostgreSQL · NHibernate · Resilient APIs",
+    ],
+  };
 
   if (terminalTyped && !motionPreference.matches) {
     let lineIdx = 0;
@@ -425,7 +774,8 @@
     let deleting = false;
 
     const tickTerminal = () => {
-      const currentLine = STACK_ROTATION[lineIdx];
+      const list = STACK_ROTATION[currentLang] || STACK_ROTATION.pt;
+      const currentLine = list[lineIdx % list.length];
       if (!deleting) {
         charIdx += 1;
         terminalTyped.textContent = currentLine.slice(0, charIdx);
@@ -440,7 +790,7 @@
         terminalTyped.textContent = currentLine.slice(0, Math.max(0, charIdx));
         if (charIdx <= 0) {
           deleting = false;
-          lineIdx = (lineIdx + 1) % STACK_ROTATION.length;
+          lineIdx = (lineIdx + 1) % list.length;
           window.setTimeout(tickTerminal, 240);
           return;
         }
@@ -488,9 +838,21 @@
   const traceText = document.querySelector("#skill-trace-text");
   const traceClear = document.querySelector("#skill-trace-clear");
   let activeSkill = "";
+  let activeSkillLabel = "";
+
+  function renderSkillTraceBanner(count) {
+    if (!traceBar || !traceText) return;
+    if (activeSkill) {
+      traceBar.hidden = false;
+      traceText.textContent = `${t("tracePrefix")} ${(activeSkillLabel || activeSkill).toUpperCase()} · ${count} ${t("traceSuffix")}`;
+    } else {
+      traceBar.hidden = true;
+    }
+  }
 
   function setSkillTrace(skillKey, labelText = "") {
     activeSkill = activeSkill === skillKey ? "" : skillKey;
+    activeSkillLabel = labelText;
     let count = 0;
 
     skillChips.forEach((chip) => {
@@ -500,14 +862,7 @@
       if (match) count += 1;
     });
 
-    if (traceBar && traceText) {
-      if (activeSkill) {
-        traceBar.hidden = false;
-        traceText.textContent = `RASTREAMENTO DE TECNOLOGIA // ${(labelText || activeSkill).toUpperCase()} · ${count} OCORRÊNCIAS NO DOSSIÊ`;
-      } else {
-        traceBar.hidden = true;
-      }
-    }
+    renderSkillTraceBanner(count);
     playUiTick(840, 0.02);
   }
 
@@ -528,8 +883,8 @@
   const filters = [...document.querySelectorAll(".filter-button")];
   const projectCards = [...document.querySelectorAll("#project-grid .project-card")];
   const filterStatus = document.querySelector("#filter-status");
+  let activeProjectFilter = "all";
 
-  // Populate accurate badge counts on each filter button
   filters.forEach((button) => {
     const filter = button.dataset.filter;
     const count =
@@ -540,7 +895,15 @@
     if (badge) badge.textContent = `[${String(count).padStart(2, "0")}]`;
   });
 
-  function applyProjectFilter(filterValue) {
+  function updateFilterStatusLabel(visibleCount) {
+    if (!filterStatus) return;
+    filterStatus.textContent = `${visibleCount} ${
+      visibleCount === 1 ? t("contractOne") : t("contractMany")
+    }`;
+  }
+
+  function applyProjectFilter(filterValue, silent = false) {
+    activeProjectFilter = filterValue;
     let visibleCount = 0;
     filters.forEach((item) => {
       const active = item.dataset.filter === filterValue;
@@ -555,19 +918,15 @@
       card.classList.remove("is-filtering-in");
       if (visible) {
         visibleCount += 1;
-        if (!motionPreference.matches && glitchEnabled) {
+        if (!silent && !motionPreference.matches && glitchEnabled) {
           void card.offsetWidth;
           card.classList.add("is-filtering-in");
         }
       }
     });
 
-    if (filterStatus) {
-      filterStatus.textContent = `${visibleCount} ${
-        visibleCount === 1 ? "contrato exibido" : "contratos exibidos"
-      }`;
-    }
-    playUiTick(780, 0.02);
+    updateFilterStatusLabel(visibleCount);
+    if (!silent) playUiTick(780, 0.02);
     return visibleCount;
   }
 
@@ -576,7 +935,69 @@
   });
 
   /* ------------------------------------------------------------------------
-     13. Copy Email Action
+     13. Bilingual Switcher (PT-BR / EN)
+     ------------------------------------------------------------------------ */
+  const langToggle = document.querySelector("#lang-toggle");
+  const langLabel = document.querySelector("#lang-label");
+  const cmdInput = document.querySelector("#cmd-input");
+
+  function applyLanguage(lang, silent = false) {
+    currentLang = lang === "en" ? "en" : "pt";
+    root.lang = currentLang === "en" ? "en" : "pt-BR";
+    document.title = t("pageTitle");
+
+    if (langToggle) langToggle.dataset.lang = currentLang;
+    if (langLabel) langLabel.textContent = currentLang.toUpperCase();
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      const val = I18N[currentLang]?.[key];
+      if (typeof val === "string") {
+        window.clearInterval(el._scrambleTimer);
+        el.textContent = val;
+        if (el.hasAttribute("data-scramble")) {
+          el.dataset.originalText = val;
+        }
+      }
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+      const key = el.dataset.i18nHtml;
+      const val = I18N[currentLang]?.[key];
+      if (typeof val === "string") {
+        el.innerHTML = val;
+      }
+    });
+
+    if (cmdInput) {
+      cmdInput.placeholder = t("cmdPlaceholder");
+    }
+
+    if (audioLabel && ambientAudio) {
+      audioLabel.textContent = ambientAudio.paused ? t("audioOff") : t("audioOn");
+    }
+
+    const visibleProjects = projectCards.filter((card) => !card.hidden).length;
+    updateFilterStatusLabel(visibleProjects);
+
+    if (activeSkill) {
+      const matchedCount = skillChips.filter((c) => c.classList.contains("is-skill-match")).length;
+      renderSkillTraceBanner(matchedCount);
+    }
+
+    safeSetStorage(window.localStorage, STORAGE_KEYS.lang, currentLang);
+    if (!silent) playUiTick(990, 0.025);
+  }
+
+  if (langToggle) {
+    langToggle.addEventListener("click", () => {
+      applyLanguage(currentLang === "pt" ? "en" : "pt");
+    });
+  }
+  applyLanguage(currentLang, true);
+
+  /* ------------------------------------------------------------------------
+     14. Copy Email Action
      ------------------------------------------------------------------------ */
   const copyButton = document.querySelector("#copy-email");
   const emailAddressEl = document.querySelector("#email-address");
@@ -587,11 +1008,11 @@
     const email = emailAddressEl.textContent.trim();
     try {
       await navigator.clipboard.writeText(email);
-      if (copyFeedback) copyFeedback.textContent = "✓ CANAL COPIADO PARA A ÁREA DE TRANSFERÊNCIA";
+      if (copyFeedback) copyFeedback.textContent = t("copiedOk");
       playUiTick(1120, 0.03);
       return true;
     } catch {
-      if (copyFeedback) copyFeedback.textContent = `CÓPIA MANUAL · ${email}`;
+      if (copyFeedback) copyFeedback.textContent = `${t("copiedFallback")} ${email}`;
       return false;
     }
   }
@@ -601,12 +1022,11 @@
   }
 
   /* ------------------------------------------------------------------------
-     14. Interactive Netrunner Command Terminal (Ctrl+K / /)
+     15. Interactive Netrunner Command Terminal (Ctrl+K / /)
      ------------------------------------------------------------------------ */
   const cmdBackdrop = document.querySelector("#cmd-backdrop");
   const cmdOutput = document.querySelector("#cmd-output");
   const cmdForm = document.querySelector("#cmd-form");
-  const cmdInput = document.querySelector("#cmd-input");
   const cmdClose = document.querySelector("#cmd-close");
   const cmdTriggers = [...document.querySelectorAll("[data-open-cmd]")];
   const cmdChips = [...document.querySelectorAll("[data-cmd]")];
@@ -621,6 +1041,7 @@
     "missions",
     "stack",
     "projects",
+    "lang",
     "theme",
     "audio",
     "glitch",
@@ -665,42 +1086,68 @@
     appendCmdLine(`gd@netrunner:~$ ${trimmed}`, "user");
     const [cmd, ...args] = trimmed.toLowerCase().split(/\s+/);
     const arg = args[0] || "";
+    const isEn = currentLang === "en";
 
     switch (cmd) {
       case "help":
         appendCmdLine(
-          [
-            "COMANDOS DISPONÍVEIS:",
-            "  whoami              → Resumo do operador e vínculo atual",
-            "  missions            → Log das missões (RD Saúde, Leroy Merlin, Automação)",
-            "  stack               → Loadout técnico principal",
-            "  projects [filtro]   → Navega/filtra contratos (ex: projects python)",
-            "  theme [nome]        → Alterna HUD (cyber | netrunner | arasaka)",
-            "  audio [on|off]      → Liga/desliga trilha Synthwave",
-            "  glitch [on|off]     → Alterna efeitos visuais CRT/glitch",
-            "  email               → Copia o e-mail profissional",
-            "  cv                  → Baixa o currículo em PDF",
-            "  linkedin / github   → Abre redes profissionais",
-            "  clear / exit        → Limpa ou fecha o terminal",
-          ].join("\n"),
+          isEn
+            ? [
+                "AVAILABLE COMMANDS:",
+                "  whoami              → Operator summary & current role",
+                "  missions            → Field logs (RD Saúde, Leroy Merlin, Automation)",
+                "  stack               → Primary technical loadout",
+                "  projects [filter]   → Filter contracts (e.g., projects python)",
+                "  lang [pt|en]        → Switch interface language (PT-BR / EN)",
+                "  theme [name]        → Switch HUD palette (cyber | netrunner | arasaka)",
+                "  audio [on|off]      → Toggle Synthwave soundtrack",
+                "  glitch [on|off]     → Toggle CRT/glitch effects",
+                "  email               → Copy professional email",
+                "  cv                  → Download PDF resume",
+                "  linkedin / github   → Open social profiles",
+                "  clear / exit        → Clear output or close terminal",
+              ].join("\n")
+            : [
+                "COMANDOS DISPONÍVEIS:",
+                "  whoami              → Resumo do operador e vínculo atual",
+                "  missions            → Log das missões (RD Saúde, Leroy Merlin, Automação)",
+                "  stack               → Loadout técnico principal",
+                "  projects [filtro]   → Navega/filtra contratos (ex: projects python)",
+                "  lang [pt|en]        → Alterna idioma (PT-BR / EN)",
+                "  theme [nome]        → Alterna HUD (cyber | netrunner | arasaka)",
+                "  audio [on|off]      → Liga/desliga trilha Synthwave",
+                "  glitch [on|off]     → Alterna efeitos visuais CRT/glitch",
+                "  email               → Copia o e-mail profissional",
+                "  cv                  → Baixa o currículo em PDF",
+                "  linkedin / github   → Abre redes profissionais",
+                "  clear / exit        → Limpa ou fecha o terminal",
+              ].join("\n"),
           "sys"
         );
         break;
 
       case "whoami":
         appendCmdLine(
-          "GUILHERME DAMASCENO OLIVEIRA // Desenvolvedor Full Stack na Develcode.\nAtuação em squads da RD Saúde e Leroy Merlin · ADS (UNISO) & Eng. de Software (Estácio).",
+          isEn
+            ? "GUILHERME DAMASCENO OLIVEIRA // Full Stack Developer at Develcode.\nAssigned to RD Saúde & Leroy Merlin squads · Systems Analysis (UNISO) & Software Eng. (Estácio)."
+            : "GUILHERME DAMASCENO OLIVEIRA // Desenvolvedor Full Stack na Develcode.\nAtuação em squads da RD Saúde e Leroy Merlin · ADS (UNISO) & Eng. de Software (Estácio).",
           "accent"
         );
         break;
 
       case "missions":
         appendCmdLine(
-          [
-            "[MISSION_01] RD SAÚDE · Agentes de IA resilientes (Java 17, Spring Boot, FastAPI, LangGraph, AWS Bedrock, Langfuse)",
-            "[MISSION_02] LEROY MERLIN · Modernização de sistemas legados (C#, .NET, ActiveRecord/NHibernate, PostgreSQL)",
-            "[MISSION_03] TRANSVERSAL · Automação de processos e integrações (n8n, Python, JS, IA)",
-          ].join("\n"),
+          isEn
+            ? [
+                "[MISSION_01] RD SAÚDE · Resilient AI Agents (Java 17, Spring Boot, FastAPI, LangGraph, AWS Bedrock, Langfuse)",
+                "[MISSION_02] LEROY MERLIN · Legacy Modernization (C#, .NET, ActiveRecord/NHibernate, PostgreSQL)",
+                "[MISSION_03] CROSS-SQUAD · Workflow Automation & Integrations (n8n, Python, JS, AI)",
+              ].join("\n")
+            : [
+                "[MISSION_01] RD SAÚDE · Agentes de IA resilientes (Java 17, Spring Boot, FastAPI, LangGraph, AWS Bedrock, Langfuse)",
+                "[MISSION_02] LEROY MERLIN · Modernização de sistemas legados (C#, .NET, ActiveRecord/NHibernate, PostgreSQL)",
+                "[MISSION_03] TRANSVERSAL · Automação de processos e integrações (n8n, Python, JS, IA)",
+              ].join("\n"),
           "sys"
         );
         document.querySelector("#experiencia")?.scrollIntoView({ behavior: "smooth" });
@@ -708,7 +1155,7 @@
 
       case "stack":
         appendCmdLine(
-          "CORE: Java 17 · Spring Boot · C# · .NET · Python · FastAPI\nIA & OPS: LangChain · LangGraph · AWS Bedrock · Langfuse · Docker · K8s · ArgoCD · Datadog\nDATA & WEB: PostgreSQL · MySQL · MongoDB · React · TypeScript · n8n",
+          "CORE: Java 17 · Spring Boot · C# · .NET · Python · FastAPI\nAI & OPS: LangChain · LangGraph · AWS Bedrock · Langfuse · Docker · K8s · ArgoCD · Datadog\nDATA & WEB: PostgreSQL · MySQL · MongoDB · React · TypeScript · n8n",
           "accent"
         );
         document.querySelector("#competencias")?.scrollIntoView({ behavior: "smooth" });
@@ -719,21 +1166,33 @@
         const target = arg && validFilters.includes(arg) ? arg : "all";
         const count = applyProjectFilter(target);
         appendCmdLine(
-          `FILTRO DE CONTRATOS ATIVO: [${target.toUpperCase()}] → ${count} projeto(s).`,
+          isEn
+            ? `CONTRACT FILTER ACTIVE: [${target.toUpperCase()}] → ${count} project(s).`
+            : `FILTRO DE CONTRATOS ATIVO: [${target.toUpperCase()}] → ${count} projeto(s).`,
           "accent"
         );
         document.querySelector("#projetos")?.scrollIntoView({ behavior: "smooth" });
         break;
       }
 
+      case "lang": {
+        const nextLang = arg === "en" || arg === "pt" ? arg : currentLang === "pt" ? "en" : "pt";
+        applyLanguage(nextLang);
+        appendCmdLine(
+          nextLang === "en" ? "LANGUAGE SET TO: ENGLISH (EN)" : "IDIOMA DEFINIDO: PORTUGUÊS (PT-BR)",
+          "accent"
+        );
+        break;
+      }
+
       case "theme":
       case "overclock": {
         if (arg) {
-          const idx = THEMES.findIndex((t) => t.id === arg);
+          const idx = THEMES.findIndex((item) => item.id === arg);
           if (idx >= 0) {
             applyTheme(idx);
           } else {
-            appendCmdLine("Paletas válidas: cyber, netrunner, arasaka", "sys");
+            appendCmdLine("Valid palettes: cyber, netrunner, arasaka", "sys");
             break;
           }
         } else {
@@ -747,11 +1206,11 @@
         if (arg === "on" || (!arg && ambientAudio?.paused)) {
           saveAudioPreference("on");
           const ok = await startAmbientAudio();
-          appendCmdLine(ok ? "TRILHA ATIVADA (VOLUME 20%)" : "ÁUDIO INDISPONÍVEL", "accent");
+          appendCmdLine(ok ? "SOUNDTRACK ACTIVE (20% VOLUME)" : "AUDIO UNAVAILABLE", "accent");
         } else {
           saveAudioPreference("off");
           pauseAmbientAudio("TRILHA PAUSADA VIA TERMINAL");
-          appendCmdLine("TRILHA PAUSADA.", "sys");
+          appendCmdLine("SOUNDTRACK PAUSED.", "sys");
         }
         break;
       }
@@ -762,7 +1221,7 @@
         else glitchEnabled = !glitchEnabled;
         renderGlitchPreference();
         safeSetStorage(window.localStorage, STORAGE_KEYS.glitch, glitchEnabled ? "on" : "off");
-        appendCmdLine(`MODO GLITCH: ${glitchEnabled ? "ON" : "OFF"}`, "accent");
+        appendCmdLine(`GLITCH MODE: ${glitchEnabled ? "ON" : "OFF"}`, "accent");
         break;
       }
 
@@ -770,15 +1229,15 @@
         const copied = await copyEmailToClipboard();
         appendCmdLine(
           copied
-            ? "E-mail copiado: guilhermedamascenooliveira@gmail.com"
-            : "E-mail: guilhermedamascenooliveira@gmail.com",
+            ? "Copied: guilhermedamascenooliveira@gmail.com"
+            : "Email: guilhermedamascenooliveira@gmail.com",
           "accent"
         );
         break;
       }
 
       case "cv": {
-        appendCmdLine("Iniciando download de CV_Guilherme_Damasceno.pdf...", "accent");
+        appendCmdLine("Downloading CV_Guilherme_Damasceno.pdf...", "accent");
         const link = document.createElement("a");
         link.href = "./CV_Guilherme_Damasceno.pdf";
         link.download = "CV_Guilherme_Damasceno.pdf";
@@ -794,12 +1253,12 @@
           "_blank",
           "noopener,noreferrer"
         );
-        appendCmdLine("Abrindo LinkedIn em nova aba...", "accent");
+        appendCmdLine("Opening LinkedIn...", "accent");
         break;
 
       case "github":
         window.open("https://github.com/Guilhermedms7", "_blank", "noopener,noreferrer");
-        appendCmdLine("Abrindo GitHub em nova aba...", "accent");
+        appendCmdLine("Opening GitHub...", "accent");
         break;
 
       case "clear":
@@ -813,7 +1272,9 @@
 
       default:
         appendCmdLine(
-          `Comando não reconhecido: "${cmd}". Digite "help" para listar os comandos.`,
+          isEn
+            ? `Unknown command: "${cmd}". Type "help" to list commands.`
+            : `Comando não reconhecido: "${cmd}". Digite "help" para listar os comandos.`,
           "sys"
         );
     }
@@ -896,13 +1357,14 @@
   });
 
   /* ------------------------------------------------------------------------
-     15. Tactical Boot Sequence (With Pause-on-Interaction Fix)
+     16. Tactical Boot Sequence (With Pause-on-Interaction Fix)
      ------------------------------------------------------------------------ */
   function startBootSequence() {
     if (motionPreference.matches) return;
     if (safeGetStorage(window.sessionStorage, STORAGE_KEYS.boot) === "yes") return;
     safeSetStorage(window.sessionStorage, STORAGE_KEYS.boot, "yes");
 
+    const isEn = currentLang === "en";
     const boot = document.createElement("div");
     boot.className = "boot-screen";
     boot.setAttribute("role", "dialog");
@@ -918,12 +1380,18 @@
           <span>[<b>OK</b>] SYNTHWAVE AUDIO ENGINE READY (20% GAIN)</span>
         </div>
         <span class="boot-progress" aria-hidden="true"><i></i></span>
-        <p class="boot-prompt mono">SELECIONE O MODO DE ENTRADA</p>
+        <p class="boot-prompt mono">${isEn ? "SELECT ENTRY MODE" : "SELECIONE O MODO DE ENTRADA"}</p>
         <div class="boot-actions">
-          <button class="boot-action boot-action-primary mono" type="button">ENTRAR COM SOM ♫</button>
-          <button class="boot-action mono" type="button">MODO SILENCIOSO</button>
+          <button class="boot-action boot-action-primary mono" type="button">${
+            isEn ? "ENTER WITH SOUND ♫" : "ENTRAR COM SOM ♫"
+          }</button>
+          <button class="boot-action mono" type="button">${
+            isEn ? "SILENT MODE" : "MODO SILENCIOSO"
+          }</button>
         </div>
-        <button class="boot-skip mono" type="button">PULAR ABERTURA [ESC]</button>
+        <button class="boot-skip mono" type="button">${
+          isEn ? "SKIP INTRO [ESC]" : "PULAR ABERTURA [ESC]"
+        }</button>
       </div>
     `;
     document.body.append(boot);

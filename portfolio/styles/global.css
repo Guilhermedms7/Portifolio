@@ -361,6 +361,17 @@ img, svg {
   font-size: 0.48rem;
 }
 
+.lang-toggle {
+  min-width: 42px;
+  font-weight: 700;
+}
+
+.lang-toggle[data-lang="en"] {
+  border-color: rgba(var(--accent-rgb), 0.52);
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+}
+
 .audio-toggle:disabled {
   border-color: var(--line);
   color: var(--dim);

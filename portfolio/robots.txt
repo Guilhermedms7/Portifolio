@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guilherme-damasceno.pages.dev/sitemap.xml
