@@ -17,7 +17,6 @@
     glitch: "portfolio-glitch-mode",
     theme: "portfolio-hud-theme",
     lang: "portfolio-hud-lang",
-    boot: "portfolio-boot-seen",
   };
 
   const THEMES = [
@@ -1367,107 +1366,4 @@
       openCmdModal();
     }
   });
-
-  /* ------------------------------------------------------------------------
-     16. Tactical Boot Sequence (With Pause-on-Interaction Fix)
-     ------------------------------------------------------------------------ */
-  function startBootSequence() {
-    if (motionPreference.matches) return;
-    if (safeGetStorage(window.sessionStorage, STORAGE_KEYS.boot) === "yes") return;
-    safeSetStorage(window.sessionStorage, STORAGE_KEYS.boot, "yes");
-
-    const isEn = currentLang === "en";
-    const boot = document.createElement("div");
-    boot.className = "boot-screen";
-    boot.setAttribute("role", "dialog");
-    boot.setAttribute("aria-modal", "true");
-    boot.setAttribute("aria-labelledby", "boot-title");
-    boot.innerHTML = `
-      <div class="boot-inner">
-        <span class="mono">INITIALIZING TACTICAL DOSSIER // GD-01</span>
-        <strong id="boot-title">IDENTITY<br />VERIFIED<span>.</span></strong>
-        <div class="boot-logs mono" aria-hidden="true">
-          <span>[<b>OK</b>] MOUNTING BACK-END &amp; AI ORCHESTRATION MODULES</span>
-          <span>[<b>OK</b>] LOADING SQUAD LOGS: RD SAÚDE · LEROY MERLIN</span>
-          <span>[<b>OK</b>] SYNTHWAVE AUDIO ENGINE READY (20% GAIN)</span>
-        </div>
-        <span class="boot-progress" aria-hidden="true"><i></i></span>
-        <p class="boot-prompt mono">${isEn ? "SELECT ENTRY MODE" : "SELECIONE O MODO DE ENTRADA"}</p>
-        <div class="boot-actions">
-          <button class="boot-action boot-action-primary mono" type="button">${
-            isEn ? "ENTER WITH SOUND ♫" : "ENTRAR COM SOM ♫"
-          }</button>
-          <button class="boot-action mono" type="button">${
-            isEn ? "SILENT MODE" : "MODO SILENCIOSO"
-          }</button>
-        </div>
-        <button class="boot-skip mono" type="button">${
-          isEn ? "SKIP INTRO [ESC]" : "PULAR ABERTURA [ESC]"
-        }</button>
-      </div>
-    `;
-    document.body.append(boot);
-
-    let remainingMs = 4500;
-    let lastTick = performance.now();
-    let paused = false;
-    let rafId = 0;
-
-    const finishBoot = () => {
-      window.cancelAnimationFrame(rafId);
-      boot.classList.add("is-finished");
-      window.removeEventListener("keydown", onBootKey);
-      if (boot.contains(document.activeElement)) audioToggle?.focus();
-      window.setTimeout(() => boot.remove(), 260);
-    };
-
-    const tickBootTimer = (now) => {
-      if (!paused) {
-        remainingMs -= now - lastTick;
-        if (remainingMs <= 0) {
-          finishBoot();
-          return;
-        }
-      }
-      lastTick = now;
-      rafId = window.requestAnimationFrame(tickBootTimer);
-    };
-
-    const inner = boot.querySelector(".boot-inner");
-    inner?.addEventListener("pointerenter", () => {
-      paused = true;
-    });
-    inner?.addEventListener("pointerleave", () => {
-      paused = false;
-      lastTick = performance.now();
-    });
-
-    const onBootKey = (event) => {
-      if (event.key === "Escape") {
-        saveAudioPreference("off");
-        finishBoot();
-      }
-    };
-
-    const [soundButton, silentButton] = boot.querySelectorAll(".boot-action");
-    soundButton.addEventListener("click", () => {
-      saveAudioPreference("on");
-      finishBoot();
-      startAmbientAudio();
-    });
-    silentButton.addEventListener("click", () => {
-      saveAudioPreference("off");
-      finishBoot();
-    });
-    boot.querySelector(".boot-skip").addEventListener("click", () => {
-      saveAudioPreference("off");
-      finishBoot();
-    });
-
-    window.addEventListener("keydown", onBootKey);
-    soundButton.focus();
-    rafId = window.requestAnimationFrame(tickBootTimer);
-  }
-
-  startBootSequence();
 })();

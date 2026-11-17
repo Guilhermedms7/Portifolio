@@ -53,8 +53,7 @@ Interface autoral inspirada em painéis operacionais futuristas e dossiês táti
 - **Blueprint Interativo de Arquitetura (`MISSION_01`):** pipeline operacional em 4 estágios (`Core API` → `Agente IA` → `LLM & Trace` → `Cloud & Sec`) que destaca as entregas técnicas correspondentes ao passar o mouse ou clicar.
 - **Rastreamento Transversal de Tecnologias:** clicar em qualquer chip de tecnologia ilumina todas as ocorrências daquela ferramenta entre Missões, Loadout e Contratos.
 - **Paletas de HUD (Overclock):** alternância persistente entre `CYBER // YELLOW`, `NETRUNNER // CYAN` e `ARASAKA // CRIMSON`, além do controle `GLITCH: ON/OFF`.
-- **Áudio Synthwave & Equalizador:** trilha opcional “Lonerism” (Alejandro Magaña · [Mixkit](https://mixkit.co/free-stock-music/synthwave/)) em 20% de volume, equalizador animado no topo, micro-feedback sonoro sintetizado via Web Audio API quando ativo e pausa automática ao trocar de aba.
-- **Sequência de Boot Tático:** diagnóstico rápido na primeira visita da sessão com pausa inteligente ao interagir com os botões de entrada com/sem som.
+- **Áudio Synthwave & Equalizador:** trilha opcional “Lonerism” (Alejandro Magaña · [Mixkit](https://mixkit.co/free-stock-music/synthwave/)) em 20% de volume ativável diretamente pelo botão no topo (ou pelo terminal), com equalizador animado, micro-feedback sonoro sintetizado via Web Audio API quando ativo e pausa automática ao trocar de aba.
 - **SEO & Open Graph dedicado:** banner cyberpunk em `portfolio/images/og-image.jpg`, URL canônica, `robots.txt` e `sitemap.xml`.
 
 ## Notas de conteúdo
